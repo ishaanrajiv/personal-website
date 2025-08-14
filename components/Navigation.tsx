@@ -29,12 +29,15 @@ export default function Navigation({ siteName = "Ishaan Rajiv", className = "" }
 
   return (
     <nav className={`sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#262626] ${className}`}>
-      <div className="max-w-4xl mx-auto px-6 py-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-xl font-medium hover:text-[#737373] transition-colors">
             {siteName}
           </Link>
-          <div className="flex gap-8">
+          <div className="flex gap-4 sm:gap-8">
+            <Link href="/" className={getLinkClassName('/')}>
+              Home
+            </Link>
             <Link href="/blog" className={getLinkClassName('/blog')}>
               Blog
             </Link>
