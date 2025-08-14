@@ -35,8 +35,8 @@ The site uses a YAML-based content management system:
 - `/content/site.yaml` - Site configuration, hero, about, skills, and contact info
 - `/content/cv.yaml` - CV/resume data
 - `/content/blog.yaml` - Blog posts and articles
-- `/content/apps.yaml` - Applications and projects data
-- `/lib/content.ts` - Content loading utilities with functions like `getSiteConfig()`, `getCVData()`, `getBlogData()`, `getAppsData()`
+- `/content/projects.yaml` - Projects and applications data
+- `/lib/content.ts` - Content loading utilities with functions like `getSiteConfig()`, `getCVData()`, `getBlogData()`, `getProjectsData()`
 
 The content system uses js-yaml for parsing and provides typed access to structured content data.
 

@@ -23,6 +23,6 @@ export function getBlogData() {
   return getContentData('blog.yaml');
 }
 
-export function getAppsData() {
-  return getContentData('apps.yaml');
+export function getProjectsData() {
+  return getContentData('projects.yaml');
 }

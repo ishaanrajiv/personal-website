@@ -1,0 +1,22 @@
+projects:
+  featured:
+    - name: "Lyrate - iOS eBook Reader"
+      description: "A full-featured ebook reader built using only large language models. This experiment explores what happens when a non-developer uses AI to create complex applications."
+      status: "in_development"
+      type: "iOS App"
+      technologies: ["Swift", "SwiftUI", "Core Data", "CloudKit"]
+      links:
+        github: ""
+        testflight: "https://testflight.apple.com/join/wvEPAEJk"
+        app_store: ""
+      features:
+        - "Modern SwiftUI interface"
+        - "EPUB/PDF support"
+        - "iCloud synchronization"
+        - "Reading analytics"
+        - "Dark mode support"
+        
+  # Other project categories
+  web_projects: []
+  tools: []
+  experiments: []
