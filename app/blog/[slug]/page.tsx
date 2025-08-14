@@ -106,7 +106,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
   if (!postData) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] text-primary">
+      <div className="min-h-screen bg-background text-primary">
         <Navigation />
 
         <ContentErrorBoundary>
@@ -117,19 +117,19 @@ export default async function BlogPost({ params }: BlogPostProps) {
           </p>
           <Link 
             href="/blog"
-            className="border border-[#525252] text-primary px-4 py-2 rounded-xl hover:bg-[#262626] transition-colors"
+            className="border border-accent text-primary px-4 py-2 rounded-xl hover:bg-border transition-colors"
           >
             ← Back to Blog
           </Link>
           
           {process.env.NODE_ENV === 'development' && (
-            <div className="mt-8 p-4 bg-[#1a1a1a] rounded-xl border border-[#262626]">
+            <div className="mt-8 p-4 bg-background-elevated rounded-xl border border-border">
               <h3 className="text-lg font-semibold mb-2 text-yellow-400">Debug Info (Development)</h3>
               <p className="text-secondary text-sm">
-                Attempted to load post with slug: <code className="text-primary bg-[#262626] px-1 rounded">{slug}</code>
+                Attempted to load post with slug: <code className="text-primary bg-border px-1 rounded">{slug}</code>
               </p>
               <p className="text-secondary text-sm mt-2">
-                Check the console for detailed error information and verify the post file exists in <code className="text-primary bg-[#262626] px-1 rounded">/content/posts/</code>
+                Check the console for detailed error information and verify the post file exists in <code className="text-primary bg-border px-1 rounded">/content/posts/</code>
               </p>
             </div>
           )}
@@ -140,7 +140,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-primary">
+    <div className="min-h-screen bg-background text-primary">
       <Navigation />
 
       <ContentErrorBoundary>
@@ -176,7 +176,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
                   {postData.tags.map((tag, index) => (
                     <span 
                       key={index}
-                      className="text-xs bg-[#262626] px-2 py-1 rounded-xl"
+                      className="text-xs bg-border px-2 py-1 rounded-xl"
                     >
                       {tag}
                     </span>
@@ -218,19 +218,19 @@ export default async function BlogPost({ params }: BlogPostProps) {
               ol: ({ children }) => <ol className="list-decimal list-inside mb-4 text-secondary space-y-1">{children}</ol>,
               li: ({ children }) => <li className="text-secondary">{children}</li>,
               blockquote: ({ children }) => (
-                <blockquote className="border-l-4 border-[#525252] pl-4 italic text-secondary my-6">
+                <blockquote className="border-l-4 border-accent pl-4 italic text-secondary my-6">
                   {children}
                 </blockquote>
               ),
               code: ({ children, className }) => {
                 const isInline = !className;
                 if (isInline) {
-                  return <code className="bg-[#262626] px-2 py-1 rounded text-sm text-primary">{children}</code>;
+                  return <code className="bg-border px-2 py-1 rounded text-sm text-primary">{children}</code>;
                 }
                 return <code className={className}>{children}</code>;
               },
               pre: ({ children }) => (
-                <pre className="bg-[#1a1a1a] border border-[#262626] rounded-xl p-4 overflow-x-auto mb-4">
+                <pre className="bg-background-elevated border border-border rounded-xl p-4 overflow-x-auto mb-4">
                   {children}
                 </pre>
               ),
@@ -242,7 +242,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
                   alt={alt || ''} 
                   width={800}
                   height={600}
-                  className="w-full max-w-3xl mx-auto my-8 rounded-xl border border-[#262626]"
+                  className="w-full max-w-3xl mx-auto my-8 rounded-xl border border-border"
                 />
               ),
               div: (props: any) => {
@@ -258,7 +258,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
                             alt={`Gallery image ${index + 1}`}
                             width={256}
                             height={192}
-                            className="flex-none w-48 md:w-64 rounded-xl border border-[#262626]"
+                            className="flex-none w-48 md:w-64 rounded-xl border border-border"
                           />
                         ))}
                       </div>
@@ -274,10 +274,10 @@ export default async function BlogPost({ params }: BlogPostProps) {
         </article>
 
         {/* Footer Navigation */}
-        <footer className="mt-16 pt-8 border-t border-[#262626]">
+        <footer className="mt-16 pt-8 border-t border-border">
           <Link 
             href="/blog"
-            className="border border-[#525252] text-primary px-4 py-2 rounded-xl hover:bg-[#262626] transition-colors"
+            className="border border-accent text-primary px-4 py-2 rounded-xl hover:bg-border transition-colors"
           >
             ← Back to All Posts
           </Link>

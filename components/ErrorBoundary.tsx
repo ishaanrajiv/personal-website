@@ -40,32 +40,32 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
       }
 
       return (
-        <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] flex items-center justify-center">
+        <div className="min-h-screen bg-background text-primary flex items-center justify-center">
           <div className="max-w-2xl mx-auto px-6 text-center">
             <h1 className="text-4xl font-bold mb-6 text-red-400">Something went wrong</h1>
-            <p className="text-[#737373] mb-8 text-lg">
+            <p className="text-muted mb-8 text-lg">
               We&apos;re sorry, but something unexpected happened. Please try refreshing the page.
             </p>
             <div className="flex gap-4 justify-center">
               <button 
                 onClick={this.resetError}
-                className="border border-[#525252] text-[#ededed] px-6 py-3 rounded-xl hover:bg-[#262626] transition-colors"
+                className="border border-accent text-primary px-6 py-3 rounded-xl hover:bg-border transition-colors"
               >
                 Try Again
               </button>
               <button 
                 onClick={() => window.location.reload()}
-                className="bg-[#262626] text-[#ededed] px-6 py-3 rounded-xl hover:bg-[#404040] transition-colors"
+                className="bg-border text-primary px-6 py-3 rounded-xl hover:bg-accent transition-colors"
               >
                 Refresh Page
               </button>
             </div>
             {this.state.error && (
               <details className="mt-8 text-left">
-                <summary className="cursor-pointer text-[#737373] hover:text-[#ededed] transition-colors">
+                <summary className="cursor-pointer text-muted hover:text-primary transition-colors">
                   Show error details
                 </summary>
-                <pre className="mt-4 p-4 bg-[#1a1a1a] rounded-xl text-sm text-red-300 overflow-auto">
+                <pre className="mt-4 p-4 bg-background-elevated rounded-xl text-sm text-red-300 overflow-auto">
                   {this.state.error.message}
                   {this.state.error.stack && (
                     <>

@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
+  --background: #0F0F10;
+  --background-elevated: #0F0F10;
   --foreground: #ededed;
   --text-primary: #ededed;
   --text-secondary: #b3b3b3;
@@ -13,6 +14,7 @@
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
   --color-foreground: var(--foreground);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);

@@ -8,7 +8,7 @@ export default function BlogPage() {
   const siteConfig = getSiteConfig();
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-primary">
+    <div className="min-h-screen bg-background text-primary">
       <Navigation siteName={siteConfig.site.name} />
 
       <ContentErrorBoundary>
@@ -17,14 +17,14 @@ export default function BlogPage() {
         
         <div className="space-y-8">
           {blogData.blog.featured_posts?.filter((post: any) => post.status === 'published').map((post: any, index: number) => (
-            <article key={index} className="border-b border-[#262626] pb-8 last:border-b-0">
+            <article key={index} className="border-b border-border pb-8 last:border-b-0">
               <Link href={`/blog/${post.slug}`}>
                 <h2 className="text-2xl font-semibold mb-3 hover:text-primary transition-colors cursor-pointer text-primary">
                   {post.title}
                 </h2>
               </Link>
               
-              <div className="flex items-center gap-4 mb-3 text-sm text-[#525252]">
+              <div className="flex items-center gap-4 mb-3 text-sm text-accent">
                 {post.date && (
                   <time dateTime={post.date}>
                     {new Date(post.date).toLocaleDateString('en-US', {
@@ -42,7 +42,7 @@ export default function BlogPage() {
                       {post.tags.slice(0, 3).map((tag: string, tagIndex: number) => (
                         <span 
                           key={tagIndex}
-                          className="bg-[#262626] px-2 py-1 rounded text-xs"
+                          className="bg-border px-2 py-1 rounded text-xs"
                         >
                           {tag}
                         </span>
