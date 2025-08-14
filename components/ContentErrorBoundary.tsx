@@ -9,7 +9,7 @@ interface ContentErrorFallbackProps {
   resetError: () => void;
 }
 
-function ContentErrorFallback({ error, resetError }: ContentErrorFallbackProps): JSX.Element {
+function ContentErrorFallback({ error, resetError }: ContentErrorFallbackProps): React.JSX.Element {
   return (
     <div className="max-w-4xl mx-auto px-6 py-16 text-center">
       <h1 className="text-3xl font-bold mb-6 text-red-400">Content Error</h1>
@@ -48,7 +48,7 @@ interface ContentErrorBoundaryProps {
   children: React.ReactNode;
 }
 
-export default function ContentErrorBoundary({ children }: ContentErrorBoundaryProps): JSX.Element {
+export default function ContentErrorBoundary({ children }: ContentErrorBoundaryProps): React.JSX.Element {
   return (
     <ErrorBoundary fallback={ContentErrorFallback}>
       {children}

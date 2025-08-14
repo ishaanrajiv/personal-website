@@ -58,15 +58,13 @@ export interface CVData {
 
 export interface BlogData {
   blog: {
-    title: string;
-    description: string;
-    posts: {
+    featured_posts: {
       title: string;
       slug: string;
       date: string;
-      excerpt: string;
+      description: string;
       tags: string[];
-      content: string;
+      status: string;
     }[];
   };
 }

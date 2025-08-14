@@ -16,19 +16,13 @@ export default function BlogPage() {
         <h1 className="text-4xl font-bold mb-12">Blog</h1>
         
         <div className="space-y-8">
-          {blogData.blog.featured_posts.map((post: any, index: number) => (
+          {blogData.blog.featured_posts?.filter((post: any) => post.status === 'published').map((post: any, index: number) => (
             <article key={index} className="border-b border-[#262626] pb-8 last:border-b-0">
-              {post.status === 'published' && post.slug ? (
-                <Link href={`/blog/${post.slug}`}>
-                  <h2 className="text-2xl font-semibold mb-3 hover:text-[#ededed] transition-colors cursor-pointer">
-                    {post.title}
-                  </h2>
-                </Link>
-              ) : (
-                <h2 className="text-2xl font-semibold mb-3 text-[#525252]">
+              <Link href={`/blog/${post.slug}`}>
+                <h2 className="text-2xl font-semibold mb-3 hover:text-[#ededed] transition-colors cursor-pointer">
                   {post.title}
                 </h2>
-              )}
+              </Link>
               
               <div className="flex items-center gap-4 mb-3 text-sm text-[#525252]">
                 {post.date && (
@@ -62,21 +56,15 @@ export default function BlogPage() {
                 {post.description}
               </p>
               
-              {post.status === 'published' && post.slug ? (
-                <Link 
-                  href={`/blog/${post.slug}`}
-                  className="inline-flex items-center text-sm text-[#ededed] hover:text-[#737373] transition-colors"
-                >
-                  Read More
-                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              ) : (
-                <span className="text-sm text-[#525252]">
-                  Coming Soon
-                </span>
-              )}
+              <Link 
+                href={`/blog/${post.slug}`}
+                className="inline-flex items-center text-sm text-[#ededed] hover:text-[#737373] transition-colors"
+              >
+                Read More
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
             </article>
           ))}
         </div>

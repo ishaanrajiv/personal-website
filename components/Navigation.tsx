@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -8,7 +9,7 @@ interface NavigationProps {
   className?: string;
 }
 
-export default function Navigation({ siteName = "Ishaan Rajiv", className = "" }: NavigationProps): JSX.Element {
+export default function Navigation({ siteName = "Ishaan Rajiv", className = "" }: NavigationProps): React.JSX.Element {
   const pathname = usePathname();
 
   const isActive = (path: string): boolean => {

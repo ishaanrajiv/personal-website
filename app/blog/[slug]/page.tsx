@@ -238,14 +238,15 @@ export default async function BlogPost({ params }: BlogPostProps) {
               em: ({ children }) => <em className="italic text-[#ededed]">{children}</em>,
               img: ({ src, alt }) => (
                 <Image 
-                  src={src || ''} 
+                  src={typeof src === 'string' ? src : ''} 
                   alt={alt || ''} 
                   width={800}
                   height={600}
                   className="w-full max-w-3xl mx-auto my-8 rounded-xl border border-[#262626]"
                 />
               ),
-              div: ({ 'data-gallery': galleryId, ...props }) => {
+              div: (props: any) => {
+                const galleryId = props['data-gallery'];
                 if (galleryId && postData.galleries[galleryId]) {
                   return (
                     <div className="my-8">
