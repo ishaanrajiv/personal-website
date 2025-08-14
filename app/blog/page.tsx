@@ -6,7 +6,7 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
-      <nav className="border-b border-[#262626]">
+      <nav className="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#262626]">
         <div className="max-w-4xl mx-auto px-6 py-6">
           <div className="flex justify-between items-center">
             <Link href="/" className="text-xl font-medium hover:text-[#737373] transition-colors">

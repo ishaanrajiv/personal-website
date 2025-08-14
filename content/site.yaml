@@ -1,14 +1,14 @@
 site:
   name: "Ishaan Rajiv"
   title: "Ishaan Rajiv - Analytics Lead & Developer" 
-  description: "Analytics Lead at DB Digital with 9+ years of experience in product analytics, data science, and emerging technologies"
+  description: "Analytics Lead at DB Digital with 10+ years of experience in product analytics, data science, and emerging technologies"
   author: "Ishaan Rajiv"
-  copyright: "© 2024 Ishaan Rajiv. All rights reserved."
+  copyright: "© 2025 Ishaan Rajiv. All rights reserved."
   
   # Hero section
   hero:
     title: "Analytics Lead building data-driven products and exploring emerging technologies"
-    subtitle: "9+ years in product analytics across top companies like DB Digital, Hike, and Flipkart. Currently exploring iOS development and AI/ML applications."
+    subtitle: "10+ years in product analytics across top companies like DB Digital, Hike, and Flipkart. Currently exploring iOS development and AI/ML applications."
     
   # About section
   about:

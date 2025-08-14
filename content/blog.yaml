@@ -1,22 +1,10 @@
 blog:
   featured_posts:
-    - title: "Getting Started with Data Analysis"
-      description: "Essential tools and techniques for modern data analysis workflows."
-      status: "coming_soon"
-      slug: "getting-started-data-analysis"
-      tags: ["data-science", "analytics", "tools"]
-      
-    - title: "iOS Development Journey"
-      description: "Lessons learned transitioning from analytics to mobile app development."
+    - title: "The AI Copilot Experiment: Building My First iOS App"
+      description: "What happens when a non-developer tries to build an iOS app using only large language models? I created Lyrate, a full-featured ebook reader, and what this could mean for the future of development."
       status: "coming_soon"
       slug: "ios-development-journey"
-      tags: ["ios", "swift", "mobile-dev", "career"]
-      
-    - title: "AI in Business Analytics"
-      description: "How artificial intelligence is transforming business decision-making."
-      status: "coming_soon"
-      slug: "ai-business-analytics"
-      tags: ["ai", "machine-learning", "business", "analytics"]
+      tags: ["ai", "ios", "swift", "mobile-dev", "case_study"]
       
   # Categories for blog organization
   categories:

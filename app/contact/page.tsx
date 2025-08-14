@@ -6,7 +6,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
-      <nav className="border-b border-[#262626]">
+      <nav className="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#262626]">
         <div className="max-w-4xl mx-auto px-6 py-6">
           <div className="flex justify-between items-center">
             <Link href="/" className="text-xl font-medium hover:text-[#737373] transition-colors">
@@ -36,7 +36,7 @@ export default function ContactPage() {
           </p>
           
           <div className="space-y-6">
-            <div className="border border-[#262626] rounded-lg p-6">
+            <div className="border border-[#262626] rounded-xl p-6">
               <h2 className="text-xl font-semibold mb-4">Email</h2>
               <a 
                 href={`mailto:${siteConfig.site.contact.email}`}
@@ -46,7 +46,7 @@ export default function ContactPage() {
               </a>
             </div>
             
-            <div className="border border-[#262626] rounded-lg p-6">
+            <div className="border border-[#262626] rounded-xl p-6">
               <h2 className="text-xl font-semibold mb-4">LinkedIn</h2>
               <a 
                 href={siteConfig.site.contact.linkedin}
@@ -54,11 +54,11 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="text-[#737373] hover:text-[#ededed] transition-colors"
               >
-                linkedin.com/in/yourprofile
+                {siteConfig.site.contact.linkedin.replace('https://in.linkedin.com/in/', 'linkedin.com/in/')}
               </a>
             </div>
             
-            <div className="border border-[#262626] rounded-lg p-6">
+            <div className="border border-[#262626] rounded-xl p-6">
               <h2 className="text-xl font-semibold mb-4">GitHub</h2>
               <a 
                 href={siteConfig.site.contact.github}
@@ -66,7 +66,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="text-[#737373] hover:text-[#ededed] transition-colors"
               >
-                github.com/yourusername
+                {siteConfig.site.contact.github.replace('https://github.com/', 'github.com/')}
               </a>
             </div>
           </div>
