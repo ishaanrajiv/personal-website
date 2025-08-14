@@ -26,7 +26,9 @@ The project follows Next.js App Router conventions:
 - `/app/layout.tsx` - Root layout with font loading and metadata
 - `/app/page.tsx` - Home page component
 - `/app/globals.css` - Global styles with Tailwind directives
-- `/public/` - Static assets (images, icons)
+- `/app/icon.svg` - Site icon
+- `/components/` - Reusable React components (Navigation, ErrorBoundary, etc.)
+- `/public/` - Static assets (SVG icons)
 
 ### Content Management System
 

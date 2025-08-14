@@ -52,7 +52,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 │   │   └── page.tsx    # Blog listing page
 │   ├── contact/        # Contact page
 │   ├── projects/       # Projects showcase
-│   └── ...
+│   ├── globals.css     # Global styles and Tailwind directives
+│   ├── icon.svg        # Site icon
+│   ├── layout.tsx      # Root layout with fonts and metadata
+│   └── page.tsx        # Home page
+├── components/         # Reusable React components
+│   ├── ContentErrorBoundary.tsx
+│   ├── ErrorBoundary.tsx
+│   └── Navigation.tsx
 ├── content/            # Content management files
 │   ├── posts/          # Markdown blog posts
 │   │   └── *.md       # Individual blog post files
@@ -61,7 +68,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 │   ├── blog.yaml      # Blog metadata and configuration
 │   └── projects.yaml  # Projects data
 ├── lib/               # Utilities and content loading
-├── public/            # Static assets
+├── public/            # Static assets (SVG icons)
 └── types/             # TypeScript type definitions
 ```
 
