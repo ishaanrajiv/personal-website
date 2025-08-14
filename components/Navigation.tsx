@@ -22,16 +22,16 @@ export default function Navigation({ siteName = "Ishaan Rajiv", className = "" }
   const getLinkClassName = (path: string): string => {
     const baseClasses = "transition-colors";
     if (isActive(path)) {
-      return `${baseClasses} text-[#ededed] font-medium`;
+      return `${baseClasses} text-primary font-medium`;
     }
-    return `${baseClasses} text-[#737373] hover:text-[#ededed]`;
+    return `${baseClasses} text-muted hover:text-primary`;
   };
 
   return (
-    <nav className={`sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#262626] ${className}`}>
+    <nav className={`sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border ${className}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-xl font-medium hover:text-[#737373] transition-colors">
+          <Link href="/" className="text-xl font-medium hover:text-muted transition-colors">
             {siteName}
           </Link>
           <div className="flex gap-4 sm:gap-8">
