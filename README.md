@@ -7,7 +7,7 @@ A modern personal website built with Next.js 15, featuring a minimal black-theme
 - **Framework**: Next.js 15 with App Router
 - **Frontend**: React 19 with TypeScript 5
 - **Styling**: Tailwind CSS 4 with custom black theme
-- **Fonts**: Geist Sans & Geist Mono
+- **Fonts**: Poppins & JetBrains Mono
 - **Build Tool**: Turbopack (development)
 - **Content**: YAML + Markdown hybrid content management
 - **Blog**: Markdown with syntax highlighting and GitHub Flavored Markdown
@@ -20,7 +20,7 @@ A modern personal website built with Next.js 15, featuring a minimal black-theme
 - **Syntax Highlighting**: Code blocks with rehype-highlight
 - **Responsive**: Mobile-first design with Tailwind breakpoints
 - **SEO Optimized**: Dynamic metadata generation for blog posts
-- **Typography**: Professional typography with Geist font family
+- **Typography**: Professional typography with Poppins and JetBrains Mono fonts
 
 ## Development
 

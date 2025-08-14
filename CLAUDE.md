@@ -10,7 +10,7 @@ This is a Next.js 15 personal website built with:
 - Tailwind CSS 4
 - App Router (Next.js 13+ app directory structure)
 
-The project uses Turbopack for development builds and includes font optimization with Geist Sans and Geist Mono fonts.
+The project uses Turbopack for development builds and includes font optimization with Poppins and JetBrains Mono fonts.
 
 ## Development Commands
 
@@ -45,10 +45,10 @@ TypeScript configuration includes path mapping with `@/*` alias pointing to the 
 ## Styling
 
 Uses Tailwind CSS 4 with PostCSS configuration:
-- CSS custom properties for fonts (`--font-geist-sans`, `--font-geist-mono`) 
+- CSS custom properties for fonts (`--font-poppins`, `--font-jetbrains-mono`) 
 - `@theme inline` directive for defining custom CSS variables in `globals.css`
 - Automatic dark mode support using `prefers-color-scheme: dark`
 - Background/foreground color variables that adapt to system theme
 - Responsive design patterns (sm:, md: breakpoints)
 
-The styling system integrates Geist fonts loaded via `next/font/google` with CSS variables for consistent typography across the site.
+The styling system integrates Poppins and JetBrains Mono fonts loaded via `next/font/google` with CSS variables for consistent typography across the site.
