@@ -1,0 +1,22 @@
+blog:
+  featured_posts:
+    - title: "Building My First iOS App Using AI (Part 1)"
+      description: "Can a non-developer build an iOS app using only AI (LLMs) and basic programming understanding?"
+      status: "published"
+      slug: "ios-development-journey"
+      date: "2025-01-14"
+      tags: ["ai", "ios", "swift", "mobile-dev", "case_study"]
+      
+  # Categories for blog organization
+  categories:
+    - name: "Data Science"
+      description: "Posts about data analysis, statistics, and data visualization"
+      
+    - name: "Technology"
+      description: "Articles about programming, frameworks, and development tools"
+      
+    - name: "AI & Machine Learning"
+      description: "Insights into artificial intelligence and ML applications"
+      
+    - name: "iOS Development"
+      description: "Mobile app development with Swift and iOS frameworks"

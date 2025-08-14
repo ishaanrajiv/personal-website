@@ -1,0 +1,33 @@
+site:
+  name: "Ishaan Rajiv"
+  title: "Ishaan Rajiv - Analytics Lead & Developer" 
+  description: "Analytics Lead at DB Digital with 10+ years of experience in product analytics, data science, and emerging technologies"
+  author: "Ishaan Rajiv"
+  copyright: "© 2025 Ishaan Rajiv. All rights reserved."
+  
+  # Hero section
+  hero:
+    # title: "Analytics Lead building data-driven products and exploring emerging technologies"
+    title: "Ishaan Rajiv"
+    subtitle: "10+ years in product analytics across top companies like DB Digital, Hike, and Flipkart. Currently exploring iOS development and AI/ML applications."
+    
+  # About section
+  about:
+    title: "About Me"
+    paragraphs:
+      - "Analytics Lead at DB Digital with over 10+ years of experience in product analytics, data science, and business intelligence. I've worked across diverse domains from social platforms to e-commerce, helping build data-driven products at companies like Hike, Flipkart, and Roposo in the past."
+      - "My expertise spans product analytics, fraud detection systems, recommendation engines, and democratizing data access across organizations. I'm passionate about making complex data insights accessible and actionable for product teams."
+      - "Currently exploring iOS app development and AI/ML applications, on a personal level."
+    
+  # Skills section  
+  skills:
+    focus_areas: "Product Analytics, Data Science, Business Intelligence, AI/ML, ETL"
+    analytics: "Python, SQL"
+    development: "Learning Phase: Swift (iOS), React, Next.js, TypeScript" 
+    
+    
+  # Contact links
+  contact:
+    email: "ishaan2005@gmail.com"
+    linkedin: "https://in.linkedin.com/in/ishaan-rajiv-b1036911b"
+    github: "https://github.com/ishaanrajiv"

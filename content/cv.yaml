@@ -1,0 +1,51 @@
+cv:
+  professional_experience:
+    title: "Professional Experience"
+    description: "10+ years of experience in product analytics and data science across top Indian companies"
+    
+  # Experience entries
+  experience:
+    - title: "Senior Principal Product Analyst"
+      company: "DB Digital (Dainik Bhaskar Digital)"
+      period: "Dec 2019 - Present"
+      location: "Noida, Uttar Pradesh, India"
+      description: "Leading analytics initiatives for one of India's largest digital news platforms"
+      
+    - title: "Senior Product Analyst"
+      company: "Hike"
+      period: "Aug 2018 - Nov 2019"
+      location: "New Delhi Area, India"
+      description: "Analytics Lead for Stickers, Chat and Web. Democratizing Data @ Hike"
+      
+    # - title: "Data Scientist - Business Insights"
+    #   company: "Bobble AI Technologies"
+    #   period: "Jan 2018 - Aug 2018"
+    #   location: "New Delhi Area, India"
+    #   description: "Major Cost Optimization (AWS Infrastructure), Content Recommendation Engine, Intent-based detection system"
+      
+    - title: "Business Analyst"
+      company: "Roposo"
+      period: "Aug 2016 - Dec 2017"
+      location: "Gurgaon, India"
+      description: "Third Party Ads Framework, ETL Pipeline for Spark database, Data-driven strategies for Play N' Earn and Roposo Talent Hunt"
+      
+    - title: "Business Analyst"
+      company: "Flipkart"
+      period: "Jul 2015 - Aug 2016"
+      location: "Bengaluru, Karnataka, India"
+      description: "Seller Price Abuse Identification System, Return Abuse and Fraud Identification System"
+      
+  # Education section
+  education:
+    - degree: "Bachelor of Technology"
+      institution: "Indian Institute of Technology, Guwahati" 
+      year: "2015"
+      
+  # Technical Skills
+  technical_skills:
+    - category: "Analytics"
+      skills: ["Product Analytics", "Business Intelligence", "Data Science", "AI/ML", "ETL"]
+    - category: "Programming"
+      skills: ["Python", "SQL", "R", "Spark/SCALA", "Swift (iOS)"]
+    - category: "Analytics Tools"
+      skills: ["Mixpanel", "Tableau", "Power BI", "Apache Spark", "Jupyter", "Metabase", "Snowfalke", "Databricks"]

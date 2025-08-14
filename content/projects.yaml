@@ -1,0 +1,31 @@
+projects:
+  featured:
+    - name: "Lyrate - eBook Reader"
+      description: "An eBook reader for iOS that transforms your reading experience with AI-generated chapter summaries, reading analytics, and comprehensive library management. Built entirely using large language models as an experiment in AI-assisted development."
+      status: "beta"
+      type: "iOS App"
+      technologies: ["Swift", "SwiftUI", "SwiftData", "Google Gemini API", "EPUBKit"]
+      images:
+        # hero: 
+        gallery:
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1755172808/blog-ios-development-journey-splash-screen_kldebx.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1755172846/blog-ios-development-journey-library_koeqsb.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1755172786/blog-ios-development-journey-reader_x8tqbg.png"
+      links:
+        github: ""
+        testflight: "https://testflight.apple.com/join/wvEPAEJk"
+        app_store: ""
+      features:
+        - "AI Summaries"
+        - "Reading Analytics"
+        - "Smart Highlights"
+        - "Custom Fonts"
+        - "Semantic Search"
+        - "Quote Sharing"
+        - "Calibre Sync"
+        - "Smart Caching"
+        
+  # Other project categories
+  web_projects: []
+  tools: []
+  experiments: []
