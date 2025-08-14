@@ -1,33 +1,16 @@
-import Link from 'next/link';
 import { getSiteConfig } from '@/lib/content';
+import Navigation from '@/components/Navigation';
+import ContentErrorBoundary from '@/components/ContentErrorBoundary';
 
 export default function ContactPage() {
   const siteConfig = getSiteConfig();
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
-      <nav className="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#262626]">
-        <div className="max-w-4xl mx-auto px-6 py-6">
-          <div className="flex justify-between items-center">
-            <Link href="/" className="text-xl font-medium hover:text-[#737373] transition-colors">
-              Ishaan Rajiv
-            </Link>
-            <div className="flex gap-8">
-              <Link href="/blog" className="text-[#737373] hover:text-[#ededed] transition-colors">
-                Blog
-              </Link>
-              <Link href="/projects" className="text-[#737373] hover:text-[#ededed] transition-colors">
-                Projects
-              </Link>
-              <Link href="/contact" className="text-[#ededed] font-medium">
-                Contact
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation siteName={siteConfig.site.name} />
 
-      <main className="max-w-4xl mx-auto px-6 py-16">
+      <ContentErrorBoundary>
+        <main className="max-w-4xl mx-auto px-6 py-16">
         <h1 className="text-4xl font-bold mb-12">Contact</h1>
         
         <div className="space-y-8">
@@ -86,7 +69,8 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </main>
+        </main>
+      </ContentErrorBoundary>
     </div>
   );
 }

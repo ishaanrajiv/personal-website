@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import Navigation from '@/components/Navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
@@ -7,6 +9,8 @@ import rehypeRaw from 'rehype-raw';
 import matter from 'gray-matter';
 import fs from 'fs';
 import path from 'path';
+import { getSiteConfig } from '@/lib/content';
+import ContentErrorBoundary from '@/components/ContentErrorBoundary';
 
 interface BlogPostProps {
   params: {
@@ -68,21 +72,29 @@ function getPostData(slug: string): PostData | null {
       galleries,
     };
   } catch (error) {
+    console.error(`Error loading blog post "${slug}":`, error);
+    
+    // In development, provide more detailed error information
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Stack trace:', error instanceof Error ? error.stack : 'Unknown error');
+    }
+    
     return null;
   }
 }
 
 export async function generateMetadata({ params }: BlogPostProps) {
   const postData = getPostData(params.slug);
+  const siteConfig = getSiteConfig();
   
   if (!postData) {
     return {
-      title: 'Post Not Found - Ishaan Rajiv',
+      title: `Post Not Found - ${siteConfig.site.name}`,
     };
   }
 
   return {
-    title: `${postData.title} - Ishaan Rajiv`,
+    title: `${postData.title} - ${siteConfig.site.name}`,
     description: postData.description,
   };
 }
@@ -93,28 +105,10 @@ export default function BlogPost({ params }: BlogPostProps) {
   if (!postData) {
     return (
       <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
-        <nav className="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#262626]">
-          <div className="max-w-4xl mx-auto px-6 py-6">
-            <div className="flex justify-between items-center">
-              <Link href="/" className="text-xl font-medium hover:text-[#737373] transition-colors">
-                Ishaan Rajiv
-              </Link>
-              <div className="flex gap-8">
-                <Link href="/blog" className="text-[#ededed] font-medium">
-                  Blog
-                </Link>
-                <Link href="/projects" className="text-[#737373] hover:text-[#ededed] transition-colors">
-                  Projects
-                </Link>
-                <Link href="/contact" className="text-[#737373] hover:text-[#ededed] transition-colors">
-                  Contact
-                </Link>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <Navigation />
 
-        <main className="max-w-4xl mx-auto px-6 py-16">
+        <ContentErrorBoundary>
+          <main className="max-w-4xl mx-auto px-6 py-16">
           <h1 className="text-4xl font-bold mb-8">Post Not Found</h1>
           <p className="text-[#737373] mb-8">
             The blog post you&apos;re looking for doesn&apos;t exist or has been moved.
@@ -125,35 +119,30 @@ export default function BlogPost({ params }: BlogPostProps) {
           >
             ← Back to Blog
           </Link>
-        </main>
+          
+          {process.env.NODE_ENV === 'development' && (
+            <div className="mt-8 p-4 bg-[#1a1a1a] rounded-xl border border-[#262626]">
+              <h3 className="text-lg font-semibold mb-2 text-yellow-400">Debug Info (Development)</h3>
+              <p className="text-[#737373] text-sm">
+                Attempted to load post with slug: <code className="text-[#ededed] bg-[#262626] px-1 rounded">{params.slug}</code>
+              </p>
+              <p className="text-[#737373] text-sm mt-2">
+                Check the console for detailed error information and verify the post file exists in <code className="text-[#ededed] bg-[#262626] px-1 rounded">/content/posts/</code>
+              </p>
+            </div>
+          )}
+          </main>
+        </ContentErrorBoundary>
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
-      <nav className="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#262626]">
-        <div className="max-w-4xl mx-auto px-6 py-6">
-          <div className="flex justify-between items-center">
-            <Link href="/" className="text-xl font-medium hover:text-[#737373] transition-colors">
-              Ishaan Rajiv
-            </Link>
-            <div className="flex gap-8">
-              <Link href="/blog" className="text-[#ededed] font-medium">
-                Blog
-              </Link>
-              <Link href="/projects" className="text-[#737373] hover:text-[#ededed] transition-colors">
-                Projects
-              </Link>
-              <Link href="/contact" className="text-[#737373] hover:text-[#ededed] transition-colors">
-                Contact
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
-      <main className="max-w-4xl mx-auto px-6 py-16">
+      <ContentErrorBoundary>
+        <main className="max-w-4xl mx-auto px-6 py-16">
         {/* Back Button */}
         <Link 
           href="/blog"
@@ -246,9 +235,11 @@ export default function BlogPost({ params }: BlogPostProps) {
               strong: ({ children }) => <strong className="font-bold text-[#ededed]">{children}</strong>,
               em: ({ children }) => <em className="italic text-[#ededed]">{children}</em>,
               img: ({ src, alt }) => (
-                <img 
-                  src={src} 
+                <Image 
+                  src={src || ''} 
                   alt={alt || ''} 
+                  width={800}
+                  height={600}
                   className="w-full max-w-3xl mx-auto my-8 rounded-xl border border-[#262626]"
                 />
               ),
@@ -258,10 +249,12 @@ export default function BlogPost({ params }: BlogPostProps) {
                     <div className="my-8">
                       <div className="flex gap-4 overflow-x-auto pb-4">
                         {postData.galleries[galleryId].map((image: string, index: number) => (
-                          <img 
+                          <Image 
                             key={index}
                             src={image} 
                             alt={`Gallery image ${index + 1}`}
+                            width={256}
+                            height={192}
                             className="flex-none w-48 md:w-64 rounded-xl border border-[#262626]"
                           />
                         ))}
@@ -286,7 +279,8 @@ export default function BlogPost({ params }: BlogPostProps) {
             ← Back to All Posts
           </Link>
         </footer>
-      </main>
+        </main>
+      </ContentErrorBoundary>
     </div>
   );
 }

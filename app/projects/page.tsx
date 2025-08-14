@@ -1,33 +1,19 @@
 import Link from 'next/link';
-import { getProjectsData } from '@/lib/content';
+import Image from 'next/image';
+import { getProjectsData, getSiteConfig } from '@/lib/content';
+import Navigation from '@/components/Navigation';
+import ContentErrorBoundary from '@/components/ContentErrorBoundary';
 
 export default function ProjectsPage() {
   const projectsData = getProjectsData();
+  const siteConfig = getSiteConfig();
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
-      <nav className="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#262626]">
-        <div className="max-w-4xl mx-auto px-6 py-6">
-          <div className="flex justify-between items-center">
-            <Link href="/" className="text-xl font-medium hover:text-[#737373] transition-colors">
-              Ishaan Rajiv
-            </Link>
-            <div className="flex gap-8">
-              <Link href="/blog" className="text-[#737373] hover:text-[#ededed] transition-colors">
-                Blog
-              </Link>
-              <Link href="/projects" className="text-[#ededed] font-medium">
-                Projects
-              </Link>
-              <Link href="/contact" className="text-[#737373] hover:text-[#ededed] transition-colors">
-                Contact
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation siteName={siteConfig.site.name} />
 
-      <main className="max-w-4xl mx-auto px-6 py-16">
+      <ContentErrorBoundary>
+        <main className="max-w-4xl mx-auto px-6 py-16">
         <h1 className="text-4xl font-bold mb-12">Projects</h1>
         
         <div className="space-y-12">
@@ -52,9 +38,11 @@ export default function ProjectsPage() {
               {/* Hero Image */}
               {project.images?.hero && (
                 <div className="mb-6">
-                  <img 
+                  <Image 
                     src={project.images.hero} 
                     alt={`${project.name} screenshot`}
+                    width={800}
+                    height={600}
                     className="w-full max-w-2xl mx-auto rounded-xl border border-[#262626]"
                   />
                 </div>
@@ -65,10 +53,12 @@ export default function ProjectsPage() {
                 <div className="mb-6">
                   <div className="flex gap-4 overflow-x-auto pb-4">
                     {project.images.gallery.map((image: string, imgIndex: number) => (
-                      <img 
+                      <Image 
                         key={imgIndex}
                         src={image} 
                         alt={`${project.name} screenshot ${imgIndex + 1}`}
+                        width={256}
+                        height={192}
                         className="flex-none w-48 md:w-64 rounded-xl border border-[#262626]"
                       />
                     ))}
@@ -129,7 +119,8 @@ export default function ProjectsPage() {
             </div>
           ))}
         </div>
-      </main>
+        </main>
+      </ContentErrorBoundary>
     </div>
   );
 }

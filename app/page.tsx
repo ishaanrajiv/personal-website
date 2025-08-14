@@ -1,41 +1,24 @@
-import Link from 'next/link';
 import { getSiteConfig, getCVData } from '@/lib/content';
+import Navigation from '@/components/Navigation';
+import ContentErrorBoundary from '@/components/ContentErrorBoundary';
 
-export default function Home() {
+export default function Home(): JSX.Element {
   const siteConfig = getSiteConfig();
   const cvData = getCVData();
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
-      <nav className="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#262626]">
-        <div className="max-w-4xl mx-auto px-6 py-6">
-          <div className="flex justify-between items-center">
-            <Link href="/" className="text-xl font-medium">
-              {siteConfig.site.name}
-            </Link>
-            <div className="flex gap-8">
-              <Link href="/blog" className="text-[#737373] hover:text-[#ededed] transition-colors">
-                Blog
-              </Link>
-              <Link href="/projects" className="text-[#737373] hover:text-[#ededed] transition-colors">
-                Projects
-              </Link>
-              <Link href="/contact" className="text-[#737373] hover:text-[#ededed] transition-colors">
-                Contact
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation siteName={siteConfig.site.name} />
 
-      <main className="max-w-4xl mx-auto px-6 py-16">
+      <ContentErrorBoundary>
+        <main className="max-w-4xl mx-auto px-6 py-16">
         {/* Bio Section */}
         <section className="mb-16">
           <h1 className="text-5xl font-bold mb-8 leading-tight">
             {siteConfig.site.hero.title}
           </h1>
           <div className="space-y-6 text-[#737373] text-lg leading-relaxed">
-            {siteConfig.site.about.paragraphs.map((paragraph: string, index: number) => (
+            {siteConfig.site.about.paragraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
           </div>
@@ -95,7 +78,7 @@ export default function Home() {
             <div className="space-y-6">
               <h3 className="text-xl font-semibold">Key Experience</h3>
               <div className="grid gap-4">
-                {cvData.cv.experience.slice(1).map((exp: any, index: number) => (
+                {cvData.cv.experience.slice(1).map((exp, index) => (
                   <div key={index} className="border-l border-[#525252] pl-6">
                     <div className="flex justify-between items-start mb-2">
                       <h4 className="font-medium">{exp.company}</h4>
@@ -110,7 +93,7 @@ export default function Home() {
             {/* Education */}
             <div>
               <h3 className="text-xl font-semibold mb-4">Education</h3>
-              {cvData.cv.education.map((edu: any, index: number) => (
+              {cvData.cv.education.map((edu, index) => (
                 <div key={index} className="border-l border-[#525252] pl-6">
                   <h4 className="font-medium">{edu.degree}</h4>
                   <p className="text-[#737373] text-sm">{edu.institution} • {edu.year}</p>
@@ -122,11 +105,11 @@ export default function Home() {
             <div>
               <h3 className="text-xl font-semibold mb-4">Technical Skills</h3>
               <div className="space-y-3">
-                {cvData.cv.technical_skills.map((skillCategory: any, index: number) => (
+                {cvData.cv.technical_skills.map((skillCategory, index) => (
                   <div key={index} className="border-l border-[#525252] pl-6">
                     <h4 className="font-medium text-[#ededed] mb-2">{skillCategory.category}</h4>
                     <div className="flex flex-wrap gap-2">
-                      {skillCategory.skills.map((skill: string, skillIndex: number) => (
+                      {skillCategory.skills.map((skill, skillIndex) => (
                         <span 
                           key={skillIndex}
                           className="text-[#737373] text-sm bg-[#262626] px-2 py-1 rounded-xl"
@@ -141,7 +124,8 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </main>
+        </main>
+      </ContentErrorBoundary>
     </div>
   );
 }
