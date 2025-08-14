@@ -1,8 +1,9 @@
+import React from 'react';
 import { getSiteConfig, getCVData } from '@/lib/content';
 import Navigation from '@/components/Navigation';
 import ContentErrorBoundary from '@/components/ContentErrorBoundary';
 
-export default function Home(): JSX.Element {
+export default function Home(): React.JSX.Element {
   const siteConfig = getSiteConfig();
   const cvData = getCVData();
 
