@@ -1,0 +1,33 @@
+blog:
+  featured_posts:
+    - title: "Getting Started with Data Analysis"
+      description: "Essential tools and techniques for modern data analysis workflows."
+      status: "coming_soon"
+      slug: "getting-started-data-analysis"
+      tags: ["data-science", "analytics", "tools"]
+      
+    - title: "iOS Development Journey"
+      description: "Lessons learned transitioning from analytics to mobile app development."
+      status: "coming_soon"
+      slug: "ios-development-journey"
+      tags: ["ios", "swift", "mobile-dev", "career"]
+      
+    - title: "AI in Business Analytics"
+      description: "How artificial intelligence is transforming business decision-making."
+      status: "coming_soon"
+      slug: "ai-business-analytics"
+      tags: ["ai", "machine-learning", "business", "analytics"]
+      
+  # Categories for blog organization
+  categories:
+    - name: "Data Science"
+      description: "Posts about data analysis, statistics, and data visualization"
+      
+    - name: "Technology"
+      description: "Articles about programming, frameworks, and development tools"
+      
+    - name: "AI & Machine Learning"
+      description: "Insights into artificial intelligence and ML applications"
+      
+    - name: "iOS Development"
+      description: "Mobile app development with Swift and iOS frameworks"

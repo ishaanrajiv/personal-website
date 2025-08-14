@@ -1,0 +1,34 @@
+cv:
+  professional_experience:
+    title: "Professional Experience"
+    description: "Analytics professional with experience in data analysis, visualization, and business intelligence."
+    
+  technical_projects:
+    title: "Technical Projects" 
+    description: "Currently developing iOS applications and exploring web development with modern frameworks."
+    
+  # Add specific experience entries here
+  experience:
+    - title: "Analytics Professional"
+      company: "Your Company"
+      period: "2020 - Present"
+      description: "Data analysis, visualization, and business intelligence"
+      technologies: ["Python", "SQL", "Tableau", "Power BI"]
+      
+    - title: "Data Analyst" 
+      company: "Previous Company"
+      period: "2018 - 2020"
+      description: "Statistical analysis and reporting"
+      technologies: ["R", "Excel", "SPSS"]
+      
+  # Education section
+  education:
+    - degree: "Your Degree"
+      institution: "Your University" 
+      year: "2018"
+      
+  # Certifications
+  certifications:
+    - name: "Data Science Certification"
+      issuer: "Institution"
+      year: "2021"

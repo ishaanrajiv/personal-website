@@ -1,0 +1,31 @@
+site:
+  name: "Ishaan"
+  title: "Ishaan - Analytics & Development" 
+  description: "Personal website of Ishaan - analytics professional exploring iOS and web development, writing about data, tech, and AI"
+  author: "Ishaan"
+  copyright: "© 2024 Ishaan. All rights reserved."
+  
+  # Hero section
+  hero:
+    title: "Analytics professional exploring the intersection of data, technology, and innovation"
+    subtitle: "Bridging analytics expertise with iOS and web development. Writing about data science, AI, and emerging technologies."
+    
+  # About section
+  about:
+    title: "About Me"
+    paragraphs:
+      - "I'm an analytics professional with a passion for exploring new technologies and their practical applications. My journey has taken me from data analysis to iOS app development and now web development."
+      - "I believe in the power of data-driven decision making and enjoy building tools and applications that make complex information accessible and actionable."
+      - "When I'm not coding or analyzing data, you'll find me writing about the latest developments in AI, exploring new frameworks, or working on my next iOS app."
+    
+  # Skills section  
+  skills:
+    analytics: "Data Science, Statistical Analysis, Business Intelligence"
+    development: "Swift, iOS, React, Next.js, TypeScript" 
+    focus_areas: "AI/ML, Data Visualization, Mobile Apps"
+    
+  # Contact links
+  contact:
+    email: "your.email@example.com"
+    linkedin: "https://linkedin.com/in/yourprofile"
+    github: "https://github.com/yourusername"
