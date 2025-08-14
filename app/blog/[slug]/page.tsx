@@ -13,9 +13,9 @@ import { getSiteConfig } from '@/lib/content';
 import ContentErrorBoundary from '@/components/ContentErrorBoundary';
 
 interface BlogPostProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 interface PostData {
@@ -84,7 +84,8 @@ function getPostData(slug: string): PostData | null {
 }
 
 export async function generateMetadata({ params }: BlogPostProps) {
-  const postData = getPostData(params.slug);
+  const { slug } = await params;
+  const postData = getPostData(slug);
   const siteConfig = getSiteConfig();
   
   if (!postData) {
@@ -99,8 +100,9 @@ export async function generateMetadata({ params }: BlogPostProps) {
   };
 }
 
-export default function BlogPost({ params }: BlogPostProps) {
-  const postData = getPostData(params.slug);
+export default async function BlogPost({ params }: BlogPostProps) {
+  const { slug } = await params;
+  const postData = getPostData(slug);
 
   if (!postData) {
     return (
@@ -124,7 +126,7 @@ export default function BlogPost({ params }: BlogPostProps) {
             <div className="mt-8 p-4 bg-[#1a1a1a] rounded-xl border border-[#262626]">
               <h3 className="text-lg font-semibold mb-2 text-yellow-400">Debug Info (Development)</h3>
               <p className="text-[#737373] text-sm">
-                Attempted to load post with slug: <code className="text-[#ededed] bg-[#262626] px-1 rounded">{params.slug}</code>
+                Attempted to load post with slug: <code className="text-[#ededed] bg-[#262626] px-1 rounded">{slug}</code>
               </p>
               <p className="text-[#737373] text-sm mt-2">
                 Check the console for detailed error information and verify the post file exists in <code className="text-[#ededed] bg-[#262626] px-1 rounded">/content/posts/</code>
