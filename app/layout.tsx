@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ishaan - Analytics & Development",
+  title: "Ishaan Rajiv - Website and Blog",
   description: "Personal website of Ishaan - analytics professional exploring iOS and web development, writing about data, tech, and AI",
 };
 
