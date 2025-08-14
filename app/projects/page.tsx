@@ -48,6 +48,33 @@ export default function ProjectsPage() {
               <p className="text-[#737373] mb-6 leading-relaxed">
                 {project.description}
               </p>
+
+              {/* Hero Image */}
+              {project.images?.hero && (
+                <div className="mb-6">
+                  <img 
+                    src={project.images.hero} 
+                    alt={`${project.name} screenshot`}
+                    className="w-full max-w-2xl mx-auto rounded-xl border border-[#262626]"
+                  />
+                </div>
+              )}
+
+              {/* Gallery Images */}
+              {project.images?.gallery && project.images.gallery.length > 0 && (
+                <div className="mb-6">
+                  <div className="flex gap-4 overflow-x-auto pb-4">
+                    {project.images.gallery.map((image: string, imgIndex: number) => (
+                      <img 
+                        key={imgIndex}
+                        src={image} 
+                        alt={`${project.name} screenshot ${imgIndex + 1}`}
+                        className="flex-none w-48 md:w-64 rounded-xl border border-[#262626]"
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
               
               {project.features && (
                 <div className="mb-6">

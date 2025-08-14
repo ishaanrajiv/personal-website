@@ -1,9 +1,10 @@
 blog:
   featured_posts:
-    - title: "The AI Copilot Experiment: Building My First iOS App"
-      description: "What happens when a non-developer tries to build an iOS app using only large language models? I created Lyrate, a full-featured ebook reader, and what this could mean for the future of development."
-      status: "coming_soon"
+    - title: "Building My First iOS App Using AI (Part 1)"
+      description: "Can a non-developer build an iOS app using only AI (LLMs) and basic programming understanding?"
+      status: "published"
       slug: "ios-development-journey"
+      date: "2025-01-14"
       tags: ["ai", "ios", "swift", "mobile-dev", "case_study"]
       
   # Categories for blog organization
