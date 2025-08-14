@@ -106,18 +106,18 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
   if (!postData) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
+      <div className="min-h-screen bg-[#0a0a0a] text-primary">
         <Navigation />
 
         <ContentErrorBoundary>
           <main className="max-w-4xl mx-auto px-6 py-16">
           <h1 className="text-4xl font-bold mb-8">Post Not Found</h1>
-          <p className="text-[#737373] mb-8">
+          <p className="text-secondary mb-8">
             The blog post you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
           <Link 
             href="/blog"
-            className="border border-[#525252] text-[#ededed] px-4 py-2 rounded-xl hover:bg-[#262626] transition-colors"
+            className="border border-[#525252] text-primary px-4 py-2 rounded-xl hover:bg-[#262626] transition-colors"
           >
             ← Back to Blog
           </Link>
@@ -125,11 +125,11 @@ export default async function BlogPost({ params }: BlogPostProps) {
           {process.env.NODE_ENV === 'development' && (
             <div className="mt-8 p-4 bg-[#1a1a1a] rounded-xl border border-[#262626]">
               <h3 className="text-lg font-semibold mb-2 text-yellow-400">Debug Info (Development)</h3>
-              <p className="text-[#737373] text-sm">
-                Attempted to load post with slug: <code className="text-[#ededed] bg-[#262626] px-1 rounded">{slug}</code>
+              <p className="text-secondary text-sm">
+                Attempted to load post with slug: <code className="text-primary bg-[#262626] px-1 rounded">{slug}</code>
               </p>
-              <p className="text-[#737373] text-sm mt-2">
-                Check the console for detailed error information and verify the post file exists in <code className="text-[#ededed] bg-[#262626] px-1 rounded">/content/posts/</code>
+              <p className="text-secondary text-sm mt-2">
+                Check the console for detailed error information and verify the post file exists in <code className="text-primary bg-[#262626] px-1 rounded">/content/posts/</code>
               </p>
             </div>
           )}
@@ -140,7 +140,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
+    <div className="min-h-screen bg-[#0a0a0a] text-primary">
       <Navigation />
 
       <ContentErrorBoundary>
@@ -148,7 +148,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
         {/* Back Button */}
         <Link 
           href="/blog"
-          className="inline-flex items-center text-[#737373] hover:text-[#ededed] transition-colors mb-8"
+          className="inline-flex items-center text-secondary hover:text-primary transition-colors mb-8"
         >
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -160,7 +160,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
         <header className="mb-12">
           <h1 className="text-5xl font-bold mb-6 leading-tight">{postData.title}</h1>
           
-          <div className="flex items-center gap-4 text-[#737373] mb-6">
+          <div className="flex items-center gap-4 text-secondary mb-6">
             <time dateTime={postData.date}>
               {new Date(postData.date).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -187,7 +187,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
           </div>
           
           {postData.description && (
-            <p className="text-xl text-[#737373] leading-relaxed">
+            <p className="text-xl text-secondary leading-relaxed">
               {postData.description}
             </p>
           )}
@@ -199,33 +199,33 @@ export default async function BlogPost({ params }: BlogPostProps) {
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeHighlight, rehypeRaw]}
             components={{
-              h1: ({ children }) => <h1 className="text-4xl font-bold mb-6 text-[#ededed]">{children}</h1>,
-              h2: ({ children }) => <h2 className="text-3xl font-bold mb-4 mt-8 text-[#ededed]">{children}</h2>,
-              h3: ({ children }) => <h3 className="text-2xl font-bold mb-3 mt-6 text-[#ededed]">{children}</h3>,
-              h4: ({ children }) => <h4 className="text-xl font-bold mb-2 mt-4 text-[#ededed]">{children}</h4>,
-              p: ({ children }) => <p className="text-[#737373] mb-4 leading-relaxed">{children}</p>,
+              h1: ({ children }) => <h1 className="text-4xl font-bold mb-6 text-primary">{children}</h1>,
+              h2: ({ children }) => <h2 className="text-3xl font-bold mb-4 mt-8 text-primary">{children}</h2>,
+              h3: ({ children }) => <h3 className="text-2xl font-bold mb-3 mt-6 text-primary">{children}</h3>,
+              h4: ({ children }) => <h4 className="text-xl font-bold mb-2 mt-4 text-primary">{children}</h4>,
+              p: ({ children }) => <p className="text-secondary mb-4 leading-relaxed">{children}</p>,
               a: ({ href, children }) => (
                 <a 
                   href={href} 
-                  className="text-[#ededed] underline underline-offset-4 hover:text-[#737373] transition-colors"
+                  className="text-primary underline underline-offset-4 hover:text-secondary transition-colors"
                   target={href?.startsWith('http') ? '_blank' : undefined}
                   rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
                 >
                   {children}
                 </a>
               ),
-              ul: ({ children }) => <ul className="list-disc list-inside mb-4 text-[#737373] space-y-1">{children}</ul>,
-              ol: ({ children }) => <ol className="list-decimal list-inside mb-4 text-[#737373] space-y-1">{children}</ol>,
-              li: ({ children }) => <li className="text-[#737373]">{children}</li>,
+              ul: ({ children }) => <ul className="list-disc list-inside mb-4 text-secondary space-y-1">{children}</ul>,
+              ol: ({ children }) => <ol className="list-decimal list-inside mb-4 text-secondary space-y-1">{children}</ol>,
+              li: ({ children }) => <li className="text-secondary">{children}</li>,
               blockquote: ({ children }) => (
-                <blockquote className="border-l-4 border-[#525252] pl-4 italic text-[#737373] my-6">
+                <blockquote className="border-l-4 border-[#525252] pl-4 italic text-secondary my-6">
                   {children}
                 </blockquote>
               ),
               code: ({ children, className }) => {
                 const isInline = !className;
                 if (isInline) {
-                  return <code className="bg-[#262626] px-2 py-1 rounded text-sm text-[#ededed]">{children}</code>;
+                  return <code className="bg-[#262626] px-2 py-1 rounded text-sm text-primary">{children}</code>;
                 }
                 return <code className={className}>{children}</code>;
               },
@@ -234,8 +234,8 @@ export default async function BlogPost({ params }: BlogPostProps) {
                   {children}
                 </pre>
               ),
-              strong: ({ children }) => <strong className="font-bold text-[#ededed]">{children}</strong>,
-              em: ({ children }) => <em className="italic text-[#ededed]">{children}</em>,
+              strong: ({ children }) => <strong className="font-bold text-primary">{children}</strong>,
+              em: ({ children }) => <em className="italic text-primary">{children}</em>,
               img: ({ src, alt }) => (
                 <Image 
                   src={typeof src === 'string' ? src : ''} 
@@ -277,7 +277,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
         <footer className="mt-16 pt-8 border-t border-[#262626]">
           <Link 
             href="/blog"
-            className="border border-[#525252] text-[#ededed] px-4 py-2 rounded-xl hover:bg-[#262626] transition-colors"
+            className="border border-[#525252] text-primary px-4 py-2 rounded-xl hover:bg-[#262626] transition-colors"
           >
             ← Back to All Posts
           </Link>

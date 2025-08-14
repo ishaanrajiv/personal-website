@@ -3,6 +3,9 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --text-primary: #ededed;
+  --text-secondary: #b3b3b3;
+  --text-muted: #737373;
   --accent: #525252;
   --muted: #737373;
   --border: #262626;
@@ -11,6 +14,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
@@ -28,7 +34,20 @@ body {
 /* Selection styling */
 ::selection {
   background: #525252;
-  color: #ededed;
+  color: #ffffff;
+}
+
+/* Text color utilities */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
 }
 
 /* Smooth scrolling */

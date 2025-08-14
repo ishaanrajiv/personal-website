@@ -8,7 +8,7 @@ export default function Home(): React.JSX.Element {
   const cvData = getCVData();
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
+    <div className="min-h-screen bg-[#0a0a0a] text-primary">
       <Navigation siteName={siteConfig.site.name} />
 
       <ContentErrorBoundary>
@@ -18,7 +18,7 @@ export default function Home(): React.JSX.Element {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 leading-tight">
             {siteConfig.site.hero.title}
           </h1>
-          <div className="space-y-6 text-[#737373] text-lg leading-relaxed">
+          <div className="space-y-6 text-primary text-lg leading-relaxed">
             {siteConfig.site.about.paragraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
@@ -67,9 +67,9 @@ export default function Home(): React.JSX.Element {
             {cvData.cv.experience.length > 0 && (
               <div className="border border-[#262626] rounded-xl p-6">
                 <h3 className="text-xl font-semibold mb-2">{cvData.cv.experience[0].title}</h3>
-                <p className="text-[#737373] mb-1">{cvData.cv.experience[0].company} • {cvData.cv.experience[0].period}</p>
+                <p className="text-secondary mb-1">{cvData.cv.experience[0].company} • {cvData.cv.experience[0].period}</p>
                 <p className="text-[#525252] text-sm mb-4">{cvData.cv.experience[0].location}</p>
-                <p className="text-[#737373]">
+                <p className="text-primary">
                   {cvData.cv.experience[0].description}
                 </p>
               </div>
@@ -85,7 +85,7 @@ export default function Home(): React.JSX.Element {
                       <h4 className="font-medium">{exp.company}</h4>
                       <span className="text-sm text-[#525252]">{exp.period}</span>
                     </div>
-                    <p className="text-[#737373] text-sm">{exp.description}</p>
+                    <p className="text-primary text-sm">{exp.description}</p>
                   </div>
                 ))}
               </div>
@@ -97,7 +97,7 @@ export default function Home(): React.JSX.Element {
               {cvData.cv.education.map((edu, index) => (
                 <div key={index} className="border-l border-[#525252] pl-6">
                   <h4 className="font-medium">{edu.degree}</h4>
-                  <p className="text-[#737373] text-sm">{edu.institution} • {edu.year}</p>
+                  <p className="text-primary text-sm">{edu.institution} • {edu.year}</p>
                 </div>
               ))}
             </div>
@@ -113,7 +113,7 @@ export default function Home(): React.JSX.Element {
                       {skillCategory.skills.map((skill, skillIndex) => (
                         <span 
                           key={skillIndex}
-                          className="text-[#737373] text-sm bg-[#262626] px-2 py-1 rounded-xl"
+                          className="text-secondary text-sm bg-[#262626] px-2 py-1 rounded-xl"
                         >
                           {skill}
                         </span>

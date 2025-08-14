@@ -9,29 +9,29 @@ export default function ProjectsPage() {
   const siteConfig = getSiteConfig();
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
+    <div className="min-h-screen bg-[#0a0a0a] text-primary">
       <Navigation siteName={siteConfig.site.name} />
 
       <ContentErrorBoundary>
         <main className="max-w-4xl mx-auto px-6 py-16">
-        <h1 className="text-4xl font-bold mb-12">Projects</h1>
+        <h1 className="text-4xl font-bold mb-12 text-primary">Projects</h1>
         
         <div className="space-y-12">
           {projectsData.projects.featured.map((project: any, index: number) => (
             <div key={index} className="border border-[#262626] rounded-xl p-8">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h2 className="text-2xl font-semibold mb-2">{project.name}</h2>
+                  <h2 className="text-2xl font-semibold mb-2 text-primary">{project.name}</h2>
                   <span className="text-sm text-[#525252] bg-[#262626] px-3 py-1 rounded-xl">
                     {project.type}
                   </span>
                 </div>
-                <span className="text-sm text-[#737373] capitalize">
+                <span className="text-sm text-secondary capitalize">
                   {project.status.replace('_', ' ')}
                 </span>
               </div>
               
-              <p className="text-[#737373] mb-6 leading-relaxed">
+              <p className="text-secondary mb-6 leading-relaxed">
                 {project.description}
               </p>
 
@@ -68,12 +68,12 @@ export default function ProjectsPage() {
               
               {project.features && (
                 <div className="mb-6">
-                  <h3 className="text-sm font-medium text-[#ededed] mb-3">Key Features</h3>
+                  <h3 className="text-sm font-medium text-primary mb-3">Key Features</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.features.map((feature: string, featureIndex: number) => (
                       <span 
                         key={featureIndex}
-                        className="text-xs text-[#737373] bg-[#1a1a1a] px-2 py-1 rounded"
+                        className="text-xs text-secondary bg-[#1a1a1a] px-2 py-1 rounded"
                       >
                         {feature}
                       </span>
