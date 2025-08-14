@@ -1,31 +1,32 @@
 site:
-  name: "Ishaan"
-  title: "Ishaan - Analytics & Development" 
-  description: "Personal website of Ishaan - analytics professional exploring iOS and web development, writing about data, tech, and AI"
-  author: "Ishaan"
-  copyright: "© 2024 Ishaan. All rights reserved."
+  name: "Ishaan Rajiv"
+  title: "Ishaan Rajiv - Analytics Lead & Developer" 
+  description: "Analytics Lead at DB Digital with 9+ years of experience in product analytics, data science, and emerging technologies"
+  author: "Ishaan Rajiv"
+  copyright: "© 2024 Ishaan Rajiv. All rights reserved."
   
   # Hero section
   hero:
-    title: "Analytics professional exploring the intersection of data, technology, and innovation"
-    subtitle: "Bridging analytics expertise with iOS and web development. Writing about data science, AI, and emerging technologies."
+    title: "Analytics Lead building data-driven products and exploring emerging technologies"
+    subtitle: "9+ years in product analytics across top companies like DB Digital, Hike, and Flipkart. Currently exploring iOS development and AI/ML applications."
     
   # About section
   about:
     title: "About Me"
     paragraphs:
-      - "I'm an analytics professional with a passion for exploring new technologies and their practical applications. My journey has taken me from data analysis to iOS app development and now web development."
-      - "I believe in the power of data-driven decision making and enjoy building tools and applications that make complex information accessible and actionable."
-      - "When I'm not coding or analyzing data, you'll find me writing about the latest developments in AI, exploring new frameworks, or working on my next iOS app."
+      - "Analytics Lead at DB Digital with over 9 years of experience in product analytics, data science, and business intelligence. I've worked across diverse domains from social platforms to e-commerce, helping build data-driven products at companies like Hike, Flipkart, and Roposo in the past."
+      - "My expertise spans product analytics, fraud detection systems, recommendation engines, and democratizing data access across organizations. I'm passionate about making complex data insights accessible and actionable for product teams."
+      - "Currently exploring iOS app development and AI/ML applications, on a personal level."
     
   # Skills section  
   skills:
-    analytics: "Data Science, Statistical Analysis, Business Intelligence"
-    development: "Swift, iOS, React, Next.js, TypeScript" 
-    focus_areas: "AI/ML, Data Visualization, Mobile Apps"
+    focus_areas: "Product Analytics, Data Science, Business Intelligence, AI/ML, ETL"
+    analytics: "Python, SQL"
+    development: "Learning Phase: Swift (iOS), React, Next.js, TypeScript" 
+    
     
   # Contact links
   contact:
-    email: "your.email@example.com"
-    linkedin: "https://linkedin.com/in/yourprofile"
-    github: "https://github.com/yourusername"
+    email: "ishaan2005@gmail.com"
+    linkedin: "https://in.linkedin.com/in/ishaan-rajiv-b1036911b"
+    github: "https://github.com/ishaanrajiv"

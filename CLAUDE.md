@@ -28,11 +28,27 @@ The project follows Next.js App Router conventions:
 - `/app/globals.css` - Global styles with Tailwind directives
 - `/public/` - Static assets (images, icons)
 
+### Content Management System
+
+The site uses a YAML-based content management system:
+- `/content/` - Contains YAML files for all site content
+- `/content/site.yaml` - Site configuration, hero, about, skills, and contact info
+- `/content/cv.yaml` - CV/resume data
+- `/content/blog.yaml` - Blog posts and articles
+- `/content/apps.yaml` - Applications and projects data
+- `/lib/content.ts` - Content loading utilities with functions like `getSiteConfig()`, `getCVData()`, `getBlogData()`, `getAppsData()`
+
+The content system uses js-yaml for parsing and provides typed access to structured content data.
+
 TypeScript configuration includes path mapping with `@/*` alias pointing to the root directory.
 
 ## Styling
 
-Uses Tailwind CSS 4 with:
-- CSS custom properties for fonts (`--font-geist-sans`, `--font-geist-mono`)
-- Dark mode support built into components
+Uses Tailwind CSS 4 with PostCSS configuration:
+- CSS custom properties for fonts (`--font-geist-sans`, `--font-geist-mono`) 
+- `@theme inline` directive for defining custom CSS variables in `globals.css`
+- Automatic dark mode support using `prefers-color-scheme: dark`
+- Background/foreground color variables that adapt to system theme
 - Responsive design patterns (sm:, md: breakpoints)
+
+The styling system integrates Geist fonts loaded via `next/font/google` with CSS variables for consistent typography across the site.
