@@ -12,10 +12,10 @@ export default function Home(): React.JSX.Element {
       <Navigation siteName={siteConfig.site.name} />
 
       <ContentErrorBoundary>
-        <main className="max-w-4xl mx-auto px-6 py-16">
+        <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-16">
         {/* Bio Section */}
         <section className="mb-16">
-          <h1 className="text-5xl font-bold mb-8 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 leading-tight">
             {siteConfig.site.hero.title}
           </h1>
           <div className="space-y-6 text-[#737373] text-lg leading-relaxed">
@@ -61,7 +61,7 @@ export default function Home(): React.JSX.Element {
 
         {/* CV Section */}
         <section>
-          <h2 className="text-3xl font-bold mb-8">Experience</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Experience</h2>
           <div className="space-y-8">
             {/* Current Role Highlight */}
             {cvData.cv.experience.length > 0 && (
@@ -77,7 +77,7 @@ export default function Home(): React.JSX.Element {
 
             {/* Experience History */}
             <div className="space-y-6">
-              <h3 className="text-xl font-semibold">Key Experience</h3>
+              <h3 className="text-lg sm:text-xl font-semibold">Key Experience</h3>
               <div className="grid gap-4">
                 {cvData.cv.experience.slice(1).map((exp, index) => (
                   <div key={index} className="border-l border-[#525252] pl-6">
@@ -93,7 +93,7 @@ export default function Home(): React.JSX.Element {
 
             {/* Education */}
             <div>
-              <h3 className="text-xl font-semibold mb-4">Education</h3>
+              <h3 className="text-lg sm:text-xl font-semibold mb-4">Education</h3>
               {cvData.cv.education.map((edu, index) => (
                 <div key={index} className="border-l border-[#525252] pl-6">
                   <h4 className="font-medium">{edu.degree}</h4>
@@ -104,7 +104,7 @@ export default function Home(): React.JSX.Element {
 
             {/* Technical Skills */}
             <div>
-              <h3 className="text-xl font-semibold mb-4">Technical Skills</h3>
+              <h3 className="text-lg sm:text-xl font-semibold mb-4">Technical Skills</h3>
               <div className="space-y-3">
                 {cvData.cv.technical_skills.map((skillCategory, index) => (
                   <div key={index} className="border-l border-[#525252] pl-6">

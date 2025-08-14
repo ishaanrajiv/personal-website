@@ -7,7 +7,7 @@ A modern personal website built with Next.js 15, featuring a minimal black-theme
 - **Framework**: Next.js 15 with App Router
 - **Frontend**: React 19 with TypeScript 5
 - **Styling**: Tailwind CSS 4 with custom black theme
-- **Fonts**: Geist Sans & Geist Mono
+- **Fonts**: Poppins & JetBrains Mono
 - **Build Tool**: Turbopack (development)
 - **Content**: YAML + Markdown hybrid content management
 - **Blog**: Markdown with syntax highlighting and GitHub Flavored Markdown
@@ -20,7 +20,7 @@ A modern personal website built with Next.js 15, featuring a minimal black-theme
 - **Syntax Highlighting**: Code blocks with rehype-highlight
 - **Responsive**: Mobile-first design with Tailwind breakpoints
 - **SEO Optimized**: Dynamic metadata generation for blog posts
-- **Typography**: Professional typography with Geist font family
+- **Typography**: Professional typography with Poppins and JetBrains Mono fonts
 
 ## Development
 
@@ -52,7 +52,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 │   │   └── page.tsx    # Blog listing page
 │   ├── contact/        # Contact page
 │   ├── projects/       # Projects showcase
-│   └── ...
+│   ├── globals.css     # Global styles and Tailwind directives
+│   ├── icon.svg        # Site icon
+│   ├── layout.tsx      # Root layout with fonts and metadata
+│   └── page.tsx        # Home page
+├── components/         # Reusable React components
+│   ├── ContentErrorBoundary.tsx
+│   ├── ErrorBoundary.tsx
+│   └── Navigation.tsx
 ├── content/            # Content management files
 │   ├── posts/          # Markdown blog posts
 │   │   └── *.md       # Individual blog post files
@@ -61,7 +68,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 │   ├── blog.yaml      # Blog metadata and configuration
 │   └── projects.yaml  # Projects data
 ├── lib/               # Utilities and content loading
-├── public/            # Static assets
+├── public/            # Static assets (SVG icons)
 └── types/             # TypeScript type definitions
 ```
 
