@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Suppress hydration warnings for browser extensions
+  experimental: {
+    suppressHydrationWarning: true,
+  },
 };
 
 export default nextConfig;
