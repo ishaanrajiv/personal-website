@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## ⚠️ IMPORTANT: Public Repository
+
+This is a PUBLIC open source repository. When making any changes or suggestions:
+- **NEVER** add, suggest, or reference any sensitive information (API keys, secrets, passwords, tokens)
+- **NEVER** include private file paths, system information, or personal details beyond what's already public
+- **AVOID** adding any configuration that could expose sensitive data
+- **ALWAYS** follow security best practices for public repositories
+
+The repository uses dual licensing:
+- Code: MIT License (freely usable)
+- Content: Creative Commons Attribution 4.0 (requires attribution)
+
 ## Project Overview
 
 This is a Next.js 15 personal website built with:
