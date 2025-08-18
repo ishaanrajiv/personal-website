@@ -110,4 +110,11 @@ The blog uses a markdown-based system located in `/content/posts/`:
 
 ## License
 
-© 2025 Ishaan Rajiv. All rights reserved.
+This project uses dual licensing:
+
+- **Code** (application structure, components, configuration): [MIT License](LICENSE)
+- **Content** (personal information, blog posts, portfolio): [Creative Commons Attribution 4.0](LICENSE)
+
+See the [LICENSE](LICENSE) file for full details.
+
+**TL;DR**: You can freely use and modify the code, but please provide attribution when using the content.
