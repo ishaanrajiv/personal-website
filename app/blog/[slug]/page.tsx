@@ -104,16 +104,21 @@ export default async function BlogPost({ params }: BlogPostProps) {
   const { slug } = await params;
   const postData = getPostData(slug);
 
-  if (!postData) {
+  if (!postData || postData.status === 'coming_soon') {
     return (
       <div className="min-h-screen bg-background text-primary">
         <Navigation />
 
         <ContentErrorBoundary>
           <main className="max-w-4xl mx-auto px-6 py-16">
-          <h1 className="text-4xl font-bold mb-8">Post Not Found</h1>
+          <h1 className="text-4xl font-bold mb-8">
+            {postData?.status === 'coming_soon' ? 'Coming Soon' : 'Post Not Found'}
+          </h1>
           <p className="text-secondary mb-8">
-            The blog post you&apos;re looking for doesn&apos;t exist or has been moved.
+            {postData?.status === 'coming_soon' 
+              ? 'This blog post is coming soon! Check back later for the full article.'
+              : 'The blog post you\'re looking for doesn\'t exist or has been moved.'
+            }
           </p>
           <Link 
             href="/blog"

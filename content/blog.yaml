@@ -1,11 +1,18 @@
 blog:
   featured_posts:
+    - title: "Building My First iOS App Using AI (Part 2)"
+      description: "Delving deeper into how I leveraged LLMs to actually build the app."
+      status: "coming_soon"
+      slug: "ios-development-journey-part-2"
+      # date: "2025-08-23"
+      tags: ["ai", "ios", "swift", "mobile-dev", "case_study"]
     - title: "Building My First iOS App Using AI (Part 1)"
       description: "Can a non-developer build an iOS app using only AI (LLMs) and basic programming understanding?"
       status: "published"
       slug: "ios-development-journey"
-      date: "2025-01-14"
+      date: "2025-08-14"
       tags: ["ai", "ios", "swift", "mobile-dev", "case_study"]
+    
       
   # Categories for blog organization
   categories:
