@@ -16,13 +16,19 @@ export default function BlogPage() {
         <h1 className="text-4xl font-bold mb-12 text-primary">Blog</h1>
         
         <div className="space-y-8">
-          {blogData.blog.featured_posts?.filter((post: any) => post.status === 'published').map((post: any, index: number) => (
+          {blogData.blog.featured_posts?.filter((post: any) => post.status === 'published' || post.status === 'coming_soon').map((post: any, index: number) => (
             <article key={index} className="border-b border-border pb-8 last:border-b-0">
-              <Link href={`/blog/${post.slug}`}>
-                <h2 className="text-2xl font-semibold mb-3 hover:text-primary transition-colors cursor-pointer text-primary">
+              {post.status === 'coming_soon' ? (
+                <h2 className="text-2xl font-semibold mb-3 text-primary">
                   {post.title}
                 </h2>
-              </Link>
+              ) : (
+                <Link href={`/blog/${post.slug}`}>
+                  <h2 className="text-2xl font-semibold mb-3 hover:text-primary transition-colors cursor-pointer text-primary">
+                    {post.title}
+                  </h2>
+                </Link>
+              )}
               
               <div className="flex items-center gap-4 mb-3 text-sm text-accent">
                 {post.date && (
@@ -42,7 +48,7 @@ export default function BlogPage() {
                       {post.tags.slice(0, 3).map((tag: string, tagIndex: number) => (
                         <span 
                           key={tagIndex}
-                          className="bg-border px-2 py-1 rounded text-xs"
+                          className="text-secondary text-sm bg-border px-2 py-1 rounded-xl"
                         >
                           {tag}
                         </span>
@@ -56,15 +62,21 @@ export default function BlogPage() {
                 {post.description}
               </p>
               
-              <Link 
-                href={`/blog/${post.slug}`}
-                className="inline-flex items-center text-sm text-primary hover:text-secondary transition-colors"
-              >
-                Read More
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+              {post.status === 'coming_soon' ? (
+                <span className="inline-flex items-center text-sm bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full">
+                  Coming Soon...
+                </span>
+              ) : (
+                <Link 
+                  href={`/blog/${post.slug}`}
+                  className="inline-flex items-center text-sm text-primary hover:text-secondary transition-colors"
+                >
+                  Read More
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              )}
             </article>
           ))}
         </div>
