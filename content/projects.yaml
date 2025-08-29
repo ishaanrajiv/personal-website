@@ -25,7 +25,7 @@ projects:
         - "Smart Caching"
     - name: "Thought Stream - Productivity"
       description: "A native iOS app that captures and organizes thoughts using AI-powered classification into Tasks, Reminders, Notes, Bookmarks, Knowledge. Features seamless voice & text input with Gemini API integration for enhanced productivity workflows."
-      status: "coming_soon"
+      status: "beta"
       type: "iOS App"
       technologies: ["Swift", "SwiftUI", "SwiftData", "Google Gemini API"]
       images:
@@ -37,7 +37,7 @@ projects:
           - "https://res.cloudinary.com/dqxww3j08/image/upload/v1756456861/ThoughtStream_Focus.png"
       links:
         github: ""
-        app_store: ""
+        app_store: "https://testflight.apple.com/join/dkzhQTU8"
       features:
         - "Text & Voice Support"
         - "AI-powered Categorization"
