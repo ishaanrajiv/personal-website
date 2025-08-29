@@ -57,6 +57,17 @@ export const AppStoreIcon: React.FC<IconProps> = ({ className = "w-5 h-5", size 
   </svg>
 );
 
+export const DemoIcon: React.FC<IconProps> = ({ className = "w-5 h-5", size }) => (
+  <svg 
+    className={size ? `w-${size} h-${size}` : className}
+    fill="none" 
+    stroke="currentColor" 
+    viewBox="0 0 24 24"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+  </svg>
+);
+
 // Icon Link Components with hover effects and brand colors
 interface IconLinkProps {
   href: string;
@@ -215,6 +226,33 @@ export const AppStoreLink: React.FC<{
       external
     >
       <AppStoreIcon className={sizeMap[size]} />
+    </IconLink>
+  );
+};
+
+export const DemoLink: React.FC<{ 
+  href: string; 
+  size?: 'small' | 'medium' | 'large';
+  style?: 'button' | 'icon';
+}> = ({ href, size = 'medium', style = 'button' }) => {
+  const sizeMap = {
+    small: "w-4 h-4",
+    medium: "w-5 h-5", 
+    large: "w-6 h-6"
+  };
+
+  const baseClasses = style === 'button' 
+    ? "border border-accent text-primary hover:text-green-600 px-3 py-2 rounded-xl hover:bg-border transition-colors"
+    : "text-primary hover:text-green-600 p-2 rounded hover:bg-border transition-colors";
+
+  return (
+    <IconLink 
+      href={href} 
+      title="View Live Demo" 
+      className={baseClasses}
+      external
+    >
+      <DemoIcon className={sizeMap[size]} />
     </IconLink>
   );
 };
