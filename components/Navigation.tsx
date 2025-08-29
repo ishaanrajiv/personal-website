@@ -38,11 +38,11 @@ export default function Navigation({ siteName = "Ishaan Rajiv", className = "" }
             <Link href="/" className={getLinkClassName('/')}>
               Home
             </Link>
-            <Link href="/blog" className={getLinkClassName('/blog')}>
-              Blog
-            </Link>
             <Link href="/projects" className={getLinkClassName('/projects')}>
               Projects
+            </Link>
+            <Link href="/blog" className={getLinkClassName('/blog')}>
+              Blog
             </Link>
             <Link href="/contact" className={getLinkClassName('/contact')}>
               Contact

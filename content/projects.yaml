@@ -13,8 +13,7 @@ projects:
           - "https://res.cloudinary.com/dqxww3j08/image/upload/v1755172786/blog-ios-development-journey-reader_x8tqbg.png"
       links:
         github: ""
-        testflight: "https://testflight.apple.com/join/wvEPAEJk"
-        app_store: ""
+        app_store: "https://testflight.apple.com/join/wvEPAEJk"
       features:
         - "AI Summaries"
         - "Reading Analytics"
@@ -24,8 +23,84 @@ projects:
         - "Quote Sharing"
         - "Calibre Sync"
         - "Smart Caching"
+    - name: "Thought Stream - Productivity"
+      description: "A native iOS app that captures and organizes thoughts using AI-powered classification into Tasks, Reminders, Notes, Bookmarks, Knowledge. Features seamless voice & text input with Gemini API integration for enhanced productivity workflows."
+      status: "beta"
+      type: "iOS App"
+      technologies: ["Swift", "SwiftUI", "SwiftData", "Google Gemini API"]
+      images:
+        # hero: 
+        gallery:
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1756456862/ThoughtStream_Inbox.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1756456861/ThoughtStream_Detail.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1756456861/ThoughtStream_AddNew.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1756456861/ThoughtStream_Focus.png"
+      links:
+        github: ""
+        app_store: "https://testflight.apple.com/join/dkzhQTU8"
+      features:
+        - "Text & Voice Support"
+        - "AI-powered Categorization"
+        - "Smart Productivity"
         
   # Other project categories
-  web_projects: []
-  tools: []
+  web_projects:
+    - name: "Personal Website"
+      description: "A modern personal portfolio website built with Next.js 15, featuring a YAML-based content management system, responsive design, and optimized performance."
+      status: ""
+      type: "Website"
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/personal-website"
+        demo: "https://ishaanrajiv.com/"
+      features:
+        - "Next.js App Router"
+        - "YAML Content System"
+        - "Responsive Design"
+        - "Dark Mode Support"
+  tools:
+    - name: "SQLite Offline Dictionary"
+      description: "A lightweight offline dictionary application built with SQLite for fast, local word lookups without internet connectivity."
+      status: ""
+      type: "Desktop Tool"
+      technologies: ["SQLite", "Python"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/sqlite-offline-dictionary"
+        demo: ""
+      features:
+        - "Offline Word Lookup"
+        - "Fast SQLite Queries"
+        - "Lightweight Design"
+    - name: "iOS Swift Color Visualizer"
+      description: "A simple web application for visualizing and working with iOS color schemes, helping developers preview and manage color palettes in their iOS applications."
+      status: ""
+      type: "Website"
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/ios-swift-color-visualizer"
+        demo: "https://ios-swift-color-visualizer.vercel.app"
+      features:
+        - "Color Palette Visualization"
+        - "Swift Color Support"
+        - "Interactive Website"
+    - name: "Simple iOS Icon Background Generator"
+      description: "A simple Python script for generating custom background images for iOS app icons, streamlining the icon design process for iOS developers."
+      status: ""
+      type: "Desktop Tool"
+      technologies: ["Python"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/simple-ios-icon-bg-generator"
+        demo: ""
+      features:
+        - "Icon Background Generation"
+        - "Custom Color Support"
+        - "iOS App Integration"
   experiments: []
