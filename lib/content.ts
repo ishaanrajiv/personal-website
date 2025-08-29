@@ -69,25 +69,31 @@ export interface BlogData {
   };
 }
 
+export interface Project {
+  name: string;
+  description: string;
+  status: string;
+  type: string;
+  technologies: string[];
+  images?: {
+    hero?: string;
+    gallery?: string[];
+  };
+  links: {
+    github?: string;
+    app_store?: string;
+    demo?: string;
+    testflight?: string;
+  };
+  features?: string[];
+}
+
 export interface ProjectsData {
   projects: {
-    title: string;
-    description: string;
-    featured: {
-      title: string;
-      description: string;
-      technologies: string[];
-      github?: string;
-      demo?: string;
-      image?: string;
-    }[];
-    other: {
-      title: string;
-      description: string;
-      technologies: string[];
-      github?: string;
-      demo?: string;
-    }[];
+    featured: Project[];
+    web_projects: Project[];
+    tools: Project[];
+    experiments: Project[];
   };
 }
 
