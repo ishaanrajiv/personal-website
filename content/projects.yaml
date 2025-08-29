@@ -23,8 +23,8 @@ projects:
         - "Quote Sharing"
         - "Calibre Sync"
         - "Smart Caching"
-    - name: "Thought Stream - Productivity (Coming Soon)"
-      description: "A native iOS app that captures and intelligently organizes user thoughts using AI-powered classification into 5 productivity categories (Tasks, Reminders, Notes, Bookmarks, Knowledge). The app provides seamless voice and text input with immediate local storage and AI analysis via Google Gemini API for enhanced thought management and productivity workflows. Built using AI-assisted development."
+    - name: "Thought Stream - Productivity"
+      description: "A native iOS app that captures and organizes thoughts using AI-powered classification into Tasks, Reminders, Notes, Bookmarks, Knowledge. Features seamless voice & text input with Gemini API integration for enhanced productivity workflows."
       status: "coming_soon"
       type: "iOS App"
       technologies: ["Swift", "SwiftUI", "SwiftData", "Google Gemini API"]
@@ -54,7 +54,7 @@ projects:
         gallery: []
       links:
         github: "https://github.com/ishaanrajiv/personal-website"
-        demo: "http://ishaanrajiv.com/"
+        demo: "https://ishaanrajiv.com/"
       features:
         - "Next.js App Router"
         - "YAML Content System"
