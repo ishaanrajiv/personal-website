@@ -24,7 +24,7 @@ projects:
         - "Calibre Sync"
         - "Smart Caching"
     - name: "Thought Stream - Productivity (Coming Soon)"
-      description: "ThoughtStream is a native iOS app that captures and intelligently organizes user thoughts using AI-powered classification into 5 productivity categories (Tasks, Reminders, Notes, Bookmarks, Knowledge). The app provides seamless voice and text input with immediate local storage and AI analysis via Google Gemini API for enhanced thought management and productivity workflows. Built using AI-assisted development."
+      description: "A native iOS app that captures and intelligently organizes user thoughts using AI-powered classification into 5 productivity categories (Tasks, Reminders, Notes, Bookmarks, Knowledge). The app provides seamless voice and text input with immediate local storage and AI analysis via Google Gemini API for enhanced thought management and productivity workflows. Built using AI-assisted development."
       status: "coming_soon"
       type: "iOS App"
       technologies: ["Swift", "SwiftUI", "SwiftData", "Google Gemini API"]
@@ -90,7 +90,7 @@ projects:
         - "Swift Color Support"
         - "iOS Integration"
     - name: "Simple iOS Icon Background Generator"
-      description: "A simple python script for generating custom background images for iOS app icons, streamlining the icon design process for iOS developers."
+      description: "A simple Python script for generating custom background images for iOS app icons, streamlining the icon design process for iOS developers."
       status: "completed"
       type: "Desktop Tool"
       technologies: ["Python"]
