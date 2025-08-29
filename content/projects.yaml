@@ -76,7 +76,7 @@ projects:
         - "Fast SQLite Queries"
         - "Lightweight Design"
     - name: "iOS Swift Color Visualizer"
-      description: "A Swift tool for visualizing and working with iOS color schemes, helping developers preview and manage color palettes in their iOS applications."
+      description: "A simple web application for visualizing and working with iOS color schemes, helping developers preview and manage color palettes in their iOS applications."
       status: ""
       type: "Website"
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"]
@@ -88,7 +88,7 @@ projects:
       features:
         - "Color Palette Visualization"
         - "Swift Color Support"
-        - "iOS Integration"
+        - "Interactive Website"
     - name: "Simple iOS Icon Background Generator"
       description: "A simple Python script for generating custom background images for iOS app icons, streamlining the icon design process for iOS developers."
       status: ""
