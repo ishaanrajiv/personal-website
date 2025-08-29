@@ -27,9 +27,16 @@ export default function ProjectsPage() {
                     {project.type}
                   </span>
                 </div>
-                <span className="text-sm text-secondary capitalize">
-                  {project.status.replace('_', ' ')}
-                </span>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="flex gap-2">
+                    {project.links.github && <GitHubLink href={project.links.github} />}
+                    {project.links.testflight && <TestFlightLink href={project.links.testflight} />}
+                    {project.links.app_store && <AppStoreLink href={project.links.app_store} />}
+                  </div>
+                  <span className="text-sm text-secondary capitalize">
+                    {project.status.replace('_', ' ')}
+                  </span>
+                </div>
               </div>
               
               <p className="text-secondary mb-6 leading-relaxed">
@@ -83,22 +90,15 @@ export default function ProjectsPage() {
                 </div>
               )}
               
-              <div className="flex items-center justify-between">
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech: string, techIndex: number) => (
-                    <span 
-                      key={techIndex}
-                      className="text-xs text-accent border border-accent px-2 py-1 rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-2">
-                  {project.links.github && <GitHubLink href={project.links.github} />}
-                  {project.links.testflight && <TestFlightLink href={project.links.testflight} />}
-                  {project.links.app_store && <AppStoreLink href={project.links.app_store} />}
-                </div>
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech: string, techIndex: number) => (
+                  <span 
+                    key={techIndex}
+                    className="text-xs text-accent border border-accent px-2 py-1 rounded"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
           ))}
@@ -120,9 +120,16 @@ export default function ProjectsPage() {
                           {project.type}
                         </span>
                       </div>
-                      <span className="text-xs text-secondary capitalize">
-                        {project.status.replace('_', ' ')}
-                      </span>
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="flex gap-1">
+                          {project.links.github && <GitHubLink href={project.links.github} size="small" style="icon" />}
+                          {project.links.testflight && <TestFlightLink href={project.links.testflight} size="small" style="icon" />}
+                          {project.links.app_store && <AppStoreLink href={project.links.app_store} size="small" style="icon" />}
+                        </div>
+                        <span className="text-xs text-secondary capitalize">
+                          {project.status.replace('_', ' ')}
+                        </span>
+                      </div>
                     </div>
                     <p className="text-secondary text-sm mb-4 leading-relaxed">
                       {project.description}
@@ -147,25 +154,18 @@ export default function ProjectsPage() {
                       </div>
                     )}
                     
-                    <div className="flex items-center justify-between">
-                      <div className="flex flex-wrap gap-1 items-center">
-                        {project.technologies.slice(0, 3).map((tech: string, techIndex: number) => (
-                          <span 
-                            key={techIndex}
-                            className="text-xs text-accent border border-accent px-2 py-1 rounded"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {project.technologies.length > 3 && (
-                          <span className="text-xs text-accent border border-accent px-2 py-1 rounded">+{project.technologies.length - 3}</span>
-                        )}
-                      </div>
-                      <div className="flex gap-1">
-                        {project.links.github && <GitHubLink href={project.links.github} size="small" style="icon" />}
-                        {project.links.testflight && <TestFlightLink href={project.links.testflight} size="small" style="icon" />}
-                        {project.links.app_store && <AppStoreLink href={project.links.app_store} size="small" style="icon" />}
-                      </div>
+                    <div className="flex flex-wrap gap-1 items-center">
+                      {project.technologies.slice(0, 3).map((tech: string, techIndex: number) => (
+                        <span 
+                          key={techIndex}
+                          className="text-xs text-accent border border-accent px-2 py-1 rounded"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 3 && (
+                        <span className="text-xs text-accent border border-accent px-2 py-1 rounded">+{project.technologies.length - 3}</span>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -187,9 +187,16 @@ export default function ProjectsPage() {
                           {project.type}
                         </span>
                       </div>
-                      <span className="text-xs text-secondary capitalize">
-                        {project.status.replace('_', ' ')}
-                      </span>
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="flex gap-1">
+                          {project.links.github && <GitHubLink href={project.links.github} size="small" style="icon" />}
+                          {project.links.testflight && <TestFlightLink href={project.links.testflight} size="small" style="icon" />}
+                          {project.links.app_store && <AppStoreLink href={project.links.app_store} size="small" style="icon" />}
+                        </div>
+                        <span className="text-xs text-secondary capitalize">
+                          {project.status.replace('_', ' ')}
+                        </span>
+                      </div>
                     </div>
                     <p className="text-secondary text-sm mb-4 leading-relaxed">
                       {project.description}
@@ -214,25 +221,18 @@ export default function ProjectsPage() {
                       </div>
                     )}
                     
-                    <div className="flex items-center justify-between">
-                      <div className="flex flex-wrap gap-1 items-center">
-                        {project.technologies.slice(0, 3).map((tech: string, techIndex: number) => (
-                          <span 
-                            key={techIndex}
-                            className="text-xs text-accent border border-accent px-2 py-1 rounded"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {project.technologies.length > 3 && (
-                          <span className="text-xs text-accent border border-accent px-2 py-1 rounded">+{project.technologies.length - 3}</span>
-                        )}
-                      </div>
-                      <div className="flex gap-1">
-                        {project.links.github && <GitHubLink href={project.links.github} size="small" style="icon" />}
-                        {project.links.testflight && <TestFlightLink href={project.links.testflight} size="small" style="icon" />}
-                        {project.links.app_store && <AppStoreLink href={project.links.app_store} size="small" style="icon" />}
-                      </div>
+                    <div className="flex flex-wrap gap-1 items-center">
+                      {project.technologies.slice(0, 3).map((tech: string, techIndex: number) => (
+                        <span 
+                          key={techIndex}
+                          className="text-xs text-accent border border-accent px-2 py-1 rounded"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 3 && (
+                        <span className="text-xs text-accent border border-accent px-2 py-1 rounded">+{project.technologies.length - 3}</span>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -254,9 +254,16 @@ export default function ProjectsPage() {
                           {project.type}
                         </span>
                       </div>
-                      <span className="text-xs text-secondary capitalize">
-                        {project.status.replace('_', ' ')}
-                      </span>
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="flex gap-1">
+                          {project.links.github && <GitHubLink href={project.links.github} size="small" style="icon" />}
+                          {project.links.testflight && <TestFlightLink href={project.links.testflight} size="small" style="icon" />}
+                          {project.links.app_store && <AppStoreLink href={project.links.app_store} size="small" style="icon" />}
+                        </div>
+                        <span className="text-xs text-secondary capitalize">
+                          {project.status.replace('_', ' ')}
+                        </span>
+                      </div>
                     </div>
                     <p className="text-secondary text-sm mb-4 leading-relaxed">
                       {project.description}
@@ -281,25 +288,18 @@ export default function ProjectsPage() {
                       </div>
                     )}
                     
-                    <div className="flex items-center justify-between">
-                      <div className="flex flex-wrap gap-1 items-center">
-                        {project.technologies.slice(0, 3).map((tech: string, techIndex: number) => (
-                          <span 
-                            key={techIndex}
-                            className="text-xs text-accent border border-accent px-2 py-1 rounded"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {project.technologies.length > 3 && (
-                          <span className="text-xs text-accent border border-accent px-2 py-1 rounded">+{project.technologies.length - 3}</span>
-                        )}
-                      </div>
-                      <div className="flex gap-1">
-                        {project.links.github && <GitHubLink href={project.links.github} size="small" style="icon" />}
-                        {project.links.testflight && <TestFlightLink href={project.links.testflight} size="small" style="icon" />}
-                        {project.links.app_store && <AppStoreLink href={project.links.app_store} size="small" style="icon" />}
-                      </div>
+                    <div className="flex flex-wrap gap-1 items-center">
+                      {project.technologies.slice(0, 3).map((tech: string, techIndex: number) => (
+                        <span 
+                          key={techIndex}
+                          className="text-xs text-accent border border-accent px-2 py-1 rounded"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 3 && (
+                        <span className="text-xs text-accent border border-accent px-2 py-1 rounded">+{project.technologies.length - 3}</span>
+                      )}
                     </div>
                   </div>
                 ))}

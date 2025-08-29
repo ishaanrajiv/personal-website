@@ -47,14 +47,14 @@ projects:
   web_projects:
     - name: "Personal Website"
       description: "A modern personal portfolio website built with Next.js 15, featuring a YAML-based content management system, responsive design, and optimized performance."
-      status: "active"
+      status: ""
       type: "Website"
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"]
       images:
         gallery: []
       links:
         github: "https://github.com/ishaanrajiv/personal-website"
-        demo: ""
+        demo: "http://ishaanrajiv.com/"
       features:
         - "Next.js App Router"
         - "YAML Content System"
@@ -63,7 +63,7 @@ projects:
   tools:
     - name: "SQLite Offline Dictionary"
       description: "A lightweight offline dictionary application built with SQLite for fast, local word lookups without internet connectivity."
-      status: "completed"
+      status: ""
       type: "Desktop Tool"
       technologies: ["SQLite", "Python"]
       images:
@@ -77,21 +77,21 @@ projects:
         - "Lightweight Design"
     - name: "iOS Swift Color Visualizer"
       description: "A Swift tool for visualizing and working with iOS color schemes, helping developers preview and manage color palettes in their iOS applications."
-      status: "completed"
+      status: ""
       type: "Website"
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"]
       images:
         gallery: []
       links:
         github: "https://github.com/ishaanrajiv/ios-swift-color-visualizer"
-        demo: ""
+        demo: "https://ios-swift-color-visualizer.vercel.app"
       features:
         - "Color Palette Visualization"
         - "Swift Color Support"
         - "iOS Integration"
     - name: "Simple iOS Icon Background Generator"
       description: "A simple Python script for generating custom background images for iOS app icons, streamlining the icon design process for iOS developers."
-      status: "completed"
+      status: ""
       type: "Desktop Tool"
       technologies: ["Python"]
       images:
