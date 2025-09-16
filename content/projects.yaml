@@ -13,7 +13,7 @@ projects:
           - "https://res.cloudinary.com/dqxww3j08/image/upload/v1755172786/blog-ios-development-journey-reader_x8tqbg.png"
       links:
         github: ""
-        app_store: "https://testflight.apple.com/join/wvEPAEJk"
+        app_store: "https://testflight.apple.com/join/VU4j4CwJ"
       features:
         - "AI Summaries"
         - "Reading Analytics"
