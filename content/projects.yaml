@@ -8,9 +8,12 @@ projects:
       images:
         # hero: 
         gallery:
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1755172808/blog-ios-development-journey-splash-screen_kldebx.png"
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1755172846/blog-ios-development-journey-library_koeqsb.png"
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1755172786/blog-ios-development-journey-reader_x8tqbg.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1763751789/IMG_3405_okml42.jpg"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1763751789/IMG_3406_xmktui.jpg"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1763751789/IMG_3407_fbcs9o.jpg"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1763751789/IMG_3410_bgplgd.jpg"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1763751788/IMG_3411_swwmy0.jpg"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1763752654/Dark-Light-Comparison_ezvlgh.png"
       links:
         github: ""
         app_store: "https://testflight.apple.com/join/VU4j4CwJ"
