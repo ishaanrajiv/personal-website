@@ -9,7 +9,7 @@ export default function ProjectsPage() {
   const siteConfig = getSiteConfig();
 
   return (
-    <div className="min-h-screen bg-background text-primary">
+    <div className="min-h-screen bg-black text-text-primary">
       <Navigation />
 
       <ContentErrorBoundary>

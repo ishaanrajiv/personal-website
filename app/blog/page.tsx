@@ -7,7 +7,7 @@ export default function BlogPage() {
   const blogData = getBlogData();
 
   return (
-    <div className="min-h-screen bg-background text-primary">
+    <div className="min-h-screen bg-black text-text-primary">
       <Navigation />
 
       <ContentErrorBoundary>
