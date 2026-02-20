@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { getProjectsData, getSiteConfig } from '@/lib/content';
 import Navigation from '@/components/Navigation';
 import ContentErrorBoundary from '@/components/ContentErrorBoundary';
-import { GitHubLink, TestFlightLink, AppStoreLink, DemoLink } from '@/components/icons';
+import { GitHubLink, TestFlightLink, AppStoreLink, DemoLink, WebsiteLink } from '@/components/icons';
 
 export default function ProjectsPage() {
   const projectsData = getProjectsData();
@@ -33,6 +33,7 @@ export default function ProjectsPage() {
                     {project.links.testflight && <TestFlightLink href={project.links.testflight} />}
                     {project.links.app_store && <AppStoreLink href={project.links.app_store} />}
                     {project.links.demo && <DemoLink href={project.links.demo} />}
+                    {project.links.website && <WebsiteLink href={project.links.website} />}
                   </div>
                   <span className="text-sm text-secondary capitalize">
                     {project.status.replace('_', ' ')}
@@ -127,6 +128,7 @@ export default function ProjectsPage() {
                           {project.links.testflight && <TestFlightLink href={project.links.testflight} size="small" style="icon" />}
                           {project.links.app_store && <AppStoreLink href={project.links.app_store} size="small" style="icon" />}
                           {project.links.demo && <DemoLink href={project.links.demo} size="small" style="icon" />}
+                          {project.links.website && <WebsiteLink href={project.links.website} size="small" style="icon" />}
                         </div>
                         <span className="text-xs text-secondary capitalize">
                           {project.status.replace('_', ' ')}
@@ -195,6 +197,7 @@ export default function ProjectsPage() {
                           {project.links.testflight && <TestFlightLink href={project.links.testflight} size="small" style="icon" />}
                           {project.links.app_store && <AppStoreLink href={project.links.app_store} size="small" style="icon" />}
                           {project.links.demo && <DemoLink href={project.links.demo} size="small" style="icon" />}
+                          {project.links.website && <WebsiteLink href={project.links.website} size="small" style="icon" />}
                         </div>
                         <span className="text-xs text-secondary capitalize">
                           {project.status.replace('_', ' ')}
@@ -263,6 +266,7 @@ export default function ProjectsPage() {
                           {project.links.testflight && <TestFlightLink href={project.links.testflight} size="small" style="icon" />}
                           {project.links.app_store && <AppStoreLink href={project.links.app_store} size="small" style="icon" />}
                           {project.links.demo && <DemoLink href={project.links.demo} size="small" style="icon" />}
+                          {project.links.website && <WebsiteLink href={project.links.website} size="small" style="icon" />}
                         </div>
                         <span className="text-xs text-secondary capitalize">
                           {project.status.replace('_', ' ')}

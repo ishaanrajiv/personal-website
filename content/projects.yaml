@@ -17,6 +17,7 @@ projects:
       links:
         github: ""
         app_store: "https://testflight.apple.com/join/VU4j4CwJ"
+        website: "https://lyrate.ishaanrajiv.com"
       features:
         - "AI Summaries"
         - "Reading Analytics"
@@ -63,6 +64,48 @@ projects:
         - "YAML Content System"
         - "Responsive Design"
         - "Dark Mode Support"
+    - name: "Battle of the Breaths"
+      description: "A game where you guess which city has cleaner air. Compare air quality between cities around the world in an engaging, educational format."
+      status: ""
+      type: "Website"
+      technologies: ["Typescript"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/battle-of-the-breaths"
+        demo: "https://clean-air.ishaanrajiv.com"
+      features:
+        - "Air Quality Comparison"
+        - "City Guessing Game"
+        - "Educational Content"
+    - name: "Font Fetcher"
+      description: "Extract, preview, and download fonts from any website. A handy tool for designers and developers to discover and grab fonts used on the web."
+      status: ""
+      type: "Website"
+      technologies: ["Typescript"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/font-fetcher"
+        demo: "https://font-fetcher.ishaanrajiv.com"
+      features:
+        - "Font Extraction"
+        - "Live Preview"
+        - "Font Download"
+    - name: "Event Taxonomy Tracker"
+      description: "A simple POC for managing analytics event taxonomies with property registry, conflict detection, and automatic changelog generation."
+      status: ""
+      type: "Website"
+      technologies: ["TypeScript", "Python"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/event-taxonomy-tracker"
+        demo: ""
+      features:
+        - "Property Registry"
+        - "Conflict Detection"
+        - "Automatic Changelog"
   tools:
     - name: "SQLite Offline Dictionary"
       description: "A lightweight offline dictionary application built with SQLite for fast, local word lookups without internet connectivity."
@@ -87,7 +130,7 @@ projects:
         gallery: []
       links:
         github: "https://github.com/ishaanrajiv/ios-swift-color-visualizer"
-        demo: "https://ios-swift-color-visualizer.vercel.app"
+        demo: "https://ios-color-visualizer.ishaanrajiv.com/"
       features:
         - "Color Palette Visualization"
         - "Swift Color Support"
@@ -106,4 +149,18 @@ projects:
         - "Icon Background Generation"
         - "Custom Color Support"
         - "iOS App Integration"
+    - name: "EPUB to Markdown"
+      description: "Rust CLI tool to convert EPUB files to Markdown format. Fast, lightweight conversion for ebook content extraction."
+      status: ""
+      type: "CLI Tool"
+      technologies: ["Rust"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/epub-to-md"
+        demo: ""
+      features:
+        - "EPUB Parsing"
+        - "Markdown Conversion"
+        - "CLI Interface"
   experiments: []
