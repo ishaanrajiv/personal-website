@@ -268,17 +268,23 @@ body::after {
 
 /* Terminal window dots */
 .terminal-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
+  align-items: center;
   gap: 6px;
-  padding: 8px 10px;
-  position: relative;
+  height: 28px;
+  padding: 0 10px;
   z-index: 1;
 }
 
 @media (min-width: 640px) {
   .terminal-dots {
     gap: 8px;
-    padding: 10px 12px;
+    height: 32px;
+    padding: 0 12px;
   }
 }
 

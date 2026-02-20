@@ -133,7 +133,7 @@ export const TerminalWindow: React.FC<TerminalWindowProps> = ({
         <div className="terminal-dot terminal-dot-green" />
         <span className="ml-3 sm:ml-4 text-text-muted text-xs sm:text-sm">{title}</span>
       </div>
-      <div className="pt-3 sm:pt-4 relative z-10">
+      <div className="pt-8 sm:pt-10 relative z-10">
         {children}
       </div>
     </div>
