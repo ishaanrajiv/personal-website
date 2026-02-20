@@ -174,9 +174,8 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export const ASCIIName: React.FC<{ className?: string }> = ({ className = '' }) => {
-  // Clean ASCII art for "Ishaan Rajiv"
-  const art = `
-  ___     _                         ____        _ _
+  // Clean ASCII art for "Ishaan Rajiv" - no leading/trailing newlines
+  const art = `  ___     _                         ____        _ _
  |_ _|___| |__   __ _  __ _ _ __   |  _ \\ __ _ (_|_)_   __
   | |/ __| '_ \\ / _\` |/ _\` | '_ \\  | |_) / _\` || | \\ \\ / /
   | |\\__ \\ | | | (_| | (_| | | | | |  _ < (_| || | |\\ V /

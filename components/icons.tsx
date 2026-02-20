@@ -118,7 +118,7 @@ export const GitHubLink: React.FC<{
   };
 
   const baseClasses = style === 'button'
-    ? `${terminalButtonBase} border-accent text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_15px_var(--accent-glow)]`
+    ? `${terminalButtonBase} border-accent text-accent hover:bg-accent hover:!text-black hover:shadow-[0_0_15px_var(--accent-glow)]`
     : "text-text-primary hover:text-accent p-2 transition-all duration-200";
 
   return (
@@ -174,7 +174,7 @@ export const EmailLink: React.FC<{
   };
 
   const baseClasses = style === 'button'
-    ? `${terminalButtonBase} border-amber text-amber hover:bg-amber hover:text-black hover:shadow-[0_0_15px_var(--amber-glow)]`
+    ? `${terminalButtonBase} border-amber text-amber hover:bg-amber hover:!text-black hover:shadow-[0_0_15px_var(--amber-glow)]`
     : "text-text-primary hover:text-amber p-2 transition-all duration-200";
 
   return (

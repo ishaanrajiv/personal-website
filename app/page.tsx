@@ -29,7 +29,7 @@ export default function Home(): React.JSX.Element {
               ════════════════════════════════════════════════════════════════ */}
           <section className="mb-10 sm:mb-16 md:mb-20">
             {/* ASCII Name */}
-            <div className="mb-4 sm:mb-6 overflow-x-auto -mx-2 px-2">
+            <div className="mb-4 sm:mb-6 overflow-hidden -mx-2 px-2">
               <ASCIIName className="animate-fade-in-up" />
             </div>
 
