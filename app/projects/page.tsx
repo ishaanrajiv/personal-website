@@ -10,7 +10,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-background text-primary">
-      <Navigation siteName={siteConfig.site.name} />
+      <Navigation />
 
       <ContentErrorBoundary>
         <main className="max-w-4xl mx-auto px-6 py-16">
