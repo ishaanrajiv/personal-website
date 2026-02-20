@@ -1,15 +1,14 @@
 import Link from 'next/link';
-import { getBlogData, getSiteConfig } from '@/lib/content';
+import { getBlogData } from '@/lib/content';
 import Navigation from '@/components/Navigation';
 import ContentErrorBoundary from '@/components/ContentErrorBoundary';
 
 export default function BlogPage() {
   const blogData = getBlogData();
-  const siteConfig = getSiteConfig();
 
   return (
-    <div className="min-h-screen bg-background text-primary">
-      <Navigation siteName={siteConfig.site.name} />
+    <div className="min-h-screen bg-black text-text-primary">
+      <Navigation />
 
       <ContentErrorBoundary>
         <main className="max-w-4xl mx-auto px-6 py-16">

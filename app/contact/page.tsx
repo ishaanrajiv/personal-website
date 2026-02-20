@@ -7,8 +7,8 @@ export default function ContactPage() {
   const siteConfig = getSiteConfig();
 
   return (
-    <div className="min-h-screen bg-background text-primary">
-      <Navigation siteName={siteConfig.site.name} />
+    <div className="min-h-screen bg-black text-text-primary">
+      <Navigation />
 
       <ContentErrorBoundary>
         <main className="max-w-4xl mx-auto px-6 py-16">

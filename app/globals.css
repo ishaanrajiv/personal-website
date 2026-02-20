@@ -1,15 +1,48 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   MONOSPACE MACHINE - Terminal-Inspired Developer Aesthetic
+   Subtle Cyan Theme
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 :root {
-  --background: #0F0F10;
-  --background-elevated: #0F0F10;
-  --foreground: #ededed;
-  --text-primary: #ededed;
-  --text-secondary: #b3b3b3;
-  --text-muted: #737373;
-  --accent: #525252;
-  --muted: #737373;
-  --border: #262626;
+  /* Core terminal colors */
+  --terminal-black: #000000;
+  --terminal-dark: #0a0a0a;
+
+  /* Primary accent - Subtle Cyan */
+  --accent-cyan: #5eead4;
+  --accent-cyan-dim: #2dd4bf;
+  --accent-cyan-glow: rgba(94, 234, 212, 0.15);
+
+  /* Secondary accent - Amber */
+  --amber: #fbbf24;
+  --amber-dim: #f59e0b;
+  --amber-glow: rgba(251, 191, 36, 0.15);
+
+  /* Syntax highlighting palette */
+  --syntax-cyan: #67e8f9;
+  --syntax-magenta: #f0abfc;
+  --syntax-yellow: #fde047;
+  --syntax-red: #fca5a5;
+  --syntax-blue: #93c5fd;
+  --syntax-comment: #6b7280;
+
+  /* UI colors */
+  --text-primary: #e5e5e5;
+  --text-secondary: #a3a3a3;
+  --text-muted: #525252;
+  --border-color: #262626;
+  --border-glow: #404040;
+
+  /* Mapped theme variables */
+  --background: var(--terminal-black);
+  --background-elevated: var(--terminal-dark);
+  --foreground: var(--text-primary);
+  --accent: var(--accent-cyan);
+  --accent-dim: var(--accent-cyan-dim);
+  --accent-glow: var(--accent-cyan-glow);
+  --accent-secondary: var(--amber);
 }
 
 @theme inline {
@@ -20,26 +53,80 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
   --color-accent: var(--accent);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --font-sans: var(--font-poppins);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-border: var(--border-color);
+  --color-amber: var(--amber);
+  --color-syntax-cyan: var(--syntax-cyan);
+  --color-syntax-magenta: var(--syntax-magenta);
+  --color-syntax-yellow: var(--syntax-yellow);
   --font-mono: var(--font-jetbrains-mono);
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-poppins), system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
+  background: var(--terminal-black);
+  color: var(--text-primary);
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
 }
 
-/* Selection styling */
+/* CRT Scanline Overlay - Subtle */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+/* Subtle vignette */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 70%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Selection with cyan */
 ::selection {
-  background: #848f94;
-  color: #ffffff;
+  background: var(--accent-cyan);
+  color: var(--terminal-black);
+  text-shadow: none;
 }
 
-/* Text color utilities */
+/* ═══════════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 .text-primary {
   color: var(--text-primary);
 }
@@ -52,7 +139,435 @@ body {
   color: var(--text-muted);
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+.text-accent {
+  color: var(--accent);
+}
+
+.text-accent-glow {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow),
+               0 0 20px var(--accent-glow);
+}
+
+.text-amber {
+  color: var(--amber);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BLINKING CURSOR
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes cursor-glow {
+  0%, 100% {
+    box-shadow: 0 0 4px var(--accent);
+  }
+  50% {
+    box-shadow: 0 0 8px var(--accent),
+                0 0 12px var(--accent-glow);
+  }
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite, cursor-glow 2s ease-in-out infinite;
+}
+
+.cursor-blink-amber {
+  background: var(--amber);
+  animation: blink 1s step-end infinite;
+  box-shadow: 0 0 8px var(--amber-glow);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TYPING ANIMATION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.typing-container {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(40, end);
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COMMAND PROMPT STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.prompt-symbol {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.prompt-path {
+  color: var(--syntax-cyan);
+}
+
+.prompt-user {
+  color: var(--amber);
+}
+
+.prompt-separator {
+  color: var(--text-muted);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CODE BLOCK STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.code-block {
+  background: linear-gradient(180deg, #0d0d0d 0%, #000000 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .code-block {
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+}
+
+.code-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+  border-bottom: 1px solid var(--border-color);
+}
+
+@media (min-width: 640px) {
+  .code-block::before {
+    height: 32px;
+  }
+}
+
+/* Terminal window dots */
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .terminal-dots {
+    gap: 8px;
+    padding: 10px 12px;
+  }
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+@media (min-width: 640px) {
+  .terminal-dot {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.terminal-dot-red { background: #ff5f57; }
+.terminal-dot-yellow { background: #ffbd2e; }
+.terminal-dot-green { background: #28c840; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .section-header {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.section-header::before {
+  content: "//";
+  color: var(--syntax-comment);
+  font-weight: 400;
+}
+
+.section-header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-color) 0%, transparent 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CARD STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.terminal-card {
+  background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.terminal-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    var(--accent) 0%,
+    var(--accent-dim) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.terminal-card:hover::before {
+  opacity: 1;
+}
+
+.terminal-card:hover {
+  border-color: var(--border-glow);
+  box-shadow: 0 0 20px rgba(94, 234, 212, 0.03),
+              inset 0 0 40px rgba(94, 234, 212, 0.01);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LINK & BUTTON STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.terminal-link {
+  color: var(--accent);
+  text-decoration: none;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.terminal-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.terminal-link:hover::after {
+  width: 100%;
+}
+
+.terminal-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.terminal-button:hover {
+  background: var(--accent);
+  color: var(--terminal-black);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.terminal-button-amber {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.terminal-button-amber:hover {
+  background: var(--amber);
+  color: var(--terminal-black);
+  box-shadow: 0 0 15px var(--amber-glow);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TAG / BADGE STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.terminal-tag {
+  display: inline-block;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .terminal-tag {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+.terminal-tag:hover {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+.terminal-tag-active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ASCII ART STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ascii-art {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.5rem;
+  line-height: 1.15;
+  color: var(--accent);
+  white-space: pre;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+@media (min-width: 400px) {
+  .ascii-art {
+    font-size: 0.6rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .ascii-art {
+    font-size: 0.75rem;
+    letter-spacing: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .ascii-art {
+    font-size: 0.9rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  96% { opacity: 1; }
+  97% { opacity: 0.9; }
+  98% { opacity: 1; }
+}
+
+.flicker {
+  animation: flicker 5s infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animation-delay-100 { animation-delay: 0.1s; opacity: 0; }
+.animation-delay-200 { animation-delay: 0.2s; opacity: 0; }
+.animation-delay-300 { animation-delay: 0.3s; opacity: 0; }
+.animation-delay-400 { animation-delay: 0.4s; opacity: 0; }
+.animation-delay-500 { animation-delay: 0.5s; opacity: 0; }
+.animation-delay-600 { animation-delay: 0.6s; opacity: 0; }
+.animation-delay-700 { animation-delay: 0.7s; opacity: 0; }
+.animation-delay-800 { animation-delay: 0.8s; opacity: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLLBAR STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--terminal-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-dim);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE UTILITIES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 640px) {
+  body::before {
+    /* Reduce scanline intensity on mobile for performance */
+    opacity: 0.3;
+  }
+
+  body::after {
+    /* Reduce vignette on mobile */
+    display: none;
+  }
 }
