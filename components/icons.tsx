@@ -100,10 +100,9 @@ const IconLink: React.FC<IconLinkProps> = ({
 
 // Terminal-style button base classes
 const terminalButtonBase = `
-  inline-flex items-center gap-2 px-4 py-2
-  font-mono text-sm uppercase tracking-wider
+  inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2
+  font-mono text-xs sm:text-sm uppercase tracking-wider
   border transition-all duration-200
-  hover:shadow-[0_0_20px_var(--phosphor-green-glow)]
 `;
 
 // Pre-configured icon links with terminal-style hover effects
@@ -114,13 +113,13 @@ export const GitHubLink: React.FC<{
 }> = ({ href, size = 'medium', style = 'button' }) => {
   const sizeMap = {
     small: "w-4 h-4",
-    medium: "w-5 h-5",
-    large: "w-6 h-6"
+    medium: "w-4 h-4 sm:w-5 sm:h-5",
+    large: "w-5 h-5 sm:w-6 sm:h-6"
   };
 
   const baseClasses = style === 'button'
-    ? `${terminalButtonBase} border-phosphor text-phosphor hover:bg-phosphor hover:text-black`
-    : "text-text-primary hover:text-phosphor p-2 transition-all duration-200 hover:drop-shadow-[0_0_10px_var(--phosphor-green)]";
+    ? `${terminalButtonBase} border-accent text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_15px_var(--accent-glow)]`
+    : "text-text-primary hover:text-accent p-2 transition-all duration-200";
 
   return (
     <IconLink
@@ -142,13 +141,13 @@ export const LinkedInLink: React.FC<{
 }> = ({ href, size = 'medium', style = 'button' }) => {
   const sizeMap = {
     small: "w-4 h-4",
-    medium: "w-5 h-5",
-    large: "w-6 h-6"
+    medium: "w-4 h-4 sm:w-5 sm:h-5",
+    large: "w-5 h-5 sm:w-6 sm:h-6"
   };
 
   const baseClasses = style === 'button'
-    ? `${terminalButtonBase} border-syntax-cyan text-syntax-cyan hover:bg-syntax-cyan hover:text-black hover:shadow-[0_0_20px_rgba(0,217,255,0.3)]`
-    : "text-text-primary hover:text-syntax-cyan p-2 transition-all duration-200 hover:drop-shadow-[0_0_10px_rgba(0,217,255,0.5)]";
+    ? `${terminalButtonBase} border-syntax-cyan text-syntax-cyan hover:bg-syntax-cyan hover:text-black hover:shadow-[0_0_15px_rgba(103,232,249,0.3)]`
+    : "text-text-primary hover:text-syntax-cyan p-2 transition-all duration-200";
 
   return (
     <IconLink
@@ -170,13 +169,13 @@ export const EmailLink: React.FC<{
 }> = ({ email, size = 'medium', style = 'button' }) => {
   const sizeMap = {
     small: "w-4 h-4",
-    medium: "w-5 h-5",
-    large: "w-6 h-6"
+    medium: "w-4 h-4 sm:w-5 sm:h-5",
+    large: "w-5 h-5 sm:w-6 sm:h-6"
   };
 
   const baseClasses = style === 'button'
-    ? `${terminalButtonBase} border-amber text-amber hover:bg-amber hover:text-black hover:shadow-[0_0_20px_var(--amber-glow)]`
-    : "text-text-primary hover:text-amber p-2 transition-all duration-200 hover:drop-shadow-[0_0_10px_rgba(255,176,0,0.5)]";
+    ? `${terminalButtonBase} border-amber text-amber hover:bg-amber hover:text-black hover:shadow-[0_0_15px_var(--amber-glow)]`
+    : "text-text-primary hover:text-amber p-2 transition-all duration-200";
 
   return (
     <IconLink
@@ -197,13 +196,13 @@ export const TestFlightLink: React.FC<{
 }> = ({ href, size = 'medium', style = 'button' }) => {
   const sizeMap = {
     small: "w-4 h-4",
-    medium: "w-5 h-5",
-    large: "w-6 h-6"
+    medium: "w-4 h-4 sm:w-5 sm:h-5",
+    large: "w-5 h-5 sm:w-6 sm:h-6"
   };
 
   const baseClasses = style === 'button'
-    ? `${terminalButtonBase} border-syntax-cyan text-syntax-cyan hover:bg-syntax-cyan hover:text-black hover:shadow-[0_0_20px_rgba(0,217,255,0.3)]`
-    : "text-text-primary hover:text-syntax-cyan p-2 transition-all duration-200";
+    ? `${terminalButtonBase} border-syntax-magenta text-syntax-magenta hover:bg-syntax-magenta hover:text-black hover:shadow-[0_0_15px_rgba(240,171,252,0.3)]`
+    : "text-text-primary hover:text-syntax-magenta p-2 transition-all duration-200";
 
   return (
     <IconLink
@@ -225,13 +224,13 @@ export const AppStoreLink: React.FC<{
 }> = ({ href, size = 'medium', style = 'button' }) => {
   const sizeMap = {
     small: "w-4 h-4",
-    medium: "w-5 h-5",
-    large: "w-6 h-6"
+    medium: "w-4 h-4 sm:w-5 sm:h-5",
+    large: "w-5 h-5 sm:w-6 sm:h-6"
   };
 
   const baseClasses = style === 'button'
-    ? `${terminalButtonBase} border-phosphor text-phosphor hover:bg-phosphor hover:text-black`
-    : "text-text-primary hover:text-phosphor p-2 transition-all duration-200";
+    ? `${terminalButtonBase} border-accent text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_15px_var(--accent-glow)]`
+    : "text-text-primary hover:text-accent p-2 transition-all duration-200";
 
   return (
     <IconLink
@@ -253,13 +252,13 @@ export const DemoLink: React.FC<{
 }> = ({ href, size = 'medium', style = 'button' }) => {
   const sizeMap = {
     small: "w-4 h-4",
-    medium: "w-5 h-5",
-    large: "w-6 h-6"
+    medium: "w-4 h-4 sm:w-5 sm:h-5",
+    large: "w-5 h-5 sm:w-6 sm:h-6"
   };
 
   const baseClasses = style === 'button'
-    ? `${terminalButtonBase} border-phosphor text-phosphor hover:bg-phosphor hover:text-black`
-    : "text-text-primary hover:text-phosphor p-2 transition-all duration-200";
+    ? `${terminalButtonBase} border-accent text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_15px_var(--accent-glow)]`
+    : "text-text-primary hover:text-accent p-2 transition-all duration-200";
 
   return (
     <IconLink

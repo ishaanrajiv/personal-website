@@ -1,18 +1,18 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 /* ═══════════════════════════════════════════════════════════════════════════
    BLINKING CURSOR
    ═══════════════════════════════════════════════════════════════════════════ */
 
 interface CursorProps {
-  variant?: 'green' | 'amber';
+  variant?: 'cyan' | 'amber';
   className?: string;
 }
 
 export const BlinkingCursor: React.FC<CursorProps> = ({
-  variant = 'green',
+  variant = 'cyan',
   className = ''
 }) => {
   const cursorClass = variant === 'amber' ? 'cursor-blink cursor-blink-amber' : 'cursor-blink';
@@ -28,7 +28,7 @@ interface TypingTextProps {
   speed?: number;
   delay?: number;
   showCursor?: boolean;
-  cursorVariant?: 'green' | 'amber';
+  cursorVariant?: 'cyan' | 'amber';
   className?: string;
   onComplete?: () => void;
 }
@@ -38,7 +38,7 @@ export const TypingText: React.FC<TypingTextProps> = ({
   speed = 50,
   delay = 0,
   showCursor = true,
-  cursorVariant = 'green',
+  cursorVariant = 'cyan',
   className = '',
   onComplete
 }) => {
@@ -131,9 +131,9 @@ export const TerminalWindow: React.FC<TerminalWindowProps> = ({
         <div className="terminal-dot terminal-dot-red" />
         <div className="terminal-dot terminal-dot-yellow" />
         <div className="terminal-dot terminal-dot-green" />
-        <span className="ml-4 text-text-muted text-sm">{title}</span>
+        <span className="ml-3 sm:ml-4 text-text-muted text-xs sm:text-sm">{title}</span>
       </div>
-      <div className="pt-4 relative z-10">
+      <div className="pt-3 sm:pt-4 relative z-10">
         {children}
       </div>
     </div>
@@ -157,11 +157,11 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   return (
     <div className={`section-header ${className}`}>
-      <h2 className="text-xl sm:text-2xl font-semibold text-text-primary">
+      <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-text-primary">
         {title}
       </h2>
       {comment && (
-        <span className="text-syntax-comment text-sm hidden sm:inline">
+        <span className="text-syntax-comment text-xs sm:text-sm hidden sm:inline">
           {comment}
         </span>
       )}
@@ -170,20 +170,21 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 };
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   ASCII ART NAME
+   ASCII ART NAME - Clean block style
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export const ASCIIName: React.FC<{ className?: string }> = ({ className = '' }) => {
+  // Clean ASCII art for "Ishaan Rajiv"
   const art = `
- ██╗███████╗██╗  ██╗ █████╗  █████╗ ███╗   ██╗
- ██║██╔════╝██║  ██║██╔══██╗██╔══██╗████╗  ██║
- ██║███████╗███████║███████║███████║██╔██╗ ██║
- ██║╚════██║██╔══██║██╔══██║██╔══██║██║╚██╗██║
- ██║███████║██║  ██║██║  ██║██║  ██║██║ ╚████║
- ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝`;
+  ___     _                         ____        _ _
+ |_ _|___| |__   __ _  __ _ _ __   |  _ \\ __ _ (_|_)_   __
+  | |/ __| '_ \\ / _\` |/ _\` | '_ \\  | |_) / _\` || | \\ \\ / /
+  | |\\__ \\ | | | (_| | (_| | | | | |  _ < (_| || | |\\ V /
+ |___|___/_| |_|\\__,_|\\__,_|_| |_| |_| \\_\\__,_|/ |_| \\_/
+                                             |__/`;
 
   return (
-    <pre className={`ascii-art text-phosphor flicker ${className}`} aria-label="Ishaan">
+    <pre className={`ascii-art text-accent flicker ${className}`} aria-label="Ishaan">
       {art}
     </pre>
   );
@@ -195,27 +196,26 @@ export const ASCIIName: React.FC<{ className?: string }> = ({ className = '' }) 
 
 interface OutputLineProps {
   prefix?: string;
-  prefixColor?: 'green' | 'amber' | 'cyan' | 'magenta' | 'yellow';
+  prefixColor?: 'cyan' | 'amber' | 'magenta' | 'yellow';
   children: React.ReactNode;
   className?: string;
 }
 
 export const OutputLine: React.FC<OutputLineProps> = ({
   prefix,
-  prefixColor = 'green',
+  prefixColor = 'cyan',
   children,
   className = ''
 }) => {
   const colorMap = {
-    green: 'text-phosphor',
+    cyan: 'text-accent',
     amber: 'text-amber',
-    cyan: 'text-syntax-cyan',
     magenta: 'text-syntax-magenta',
     yellow: 'text-syntax-yellow'
   };
 
   return (
-    <div className={`font-mono leading-relaxed ${className}`}>
+    <div className={`font-mono text-sm sm:text-base leading-relaxed ${className}`}>
       {prefix && (
         <span className={`${colorMap[prefixColor]} mr-2`}>{prefix}</span>
       )}
@@ -240,7 +240,7 @@ export const TerminalCard: React.FC<TerminalCardProps> = ({
   hoverEffect = true
 }) => {
   return (
-    <div className={`terminal-card p-6 ${hoverEffect ? '' : ''} ${className}`}>
+    <div className={`terminal-card p-4 sm:p-6 ${hoverEffect ? '' : ''} ${className}`}>
       {children}
     </div>
   );
@@ -290,27 +290,26 @@ export const TimelineEntry: React.FC<TimelineEntryProps> = ({
   className = ''
 }) => {
   return (
-    <div className={`relative pl-8 pb-8 border-l ${isActive ? 'border-phosphor' : 'border-border'} ${className}`}>
+    <div className={`relative pl-6 sm:pl-8 pb-6 sm:pb-8 border-l ${isActive ? 'border-accent' : 'border-border'} ${className}`}>
       {/* Timeline dot */}
-      <div className={`absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full ${
-        isActive
-          ? 'bg-phosphor shadow-[0_0_10px_var(--phosphor-green)]'
+      <div className={`absolute left-[-4px] sm:left-[-5px] top-0.5 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full ${isActive
+          ? 'bg-accent shadow-[0_0_8px_var(--accent-glow)]'
           : 'bg-border'
-      }`} />
+        }`} />
 
       {/* Content */}
-      <div className="space-y-1">
-        <div className="flex flex-wrap items-baseline gap-2 sm:gap-4">
-          <h4 className={`font-semibold ${isActive ? 'text-phosphor' : 'text-text-primary'}`}>
+      <div className="space-y-0.5 sm:space-y-1">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline gap-1 sm:gap-3">
+          <h4 className={`text-sm sm:text-base font-semibold ${isActive ? 'text-accent' : 'text-text-primary'}`}>
             {title}
           </h4>
-          <span className="text-amber text-sm font-mono">{date}</span>
+          <span className="text-amber text-xs sm:text-sm font-mono">{date}</span>
         </div>
         {subtitle && (
-          <p className="text-text-secondary text-sm">{subtitle}</p>
+          <p className="text-text-secondary text-xs sm:text-sm">{subtitle}</p>
         )}
         {description && (
-          <p className="text-text-muted text-sm mt-2">{description}</p>
+          <p className="text-text-muted text-xs sm:text-sm mt-1 sm:mt-2">{description}</p>
         )}
       </div>
     </div>
@@ -357,15 +356,14 @@ export const BootSequence: React.FC<BootSequenceProps> = ({ onComplete }) => {
   }, [onComplete]);
 
   return (
-    <div className="font-mono text-sm space-y-1">
+    <div className="font-mono text-xs sm:text-sm space-y-1">
       {lines.map((line, i) => (
         <div
           key={i}
-          className={`${
-            line.includes('[OK]') ? 'text-phosphor' :
-            line.includes('[READY]') ? 'text-amber' :
-            'text-text-secondary'
-          }`}
+          className={`${line.includes('[OK]') ? 'text-accent' :
+              line.includes('[READY]') ? 'text-amber' :
+                'text-text-secondary'
+            }`}
         >
           {line}
           {i === lines.length - 1 && !isComplete && <BlinkingCursor />}

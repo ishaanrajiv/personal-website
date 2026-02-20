@@ -5,11 +5,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 interface NavigationProps {
-  siteName?: string;
   className?: string;
 }
 
-export default function Navigation({ siteName = "ishaan", className = "" }: NavigationProps): React.JSX.Element {
+export default function Navigation({ className = "" }: NavigationProps): React.JSX.Element {
   const pathname = usePathname();
 
   const isActive = (path: string): boolean => {
@@ -28,30 +27,30 @@ export default function Navigation({ siteName = "ishaan", className = "" }: Navi
 
   return (
     <nav className={`sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-border ${className}`}>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex justify-between items-center">
           {/* Logo / Site Name - Terminal Style */}
           <Link
             href="/"
-            className="group flex items-center gap-2 font-mono text-lg transition-all duration-200"
+            className="group flex items-center gap-1.5 font-mono text-base sm:text-lg transition-all duration-200"
           >
-            <span className="text-phosphor text-xl">$</span>
-            <span className="text-text-primary group-hover:text-phosphor transition-colors">
-              {siteName}
+            <span className="text-accent">$cd</span>
+            <span className="text-text-primary group-hover:text-accent transition-colors">
+              ishaan
             </span>
             <span className="cursor-blink hidden sm:inline-block" />
           </Link>
 
           {/* Navigation Links - Command Style */}
-          <div className="flex items-center gap-1 sm:gap-2">
+          <div className="flex items-center gap-0.5 sm:gap-2">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
                 className={`
-                  relative px-2 sm:px-3 py-1.5 font-mono text-sm transition-all duration-200
+                  relative px-2 sm:px-3 py-1.5 font-mono text-xs sm:text-sm transition-all duration-200
                   ${isActive(item.path)
-                    ? 'text-phosphor'
+                    ? 'text-accent'
                     : 'text-text-muted hover:text-text-primary'
                   }
                 `}
@@ -62,7 +61,7 @@ export default function Navigation({ siteName = "ishaan", className = "" }: Navi
 
                 {/* Active indicator */}
                 {isActive(item.path) && (
-                  <span className="absolute bottom-0 left-0 right-0 h-px bg-phosphor shadow-[0_0_10px_var(--phosphor-green)]" />
+                  <span className="absolute bottom-0 left-0 right-0 h-px bg-accent shadow-[0_0_10px_var(--accent-glow)]" />
                 )}
               </Link>
             ))}
@@ -75,10 +74,10 @@ export default function Navigation({ siteName = "ishaan", className = "" }: Navi
           <span className="mx-1">@</span>
           <span className="text-text-secondary">portfolio</span>
           <span className="mx-1">:</span>
-          <span className="text-syntax-cyan">
+          <span className="text-accent">
             {pathname === '/' ? '~' : pathname}
           </span>
-          <span className="text-phosphor ml-1">$</span>
+          <span className="text-accent ml-1">$</span>
           <span className="ml-2 text-text-primary">
             {navItems.find(item => isActive(item.path))?.command || 'help'}
           </span>
