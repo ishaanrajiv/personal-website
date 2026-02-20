@@ -68,6 +68,17 @@ export const DemoIcon: React.FC<IconProps> = ({ className = "w-5 h-5", size }) =
   </svg>
 );
 
+export const WebsiteIcon: React.FC<IconProps> = ({ className = "w-5 h-5", size }) => (
+  <svg
+    className={size ? `w-${size} h-${size}` : className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+  </svg>
+);
+
 // ═══════════════════════════════════════════════════════════════════════════
 // TERMINAL-STYLED ICON LINK COMPONENTS
 // ═══════════════════════════════════════════════════════════════════════════
@@ -269,6 +280,34 @@ export const DemoLink: React.FC<{
     >
       <DemoIcon className={sizeMap[size]} />
       {style === 'button' && <span className="hidden sm:inline">Demo</span>}
+    </IconLink>
+  );
+};
+
+export const WebsiteLink: React.FC<{
+  href: string;
+  size?: 'small' | 'medium' | 'large';
+  style?: 'button' | 'icon';
+}> = ({ href, size = 'medium', style = 'button' }) => {
+  const sizeMap = {
+    small: "w-4 h-4",
+    medium: "w-4 h-4 sm:w-5 sm:h-5",
+    large: "w-5 h-5 sm:w-6 sm:h-6"
+  };
+
+  const baseClasses = style === 'button'
+    ? `${terminalButtonBase} border-syntax-magenta text-syntax-magenta hover:bg-syntax-magenta hover:text-black hover:shadow-[0_0_15px_rgba(240,171,252,0.3)]`
+    : "text-text-primary hover:text-syntax-magenta p-2 transition-all duration-200";
+
+  return (
+    <IconLink
+      href={href}
+      title="Visit Website"
+      className={baseClasses}
+      external
+    >
+      <WebsiteIcon className={sizeMap[size]} />
+      {style === 'button' && <span className="hidden sm:inline">Website</span>}
     </IconLink>
   );
 };
