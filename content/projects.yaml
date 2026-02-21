@@ -116,7 +116,7 @@ projects:
         gallery: []
       links:
         github: "https://github.com/ishaanrajiv/json-workbench"
-        demo: ""
+        demo: "https://json-workbench.ishaanrajiv.com/"
       features:
         - "Realtime Validation"
         - "Multi-View Output"
