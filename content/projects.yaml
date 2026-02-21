@@ -107,6 +107,21 @@ projects:
         - "Conflict Detection"
         - "Automatic Changelog"
   tools:
+    - name: "JSON Workbench"
+      description: "A fast, static, browser-based JSON workspace for validating, formatting, exploring, and diffing JSON. Runs fully client-side as a single-page app with no backend."
+      status: ""
+      type: "Web Tool"
+      technologies: ["TypeScript", "CSS", "HTML"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/json-workbench"
+        demo: ""
+      features:
+        - "Realtime Validation"
+        - "Multi-View Output"
+        - "Inspector Navigation"
+        - "JSON Diffing"
     - name: "SQLite Offline Dictionary"
       description: "A lightweight offline dictionary application built with SQLite for fast, local word lookups without internet connectivity."
       status: ""
