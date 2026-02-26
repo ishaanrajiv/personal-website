@@ -46,6 +46,4 @@ cv:
     - category: "Analytics"
       skills: ["Product Analytics", "Business Intelligence", "Data Science", "AI/ML", "ETL"]
     - category: "Programming"
-      skills: ["Python", "SQL", "R", "Spark/SCALA", "Swift (iOS)"]
-    - category: "Analytics Tools"
-      skills: ["Mixpanel", "Tableau", "Power BI", "Apache Spark", "Jupyter", "Metabase", "Snowfalke", "Databricks"]
+      skills: ["Swift", "TypeScript", "Python", "Rust", "SQL", "SQLite", "HTML/CSS", "React", "Next.js", "SwiftUI", "SwiftData"]
