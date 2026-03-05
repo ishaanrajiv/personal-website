@@ -64,6 +64,22 @@ projects:
         - "YAML Content System"
         - "Responsive Design"
         - "Dark Mode Support"
+    - name: "Snake"
+      description: "Snake game built in Rust, with smooth movement, adaptive board resizing, and multiple play modes (Classic, Wrap, Zen)."
+      status: ""
+      type: "Browser Game"
+      technologies: ["Rust"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/snake-rs/"
+        demo: "https://snake-rs.ishaanrajiv.com/"
+      features:
+        - "Smooth Movement"
+        - "Adaptive Board Resizing"
+        - "Classic Mode"
+        - "Wrap Mode"
+        - "Zen Mode"
     - name: "Battle of the Breaths"
       description: "A game where you guess which city has cleaner air. Compare air quality between cities around the world in an engaging, educational format."
       status: ""
