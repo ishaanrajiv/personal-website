@@ -161,15 +161,15 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
       <ContentErrorBoundary>
         <main className="page-frame page-offset">
-          <div className="max-w-5xl">
+          <div className="mx-auto max-w-5xl">
             <Link href="/blog" className="interactive-line">
               <ArrowLeftIcon className="h-4 w-4" />
               <span>Back to Blog</span>
             </Link>
 
             <header className="mt-8 border-b border-line pb-10 md:pb-12">
-              <div className="max-w-4xl space-y-6">
-                <h1 className="page-title">{postData.title}</h1>
+              <div className="mx-auto max-w-4xl space-y-6">
+                <h1 className="article-title">{postData.title}</h1>
 
                 <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm uppercase tracking-[0.16em] text-text-faint">
                   {postData.date ? <span>{formatDate(postData.date)}</span> : null}
@@ -180,7 +180,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
               </div>
             </header>
 
-            <article className="article-content py-10 md:py-12">
+            <article className="article-content mx-auto py-10 md:py-12">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeHighlight, rehypeRaw]}
@@ -223,7 +223,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
               </ReactMarkdown>
             </article>
 
-            <footer className="border-t border-line pt-8">
+            <footer className="mx-auto max-w-4xl border-t border-line pt-8">
               <Link href="/blog" className="interactive-line">
                 <ArrowLeftIcon className="h-4 w-4" />
                 <span>Back to All Posts</span>

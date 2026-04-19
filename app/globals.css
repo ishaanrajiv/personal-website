@@ -104,6 +104,14 @@ select:focus-visible {
   text-transform: uppercase;
 }
 
+.article-title {
+  font-size: clamp(2.8rem, 5.8vw, 5.4rem);
+  line-height: 0.94;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
 .display-name {
   font-size: clamp(4.75rem, 16vw, 12rem);
   line-height: 0.84;
@@ -312,6 +320,12 @@ select:focus-visible {
   .display-name {
     font-size: clamp(4.2rem, 22vw, 7rem);
     letter-spacing: -0.09em;
+  }
+
+  .article-title {
+    font-size: clamp(2.3rem, 9vw, 3.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
   }
 
   .article-content p,

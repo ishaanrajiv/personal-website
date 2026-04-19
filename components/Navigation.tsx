@@ -51,7 +51,7 @@ export default function Navigation({ className = '' }: NavigationProps): React.J
             href="/"
             className="text-sm font-semibold uppercase tracking-[0.18em] text-text transition-colors duration-300 hover:text-text-dim"
           >
-            ishaanrajiv.com
+            Ishaan Rajiv
           </Link>
 
           <div className="hidden items-center gap-8 md:flex">
