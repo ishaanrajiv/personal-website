@@ -65,7 +65,7 @@ export default function Home(): React.JSX.Element {
             </div>
           </section>
 
-          <SectionBand index="01" title="About" id="about">
+          <SectionBand title="About" id="about">
             <div className="stack-grid">
               {siteConfig.site.about.paragraphs.map((paragraph, index) => (
                 <p key={index} className="max-w-4xl text-base leading-8 text-text-dim md:text-lg">
@@ -75,7 +75,7 @@ export default function Home(): React.JSX.Element {
             </div>
           </SectionBand>
 
-          <SectionBand index="02" title="Experience" id="experience">
+          <SectionBand title="Experience" id="experience">
             <div>
               {cvData.cv.experience.map((experience, index) => {
                 const isCurrent = index === 0;
@@ -134,7 +134,7 @@ export default function Home(): React.JSX.Element {
             </div>
           </SectionBand>
 
-          <SectionBand index="03" title="Education" id="education">
+          <SectionBand title="Education" id="education">
             <div className="space-y-6">
               {cvData.cv.education.map((education) => (
                 <article key={`${education.institution}-${education.year}`} className="list-row py-6 md:py-7">
@@ -156,7 +156,7 @@ export default function Home(): React.JSX.Element {
             </div>
           </SectionBand>
 
-          <SectionBand index="04" title="Skills" id="skills">
+          <SectionBand title="Skills" id="skills">
             <div className="space-y-6">
               {cvData.cv.technical_skills.map((skillGroup) => (
                 <div key={skillGroup.category} className="list-row py-6 md:grid md:grid-cols-[11rem_minmax(0,1fr)] md:gap-8">

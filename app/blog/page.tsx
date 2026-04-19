@@ -18,10 +18,9 @@ export default function BlogPage() {
           <PageIntro title="Blog" eyebrow="Writing" />
 
           <section className="py-8 md:py-10">
-            {posts.map((post, index) => (
+            {posts.map((post) => (
               <PostRow
                 key={post.slug}
-                index={index}
                 title={post.title}
                 slug={post.slug}
                 description={post.description}

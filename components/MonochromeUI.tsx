@@ -12,7 +12,6 @@ interface PageIntroProps {
 }
 
 interface SectionBandProps {
-  index: string;
   title: string;
   children: React.ReactNode;
   id?: string;
@@ -24,11 +23,9 @@ interface MetaListProps {
 
 interface ProjectRowProps {
   project: Project;
-  index: number;
 }
 
 interface PostRowProps {
-  index: number;
   title: string;
   slug: string;
   description: string;
@@ -81,12 +78,11 @@ export function PageIntro({ title, eyebrow, description }: PageIntroProps): Reac
   );
 }
 
-export function SectionBand({ index, title, children, id }: SectionBandProps): React.JSX.Element {
+export function SectionBand({ title, children, id }: SectionBandProps): React.JSX.Element {
   return (
     <section id={id} className="section-rule py-10 md:py-14">
       <div className="grid gap-8 md:grid-cols-[9rem_minmax(0,1fr)] md:gap-12">
         <div className="space-y-2">
-          <p className="eyebrow">{index}</p>
           <h2 className="text-2xl font-semibold tracking-[-0.04em] text-text md:text-3xl">{title}</h2>
         </div>
         <div>{children}</div>
@@ -108,7 +104,7 @@ export function MetaList({ items }: MetaListProps): React.JSX.Element {
   );
 }
 
-export function ProjectRow({ project, index }: ProjectRowProps): React.JSX.Element {
+export function ProjectRow({ project }: ProjectRowProps): React.JSX.Element {
   const links = getProjectLinks(project);
   const status = project.status ? project.status.replaceAll('_', ' ') : null;
   const images = project.images?.hero
@@ -119,7 +115,6 @@ export function ProjectRow({ project, index }: ProjectRowProps): React.JSX.Eleme
     <article className="list-row gap-8 py-8 md:gap-10 md:py-10">
       <div className="grid gap-8 xl:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] xl:gap-12">
         <div className="space-y-5">
-          <p className="eyebrow">{String(index + 1).padStart(2, '0')}</p>
           <div className="space-y-3">
             <h3 className="text-3xl font-semibold tracking-[-0.05em] text-text md:text-4xl">
               {project.name}
@@ -206,7 +201,6 @@ export function ProjectRow({ project, index }: ProjectRowProps): React.JSX.Eleme
 }
 
 export function PostRow({
-  index,
   title,
   slug,
   description,
@@ -219,9 +213,7 @@ export function PostRow({
 
   return (
     <article className="list-row py-7 md:py-8">
-      <div className="grid gap-5 md:grid-cols-[5rem_minmax(0,1fr)_auto] md:items-start md:gap-8">
-        <p className="eyebrow pt-1">{String(index + 1).padStart(2, '0')}</p>
-
+      <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:gap-8">
         <div className="space-y-4">
           {isPublished ? (
             <Link href={`/blog/${slug}`} className="group block">
