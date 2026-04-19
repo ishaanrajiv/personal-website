@@ -1,0 +1,162 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "ishaanrajiv.com" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e6]:
+          - link "Home" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - text: Home
+          - link "Projects" [ref=e9] [cursor=pointer]:
+            - /url: /projects
+            - text: Projects
+          - link "Blog" [ref=e11] [cursor=pointer]:
+            - /url: /blog
+            - text: Blog
+          - link "Contact" [ref=e13] [cursor=pointer]:
+            - /url: /contact
+            - text: Contact
+    - main [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - paragraph [ref=e18]: Analytics lead · builder · writer
+          - generic [ref=e19]:
+            - generic [ref=e20]: Ishaan
+            - generic [ref=e21]: Rajiv
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - paragraph [ref=e24]: 10+ years in product analytics across top companies like DB Digital, Hike, and Flipkart. Currently exploring iOS development and AI/ML applications.
+            - generic [ref=e25]:
+              - paragraph [ref=e26]: Senior Principal Product Analyst @ DB Digital
+              - paragraph [ref=e27]: Building iOS apps & exploring AI/ML
+              - paragraph [ref=e28]: 10+ years in product analytics
+          - generic [ref=e29]:
+            - paragraph [ref=e30]: Connect
+            - generic [ref=e31]:
+              - link "GitHub" [ref=e32] [cursor=pointer]:
+                - /url: https://github.com/ishaanrajiv
+                - img [ref=e33]
+                - generic [ref=e35]: GitHub
+              - link "LinkedIn" [ref=e36] [cursor=pointer]:
+                - /url: https://in.linkedin.com/in/ishaan-rajiv-b1036911b
+                - img [ref=e37]
+                - generic [ref=e39]: LinkedIn
+              - link "Email" [ref=e40] [cursor=pointer]:
+                - /url: mailto:ishaan2005@gmail.com
+                - img [ref=e41]
+                - generic [ref=e43]: Email
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - paragraph [ref=e47]: "01"
+          - heading "About" [level=2] [ref=e48]
+        - generic [ref=e50]:
+          - paragraph [ref=e51]: Analytics Lead at DB Digital with over 10+ years of experience in product analytics, data science, and business intelligence. I've worked across diverse domains from social media to e-commerce to news platforms, helping build data-driven products at companies like Hike, Flipkart, and Roposo in the past.
+          - paragraph [ref=e52]: My expertise spans product analytics, fraud detection systems, recommendation engines, and democratizing data access across organizations. I'm passionate about making complex data insights accessible and actionable for product teams.
+          - paragraph [ref=e53]: Currently exploring iOS app development and AI/ML applications, on a personal level.
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: "02"
+          - heading "Experience" [level=2] [ref=e58]
+        - generic [ref=e60]:
+          - article [ref=e61]:
+            - generic [ref=e62]:
+              - generic [ref=e63]:
+                - heading "Senior Principal Product Analyst" [level=3] [ref=e64]
+                - paragraph [ref=e65]: DB Digital (Dainik Bhaskar Digital)
+                - paragraph [ref=e66]: Leading analytics initiatives for one of India's largest digital news platforms
+              - generic [ref=e67]:
+                - generic [ref=e68]:
+                  - term [ref=e69]: Period
+                  - definition [ref=e70]: Dec 2019 - Present
+                - generic [ref=e71]:
+                  - term [ref=e72]: Location
+                  - definition [ref=e73]: Noida, Uttar Pradesh, India
+          - article [ref=e74]:
+            - generic [ref=e75]:
+              - generic [ref=e76]:
+                - heading "Senior Product Analyst" [level=3] [ref=e77]
+                - paragraph [ref=e78]: Hike
+                - paragraph [ref=e79]: Analytics Lead for Stickers, Chat and Web. Democratizing Data @ Hike
+              - generic [ref=e80]:
+                - generic [ref=e81]:
+                  - term [ref=e82]: Period
+                  - definition [ref=e83]: Aug 2018 - Nov 2019
+                - generic [ref=e84]:
+                  - term [ref=e85]: Location
+                  - definition [ref=e86]: New Delhi Area, India
+          - article [ref=e87]:
+            - generic [ref=e88]:
+              - generic [ref=e89]:
+                - heading "Business Analyst" [level=3] [ref=e90]
+                - paragraph [ref=e91]: Roposo
+                - paragraph [ref=e92]: Third Party Ads Framework, ETL Pipeline for Spark database, Data-driven strategies for Play N' Earn and Roposo Talent Hunt
+              - generic [ref=e93]:
+                - generic [ref=e94]:
+                  - term [ref=e95]: Period
+                  - definition [ref=e96]: Aug 2016 - Dec 2017
+                - generic [ref=e97]:
+                  - term [ref=e98]: Location
+                  - definition [ref=e99]: Gurgaon, India
+          - article [ref=e100]:
+            - generic [ref=e101]:
+              - generic [ref=e102]:
+                - heading "Business Analyst" [level=3] [ref=e103]
+                - paragraph [ref=e104]: Flipkart
+                - paragraph [ref=e105]: Seller Price Abuse Identification System, Return Abuse and Fraud Identification System
+              - generic [ref=e106]:
+                - generic [ref=e107]:
+                  - term [ref=e108]: Period
+                  - definition [ref=e109]: Jul 2015 - Aug 2016
+                - generic [ref=e110]:
+                  - term [ref=e111]: Location
+                  - definition [ref=e112]: Bengaluru, Karnataka, India
+      - generic [ref=e114]:
+        - generic [ref=e115]:
+          - paragraph [ref=e116]: "03"
+          - heading "Education" [level=2] [ref=e117]
+        - article [ref=e120]:
+          - generic [ref=e121]:
+            - generic [ref=e122]:
+              - heading "Bachelor of Technology" [level=3] [ref=e123]
+              - paragraph [ref=e124]: Indian Institute of Technology, Guwahati
+            - generic [ref=e125]:
+              - paragraph [ref=e126]: Class of
+              - paragraph [ref=e127]: "2015"
+      - generic [ref=e129]:
+        - generic [ref=e130]:
+          - paragraph [ref=e131]: "04"
+          - heading "Skills" [level=2] [ref=e132]
+        - generic [ref=e134]:
+          - generic [ref=e135]:
+            - paragraph [ref=e136]: Analytics
+            - generic [ref=e137]:
+              - generic [ref=e138]: Product Analytics
+              - generic [ref=e139]: Business Intelligence
+              - generic [ref=e140]: Data Science
+              - generic [ref=e141]: AI/ML
+              - generic [ref=e142]: ETL
+          - generic [ref=e143]:
+            - paragraph [ref=e144]: Programming
+            - generic [ref=e145]:
+              - generic [ref=e146]: Swift
+              - generic [ref=e147]: TypeScript
+              - generic [ref=e148]: Python
+              - generic [ref=e149]: Rust
+              - generic [ref=e150]: SQL
+              - generic [ref=e151]: SQLite
+              - generic [ref=e152]: HTML/CSS
+              - generic [ref=e153]: React
+              - generic [ref=e154]: Next.js
+              - generic [ref=e155]: SwiftUI
+              - generic [ref=e156]: SwiftData
+      - generic [ref=e158]:
+        - generic [ref=e159]:
+          - paragraph [ref=e160]: Thanks for visiting
+          - paragraph [ref=e161]: Built with Next.js, TypeScript & coffee.
+        - generic [ref=e162]:
+          - paragraph [ref=e163]: Copyright
+          - paragraph [ref=e164]: © 2026 Ishaan Rajiv
+  - button "Open Next.js Dev Tools" [ref=e170] [cursor=pointer]:
+    - img [ref=e171]
+  - alert [ref=e174]

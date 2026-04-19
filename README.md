@@ -26,19 +26,22 @@ A modern personal website built with Next.js 15, featuring a minimal black-theme
 
 ```bash
 # Install dependencies
-npm install
+bun install
 
 # Start development server (with Turbopack)
-npm run dev
+bun run dev
 
 # Build for production
-npm run build
+bun run build
 
 # Start production server
-npm start
+bun run start
 
 # Lint code
-npm run lint
+bun run lint
+
+# Type-check the project
+bun run typecheck
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
