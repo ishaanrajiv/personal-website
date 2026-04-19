@@ -40,32 +40,34 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
       }
 
       return (
-        <div className="min-h-screen bg-background text-primary flex items-center justify-center">
-          <div className="max-w-2xl mx-auto px-6 text-center">
-            <h1 className="text-4xl font-bold mb-6 text-red-400">Something went wrong</h1>
-            <p className="text-muted mb-8 text-lg">
+        <div className="site-shell flex min-h-screen items-center justify-center">
+          <div className="page-frame max-w-3xl text-center">
+            <h1 className="mb-6 text-4xl font-semibold tracking-[-0.05em] text-text md:text-5xl">
+              Something went wrong
+            </h1>
+            <p className="mx-auto mb-8 max-w-2xl text-base leading-8 text-text-dim md:text-lg">
               We&apos;re sorry, but something unexpected happened. Please try refreshing the page.
             </p>
-            <div className="flex gap-4 justify-center">
-              <button 
+            <div className="flex flex-wrap justify-center gap-4">
+              <button
                 onClick={this.resetError}
-                className="border border-accent text-primary px-6 py-3 rounded-xl hover:bg-border transition-colors"
+                className="border border-line px-6 py-3 text-sm uppercase tracking-[0.16em] text-text transition-colors duration-300 hover:bg-surface"
               >
                 Try Again
               </button>
-              <button 
+              <button
                 onClick={() => window.location.reload()}
-                className="bg-border text-primary px-6 py-3 rounded-xl hover:bg-accent transition-colors"
+                className="border border-line px-6 py-3 text-sm uppercase tracking-[0.16em] text-text-dim transition-colors duration-300 hover:bg-surface hover:text-text"
               >
                 Refresh Page
               </button>
             </div>
             {this.state.error && (
-              <details className="mt-8 text-left">
-                <summary className="cursor-pointer text-muted hover:text-primary transition-colors">
+              <details className="mx-auto mt-8 max-w-3xl text-left">
+                <summary className="cursor-pointer text-sm uppercase tracking-[0.16em] text-text-faint transition-colors duration-300 hover:text-text-dim">
                   Show error details
                 </summary>
-                <pre className="mt-4 p-4 bg-background-elevated rounded-xl text-sm text-red-300 overflow-auto">
+                <pre className="mt-4 overflow-auto border border-line bg-surface p-4 text-sm text-text-dim">
                   {this.state.error.message}
                   {this.state.error.stack && (
                     <>

@@ -7,6 +7,7 @@ A modern personal website built with Next.js 15, featuring a minimal black-theme
 - **Framework**: Next.js 15 with App Router
 - **Frontend**: React 19 with TypeScript 5
 - **Styling**: Tailwind CSS 4 with custom black theme
+- **Package Manager**: Bun
 - **Fonts**: Poppins & JetBrains Mono
 - **Build Tool**: Turbopack (development)
 - **Content**: YAML + Markdown hybrid content management
@@ -24,21 +25,26 @@ A modern personal website built with Next.js 15, featuring a minimal black-theme
 
 ## Development
 
+This project uses Bun for dependency management and local scripts.
+
 ```bash
 # Install dependencies
-npm install
+bun install
 
 # Start development server (with Turbopack)
-npm run dev
+bun run dev
 
 # Build for production
-npm run build
+bun run build
 
 # Start production server
-npm start
+bun run start
 
 # Lint code
-npm run lint
+bun run lint
+
+# Type-check the project
+bun run typecheck
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

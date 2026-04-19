@@ -1,195 +1,198 @@
 import React from 'react';
-import { getSiteConfig, getCVData } from '@/lib/content';
+
 import Navigation from '@/components/Navigation';
 import ContentErrorBoundary from '@/components/ContentErrorBoundary';
-import {
-  ASCIIName,
-  TerminalWindow,
-  SectionHeader,
-  TerminalCard,
-  SkillTag,
-  TimelineEntry,
-  OutputLine,
-} from '@/components/TerminalUI';
-import { GitHubLink, LinkedInLink, EmailLink } from '@/components/icons';
+import HeroName from '@/components/HeroName';
+import { MetaList, SectionBand } from '@/components/MonochromeUI';
+import { EmailIcon, GitHubIcon, LinkedInIcon } from '@/components/icons';
+import { getCVData, getSiteConfig } from '@/lib/content';
 
 export default function Home(): React.JSX.Element {
   const siteConfig = getSiteConfig();
   const cvData = getCVData();
+  const [firstName = siteConfig.site.name, lastName = ''] = siteConfig.site.name.split(' ');
 
   return (
-    <div className="min-h-screen bg-black text-text-primary">
+    <div className="site-shell">
       <Navigation />
 
       <ContentErrorBoundary>
-        <main className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-12 md:py-16">
-
-          {/* ════════════════════════════════════════════════════════════════
-              HERO SECTION - ASCII Art + Status
-              ════════════════════════════════════════════════════════════════ */}
-          <section className="mb-10 sm:mb-16 md:mb-20">
-            {/* ASCII Name */}
-            <div className="mb-4 sm:mb-6 overflow-hidden -mx-2 px-2">
-              <ASCIIName className="animate-fade-in-up" />
+        <main className="page-frame page-offset">
+          <section className="min-h-[calc(100vh-7rem)] border-b border-line pb-12 pt-6 md:pb-16 md:pt-8">
+            <div className="space-y-8 md:space-y-10">
+              <p className="eyebrow">Analytics lead · builder · writer</p>
+              <HeroName firstName={firstName} lastName={lastName} />
             </div>
 
-            {/* Subtitle */}
-            <div className="space-y-3 sm:space-y-4 font-mono animate-fade-in-up animation-delay-200">
-              <div className="text-xs sm:text-sm">
-                <span className="text-syntax-comment">{'// '}</span>
-                <span className="text-text-secondary">
-                  {siteConfig.site.hero.subtitle}
-                </span>
+            <div className="mt-10 grid gap-8 border-t border-line pt-8 lg:grid-cols-[minmax(0,1.15fr)_18rem] lg:items-start">
+              <div className="space-y-6">
+                <p className="lede max-w-4xl">{siteConfig.site.hero.subtitle}</p>
+
+                <div className="space-y-3 text-base leading-8 text-text-dim md:text-lg">
+                  <p>Senior Principal Product Analyst @ DB Digital</p>
+                  <p>Building iOS apps &amp; exploring AI/ML</p>
+                  <p>10+ years in product analytics</p>
+                </div>
               </div>
 
-              {/* Status Output - More compact on mobile */}
-              <div className="space-y-1.5 sm:space-y-2">
-                <OutputLine prefix="→" prefixColor="cyan">
-                  Senior Principal Product Analyst @ DB Digital
-                </OutputLine>
-                <OutputLine prefix="→" prefixColor="amber">
-                  Building iOS apps & exploring AI/ML
-                </OutputLine>
-                <OutputLine prefix="→" prefixColor="magenta">
-                  10+ years in product analytics
-                </OutputLine>
+              <div className="space-y-4">
+                <p className="eyebrow">Connect</p>
+                <div className="flex flex-col items-start gap-3">
+                  <a
+                    href={siteConfig.site.contact.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="interactive-line"
+                  >
+                    <GitHubIcon className="h-4 w-4" />
+                    <span>GitHub</span>
+                  </a>
+                  <a
+                    href={siteConfig.site.contact.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="interactive-line"
+                  >
+                    <LinkedInIcon className="h-4 w-4" />
+                    <span>LinkedIn</span>
+                  </a>
+                  <a href={`mailto:${siteConfig.site.contact.email}`} className="interactive-line">
+                    <EmailIcon className="h-4 w-4" />
+                    <span>Email</span>
+                  </a>
+                </div>
               </div>
-            </div>
-
-            {/* Links Section */}
-            <div className="flex flex-wrap gap-2 sm:gap-3 mt-6 sm:mt-8 animate-fade-in-up animation-delay-400">
-              <GitHubLink href={siteConfig.site.contact.github} />
-              <LinkedInLink href={siteConfig.site.contact.linkedin} />
-              <EmailLink email={siteConfig.site.contact.email} />
             </div>
           </section>
 
-          {/* ════════════════════════════════════════════════════════════════
-              ABOUT SECTION - Terminal Window Style
-              ════════════════════════════════════════════════════════════════ */}
-          <section className="mb-10 sm:mb-16 md:mb-20 animate-fade-in-up animation-delay-500">
-            <SectionHeader title="about.md" comment="whoami" />
-
-            <TerminalWindow title="cat about.md">
-              <div className="space-y-3 sm:space-y-4 text-text-secondary text-sm sm:text-base leading-relaxed">
-                {siteConfig.site.about.paragraphs.map((paragraph: string, index: number) => (
-                  <p key={index} className="flex">
-                    <span className="text-text-muted mr-3 sm:mr-4 select-none font-mono text-xs sm:text-sm shrink-0">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span>{paragraph}</span>
-                  </p>
-                ))}
-              </div>
-            </TerminalWindow>
-          </section>
-
-          {/* ════════════════════════════════════════════════════════════════
-              EXPERIENCE SECTION - Timeline
-              ════════════════════════════════════════════════════════════════ */}
-          <section className="mb-10 sm:mb-16 md:mb-20 animate-fade-in-up animation-delay-600">
-            <SectionHeader title="experience" comment="git log --oneline" />
-
-            <div className="ml-1 sm:ml-2">
-              {cvData.cv.experience.map((exp, index) => (
-                <TimelineEntry
-                  key={index}
-                  date={exp.period}
-                  title={exp.title}
-                  subtitle={exp.company}
-                  description={exp.description}
-                  isActive={index === 0}
-                />
+          <SectionBand title="About" id="about">
+            <div className="stack-grid">
+              {siteConfig.site.about.paragraphs.map((paragraph, index) => (
+                <p key={index} className="max-w-4xl text-base leading-8 text-text-dim md:text-lg">
+                  {paragraph}
+                </p>
               ))}
             </div>
-          </section>
+          </SectionBand>
 
-          {/* ════════════════════════════════════════════════════════════════
-              EDUCATION SECTION
-              ════════════════════════════════════════════════════════════════ */}
-          <section className="mb-10 sm:mb-16 md:mb-20">
-            <SectionHeader title="education" comment="credentials --verify" />
+          <SectionBand title="Experience" id="experience">
+            <div>
+              {cvData.cv.experience.map((experience, index) => {
+                const isCurrent = index === 0;
 
-            <TerminalCard>
-              <div className="font-mono">
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <span className="text-accent text-lg sm:text-xl">🎓</span>
-                  <div>
-                    {cvData.cv.education.map((edu, index) => (
-                      <div key={index}>
-                        <h4 className="text-text-primary text-sm sm:text-base font-semibold">
-                          {edu.degree}
-                        </h4>
-                        <p className="text-syntax-cyan text-sm">{edu.institution}</p>
-                        <p className="text-amber text-xs sm:text-sm mt-1">
-                          Class of {edu.year}
+                return (
+                  <article
+                    key={`${experience.company}-${experience.period}`}
+                    className={`list-row ${isCurrent ? 'py-6 md:py-7' : 'py-4 md:py-5'}`}
+                  >
+                    <div
+                      className={`grid gap-4 ${
+                        isCurrent
+                          ? 'lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-8'
+                          : 'items-start md:grid-cols-[minmax(0,1fr)_14rem] md:gap-6'
+                      }`}
+                    >
+                      <div className={isCurrent ? 'space-y-2' : 'space-y-1.5'}>
+                        <h3
+                          className={`font-semibold tracking-[-0.04em] ${
+                            isCurrent
+                              ? 'text-2xl text-text md:text-3xl'
+                              : 'text-xl text-text-dim md:text-2xl'
+                          }`}
+                        >
+                          {experience.title}
+                        </h3>
+                        <p className={isCurrent ? 'text-base text-text-dim md:text-lg' : 'text-sm text-text-faint md:text-base'}>
+                          {experience.company}
                         </p>
+                        {isCurrent ? (
+                          <p className="max-w-3xl text-base leading-8 text-text-dim">
+                            {experience.description}
+                          </p>
+                        ) : null}
                       </div>
+
+                      {isCurrent ? (
+                        <MetaList
+                          items={[
+                            { label: 'Period', value: experience.period },
+                            { label: 'Location', value: experience.location },
+                          ]}
+                        />
+                      ) : (
+                        <div className="border-t border-line pt-3 md:border-t-0 md:pt-0">
+                          <div>
+                            <p className="meta-text">Period</p>
+                            <p className="mt-1 text-sm text-text-faint md:text-[0.95rem]">{experience.period}</p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </SectionBand>
+
+          <SectionBand title="Education" id="education">
+            <div className="space-y-6">
+              {cvData.cv.education.map((education) => (
+                <article key={`${education.institution}-${education.year}`} className="list-row py-6 md:py-7">
+                  <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_10rem] md:gap-8">
+                    <div className="space-y-2">
+                      <h3 className="text-2xl font-semibold tracking-[-0.04em] text-text md:text-3xl">
+                        {education.degree}
+                      </h3>
+                      <p className="text-base text-text-dim md:text-lg">{education.institution}</p>
+                    </div>
+
+                    <div className="space-y-2 md:text-right">
+                      <p className="meta-text">Class of</p>
+                      <p className="text-base text-text-dim md:text-lg">{education.year}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </SectionBand>
+
+          <SectionBand title="Skills" id="skills">
+            <div className="space-y-6">
+              {cvData.cv.technical_skills.map((skillGroup) => (
+                <div key={skillGroup.category} className="list-row py-6 md:grid md:grid-cols-[11rem_minmax(0,1fr)] md:gap-8">
+                  <p className="meta-text">{skillGroup.category}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {skillGroup.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="border border-line px-3 py-1.5 text-xs uppercase tracking-[0.14em] text-text-dim"
+                      >
+                        {skill}
+                      </span>
                     ))}
                   </div>
                 </div>
-              </div>
-            </TerminalCard>
-          </section>
+              ))}
+            </div>
+          </SectionBand>
 
-          {/* ════════════════════════════════════════════════════════════════
-              SKILLS SECTION - Code Block Style
-              ════════════════════════════════════════════════════════════════ */}
-          <section className="mb-10 sm:mb-16 md:mb-20">
-            <SectionHeader title="skills.json" comment="npm list --depth=0" />
-
-            <TerminalWindow title="skills.json">
-              <div className="font-mono text-xs sm:text-sm md:text-base">
-                <div className="text-text-muted">{'{'}</div>
-
-                {cvData.cv.technical_skills.map((skillCategory, index) => (
-                  <div key={index} className="ml-3 sm:ml-4 my-3 sm:my-4">
-                    <span className="text-syntax-cyan">&quot;{skillCategory.category}&quot;</span>
-                    <span className="text-text-muted">: [</span>
-                    <div className="ml-3 sm:ml-4 flex flex-wrap gap-1.5 sm:gap-2 my-2">
-                      {skillCategory.skills.map((skill, skillIndex) => (
-                        <SkillTag key={skillIndex} skill={skill} />
-                      ))}
-                    </div>
-                    <span className="text-text-muted">
-                      ]{index < cvData.cv.technical_skills.length - 1 ? ',' : ''}
-                    </span>
-                  </div>
-                ))}
-
-                <div className="text-text-muted">{'}'}</div>
-              </div>
-            </TerminalWindow>
-          </section>
-
-          {/* ════════════════════════════════════════════════════════════════
-              FOOTER - Terminal Session End
-              ════════════════════════════════════════════════════════════════ */}
-          <footer className="border-t border-border pt-6 sm:pt-8 mt-10 sm:mt-16">
-            <div className="font-mono text-xs sm:text-sm text-text-muted space-y-2">
-              <div className="flex items-center gap-2">
-                <span className="text-accent">$</span>
-                <span>echo &quot;Thanks for visiting!&quot;</span>
-              </div>
-              <div className="text-text-secondary pl-4">Thanks for visiting!</div>
-
-              <div className="flex items-center gap-2 mt-3 sm:mt-4">
-                <span className="text-accent">$</span>
-                <span className="text-text-muted">exit</span>
-              </div>
-
-              <div className="mt-4 sm:mt-6 pt-4 border-t border-border/50 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-                <p className="text-text-muted text-xs">
-                  <span className="text-syntax-comment">{'// '}</span>
-                  Built with Next.js, TypeScript &amp; coffee
+          <footer className="section-rule py-10 md:py-14">
+            <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+              <div className="space-y-3">
+                <p className="eyebrow">Thanks for visiting</p>
+                <p className="max-w-2xl text-base leading-8 text-text-dim md:text-lg">
+                  Built with Next.js, TypeScript &amp; coffee.
                 </p>
-                <p className="text-text-muted text-xs">
-                  <span className="text-amber">©</span> {new Date().getFullYear()} {siteConfig.site.name}
+              </div>
+
+              <div className="space-y-2 md:text-right">
+                <p className="meta-text">Copyright</p>
+                <p className="text-sm text-text-faint">
+                  © {new Date().getFullYear()} {siteConfig.site.name}
                 </p>
               </div>
             </div>
           </footer>
-
         </main>
       </ContentErrorBoundary>
     </div>

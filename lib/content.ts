@@ -84,6 +84,7 @@ export interface Project {
     app_store?: string;
     demo?: string;
     testflight?: string;
+    website?: string;
   };
   features?: string[];
 }
