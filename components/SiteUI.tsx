@@ -103,6 +103,7 @@ export function ProjectRow({ project }: ProjectRowProps): React.JSX.Element {
   const images = project.images?.hero
     ? [project.images.hero, ...(project.images.gallery || [])]
     : project.images?.gallery || [];
+  const landscape = project.images?.aspect === 'landscape';
 
   return (
     <article className="rise border-b rule py-10 first:pt-0 sm:py-12 sm:first:pt-0">
@@ -138,14 +139,15 @@ export function ProjectRow({ project }: ProjectRowProps): React.JSX.Element {
       </div>
 
       {images.length > 0 ? (
-        <div className="shot-strip mt-8">
+        <div className={`shot-strip mt-8 ${landscape ? 'shot-strip--landscape' : ''}`}>
           {images.map((image, imageIndex) => (
             <div key={`${project.name}-${imageIndex}`} className="shot-strip__item">
               <Image
                 src={image}
                 alt={`${project.name} screenshot ${imageIndex + 1}`}
-                width={960}
-                height={720}
+                width={landscape ? 1624 : 660}
+                height={landscape ? 971 : 1434}
+                sizes={landscape ? '(min-width: 768px) 44rem, 85vw' : '(min-width: 768px) 12rem, 30vw'}
                 className="shot-strip__image"
               />
             </div>

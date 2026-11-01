@@ -8,12 +8,11 @@ projects:
       images:
         # hero: 
         gallery:
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1763751789/IMG_3405_okml42.jpg"
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1763751789/IMG_3406_xmktui.jpg"
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1763751789/IMG_3407_fbcs9o.jpg"
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1763751789/IMG_3410_bgplgd.jpg"
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1763751788/IMG_3411_swwmy0.jpg"
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1763752654/Dark-Light-Comparison_ezvlgh.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793559929/02-library_qck8cc.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793559928/01-reader-highlight_irqyum.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793559929/04-dictionary_aqsvnd.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793559930/09-reader-dark_li9vjt.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793559929/08-stats_df91tu.png"
       links:
         github: ""
         app_store: "https://testflight.apple.com/join/VU4j4CwJ"
@@ -33,7 +32,12 @@ projects:
       type: "macOS App"
       technologies: ["Swift", "AppKit", "Rust", "libghostty", "Metal"]
       images:
-        gallery: []
+        aspect: "landscape"
+        gallery:
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793560132/Screenshot_2026-11-02_at_12.36.18_AM_e03gak.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793560131/Screenshot_2026-11-02_at_12.36.49_AM_mjxoe0.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793560131/Screenshot_2026-11-02_at_12.36.57_AM_xjgh3s.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793560131/Screenshot_2026-11-02_at_12.38.22_AM_cfwstn.png"
       links:
         github: "https://github.com/ishaanrajiv/tern"
       features:
