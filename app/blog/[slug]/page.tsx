@@ -11,6 +11,8 @@ import remarkGfm from 'remark-gfm';
 
 import Navigation from '@/components/Navigation';
 import ContentErrorBoundary from '@/components/ContentErrorBoundary';
+import SiteFooter from '@/components/SiteFooter';
+import { formatDate } from '@/components/SiteUI';
 import { ArrowLeftIcon } from '@/components/icons';
 import { getSiteConfig } from '@/lib/content';
 
@@ -83,14 +85,6 @@ function getPostData(slug: string): PostData | null {
   }
 }
 
-function formatDate(date: string): string {
-  return new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
-
 export async function generateMetadata({ params }: BlogPostProps) {
   const { slug } = await params;
   const postData = getPostData(slug);
@@ -112,75 +106,81 @@ export default async function BlogPost({ params }: BlogPostProps) {
   const { slug } = await params;
   const postData = getPostData(slug);
 
+  const backLink = (label: string) => (
+    <Link href="/blog" className="text-link text-[0.9375rem]">
+      <ArrowLeftIcon className="h-4 w-4" />
+      {label}
+    </Link>
+  );
+
   if (!postData || postData.status === 'coming_soon') {
     return (
-      <div className="site-shell">
+      <>
         <Navigation />
 
         <ContentErrorBoundary>
-          <main className="page-frame page-offset">
-            <div className="max-w-3xl space-y-6 border-b border-line pb-10">
-              <Link href="/blog" className="interactive-line">
-                <ArrowLeftIcon className="h-4 w-4" />
-                <span>Back to Blog</span>
-              </Link>
+          <main className="px-4 pb-24 pt-14 sm:px-6 sm:pb-32 sm:pt-24">
+            <div className="mx-auto max-w-[42rem]">
+              {backLink('Back to the blog')}
 
-              <h1 className="page-title">
-                {postData?.status === 'coming_soon' ? 'Coming Soon' : 'Post Not Found'}
+              <h1 className="display mt-8 text-[2.75rem] sm:text-[4rem]">
+                {postData?.status === 'coming_soon' ? 'Coming soon' : 'Post not found'}
               </h1>
 
-              <p className="lede">
+              <p className="lede mt-6">
                 {postData?.status === 'coming_soon'
-                  ? 'This blog post is coming soon. Check back later for the full article.'
-                  : "The blog post you're looking for doesn't exist or has been moved."}
+                  ? 'This post is still being written. Check back later for the full article.'
+                  : "The post you're looking for doesn't exist or has been moved."}
               </p>
 
               {process.env.NODE_ENV === 'development' ? (
-                <div className="border border-line bg-surface p-5 text-sm text-text-dim">
+                <div className="mt-8 rounded-2xl bg-paper-raised p-5 text-sm text-ink/65 ring-1 ring-ink/[0.08]">
                   <p>
                     Attempted to load post with slug:{' '}
-                    <code className="border border-line px-2 py-1 text-text">{slug}</code>
+                    <code className="rounded bg-ink/[0.07] px-2 py-1 text-ink">{slug}</code>
                   </p>
                   <p className="mt-3">
                     Check the console for detailed error information and verify the post file
-                    exists in{' '}
-                    <code className="border border-line px-2 py-1 text-text">/content/posts/</code>.
+                    exists in <code className="rounded bg-ink/[0.07] px-2 py-1 text-ink">/content/posts/</code>.
                   </p>
                 </div>
               ) : null}
             </div>
           </main>
         </ContentErrorBoundary>
-      </div>
+
+        <SiteFooter />
+      </>
     );
   }
 
+  const formattedDate = formatDate(postData.date);
+
   return (
-    <div className="site-shell">
+    <>
       <Navigation />
 
       <ContentErrorBoundary>
-        <main className="page-frame page-offset">
-          <div className="mx-auto max-w-5xl">
-            <Link href="/blog" className="interactive-line">
-              <ArrowLeftIcon className="h-4 w-4" />
-              <span>Back to Blog</span>
-            </Link>
+        <main className="px-4 pb-24 pt-14 sm:px-6 sm:pb-32 sm:pt-24">
+          <div className="mx-auto max-w-[42rem]">
+            {backLink('Back to the blog')}
 
-            <header className="mt-8 border-b border-line pb-10 md:pb-12">
-              <div className="mx-auto max-w-4xl space-y-6">
-                <h1 className="article-title">{postData.title}</h1>
-
-                <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm uppercase tracking-[0.16em] text-text-faint">
-                  {postData.date ? <span>{formatDate(postData.date)}</span> : null}
-                  {postData.tags.length > 0 ? <span>{postData.tags.join(' / ')}</span> : null}
-                </div>
-
-                {postData.description ? <p className="lede">{postData.description}</p> : null}
-              </div>
+            <header className="mt-8 border-b rule pb-10 sm:pb-12">
+              {formattedDate ? <p className="label">{formattedDate}</p> : null}
+              <h1 className="display mt-4 text-[2.5rem] sm:text-[3.5rem]">{postData.title}</h1>
+              {postData.description ? <p className="lede mt-6">{postData.description}</p> : null}
+              {postData.tags.length > 0 ? (
+                <ul className="mt-6 flex flex-wrap gap-2" aria-label="Tags">
+                  {postData.tags.map((tag) => (
+                    <li key={tag} className="chip">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </header>
 
-            <article className="article-content mx-auto py-10 md:py-12">
+            <article className="article-content mt-10 sm:mt-12">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeHighlight, rehypeRaw]}
@@ -191,7 +191,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
                       alt={alt || ''}
                       width={1200}
                       height={900}
-                      className="h-auto w-full border border-line"
+                      className="h-auto w-full"
                     />
                   ),
                   div: (props: React.HTMLAttributes<HTMLDivElement>) => {
@@ -199,15 +199,15 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
                     if (typeof galleryId === 'string' && postData.galleries[galleryId]) {
                       return (
-                        <div className="image-strip my-8">
+                        <div className="shot-strip my-8">
                           {postData.galleries[galleryId].map((image: string, index: number) => (
-                            <div key={`${galleryId}-${index}`} className="image-strip__item">
+                            <div key={`${galleryId}-${index}`} className="shot-strip__item">
                               <Image
                                 src={image}
                                 alt={`Gallery image ${index + 1}`}
                                 width={960}
                                 height={720}
-                                className="h-full w-full object-cover"
+                                className="shot-strip__image"
                               />
                             </div>
                           ))}
@@ -223,15 +223,12 @@ export default async function BlogPost({ params }: BlogPostProps) {
               </ReactMarkdown>
             </article>
 
-            <footer className="mx-auto max-w-4xl border-t border-line pt-8">
-              <Link href="/blog" className="interactive-line">
-                <ArrowLeftIcon className="h-4 w-4" />
-                <span>Back to All Posts</span>
-              </Link>
-            </footer>
+            <footer className="mt-12 border-t rule pt-8">{backLink('All posts')}</footer>
           </div>
         </main>
       </ContentErrorBoundary>
-    </div>
+
+      <SiteFooter />
+    </>
   );
 }

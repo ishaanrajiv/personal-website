@@ -78,6 +78,8 @@ export interface Project {
   images?: {
     hero?: string;
     gallery?: string[];
+    // "landscape" for desktop window captures; phone screenshots (the default) are portrait.
+    aspect?: 'portrait' | 'landscape';
   };
   links: {
     github?: string;

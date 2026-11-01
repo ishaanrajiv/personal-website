@@ -4,18 +4,10 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import { Monogram, Wordmark } from '@/components/Brand';
+import ThemeToggle from '@/components/ThemeToggle';
 import { CloseIcon, MenuIcon } from '@/components/icons';
-
-interface NavigationProps {
-  className?: string;
-}
-
-const navItems = [
-  { path: '/', label: 'Home' },
-  { path: '/projects', label: 'Projects' },
-  { path: '/blog', label: 'Blog' },
-  { path: '/contact', label: 'Contact' },
-];
+import { NAV_ITEMS } from '@/components/site';
 
 function isActivePath(pathname: string, path: string): boolean {
   if (path === '/') {
@@ -25,94 +17,97 @@ function isActivePath(pathname: string, path: string): boolean {
   return pathname.startsWith(path);
 }
 
-export default function Navigation({ className = '' }: NavigationProps): React.JSX.Element {
+export default function Navigation(): React.JSX.Element {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+    if (!isOpen) {
+      return;
+    }
 
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-
-    return () => {
-      document.body.style.overflow = '';
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
     };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, [isOpen]);
 
-  return (
-    <>
-      <nav
-        className={`fixed inset-x-0 top-0 z-50 border-b border-line bg-[rgba(5,5,5,0.88)] backdrop-blur-xl ${className}`}
-      >
-        <div className="page-frame flex h-[4.5rem] items-center justify-between gap-6">
-          <Link
-            href="/"
-            className="text-sm font-semibold uppercase tracking-[0.18em] text-text transition-colors duration-300 hover:text-text-dim"
-          >
-            Ishaan Rajiv
-          </Link>
+  const close = () => setIsOpen(false);
 
-          <div className="hidden items-center gap-8 md:flex">
-            {navItems.map((item) => {
+  return (
+    <header className="sticky top-0 z-40 bg-paper/80 backdrop-blur-xl supports-[backdrop-filter]:bg-paper/70">
+      <nav className="mx-auto flex h-16 max-w-page items-center justify-between gap-4 px-4 sm:px-6">
+        <Link href="/" onClick={close} className="flex items-center gap-2.5 rounded-md" aria-label="Ishaan Rajiv, home">
+          <Monogram className="h-7 w-7" />
+          <Wordmark className="text-[1.25rem] leading-none" />
+        </Link>
+
+        <div className="flex items-center gap-1">
+          <ul className="mr-2 hidden items-center gap-1 md:flex">
+            {NAV_ITEMS.map((item) => {
               const active = isActivePath(pathname, item.path);
 
               return (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  className={`relative py-2 text-sm uppercase tracking-[0.18em] transition-colors duration-300 ${
-                    active ? 'text-text' : 'text-text-faint hover:text-text-dim'
-                  }`}
-                >
-                  {item.label}
-                  <span
-                    className={`absolute inset-x-0 bottom-0 h-px bg-text transition-opacity duration-300 ${
-                      active ? 'opacity-100' : 'opacity-0'
+                <li key={item.path}>
+                  <Link
+                    href={item.path}
+                    aria-current={active ? 'page' : undefined}
+                    className={`rounded-full px-3 py-2 text-[0.9375rem] transition-colors ${
+                      active ? 'bg-ink/[0.07] text-ink' : 'text-ink/65 hover:text-ink'
                     }`}
-                  />
-                </Link>
+                  >
+                    {item.label}
+                  </Link>
+                </li>
               );
             })}
-          </div>
+          </ul>
+
+          <ThemeToggle />
 
           <button
             type="button"
-            className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-text transition-colors duration-300 hover:text-text-dim md:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full text-ink/70 transition-colors hover:bg-ink/[0.07] hover:text-ink md:hidden"
             onClick={() => setIsOpen((current) => !current)}
             aria-expanded={isOpen}
+            aria-controls="mobile-menu"
             aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
-            {isOpen ? <CloseIcon className="h-4 w-4" /> : <MenuIcon className="h-4 w-4" />}
-            <span>{isOpen ? 'Close' : 'Menu'}</span>
+            {isOpen ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
           </button>
         </div>
       </nav>
 
       <div
-        className={`fixed inset-0 z-40 bg-bg/98 transition-opacity duration-300 md:hidden ${
-          isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
-        }`}
+        id="mobile-menu"
+        hidden={!isOpen}
+        className="absolute inset-x-0 top-full border-b rule bg-paper md:hidden"
       >
-        <div className="page-frame flex min-h-screen flex-col justify-center gap-10 pt-20">
-          {navItems.map((item) => {
+        <ul className="mx-auto max-w-page px-4 pb-6 pt-2 sm:px-6">
+          {NAV_ITEMS.map((item) => {
             const active = isActivePath(pathname, item.path);
 
             return (
-              <Link
-                key={item.path}
-                href={item.path}
-                className={`border-b border-line pb-5 text-4xl font-semibold tracking-[-0.05em] transition-colors duration-300 ${
-                  active ? 'text-text' : 'text-text-faint'
-                }`}
-              >
-                {item.label}
-              </Link>
+              <li key={item.path} className="border-b rule last:border-b-0">
+                <Link
+                  href={item.path}
+                  onClick={close}
+                  aria-current={active ? 'page' : undefined}
+                  className={`block py-4 text-[1.5rem] font-semibold tracking-[-0.025em] transition-colors ${
+                    active ? 'text-ink' : 'text-ink/55 hover:text-ink'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
-    </>
+    </header>
   );
 }

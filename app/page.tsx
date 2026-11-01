@@ -1,200 +1,172 @@
 import React from 'react';
+import Link from 'next/link';
 
 import Navigation from '@/components/Navigation';
 import ContentErrorBoundary from '@/components/ContentErrorBoundary';
-import HeroName from '@/components/HeroName';
-import { MetaList, SectionBand } from '@/components/MonochromeUI';
+import SiteFooter from '@/components/SiteFooter';
+import { Monogram } from '@/components/Brand';
+import { Container, Section, externalLinkProps } from '@/components/SiteUI';
 import { EmailIcon, GitHubIcon, LinkedInIcon } from '@/components/icons';
 import { getCVData, getSiteConfig } from '@/lib/content';
 
+const FACTS = [
+  { label: 'Now', body: 'Senior Principal Product Analyst at DB Digital' },
+  { label: 'Building', body: 'iOS apps and AI/ML experiments' },
+  { label: 'Experience', body: '10+ years in product analytics' },
+];
+
 export default function Home(): React.JSX.Element {
-  const siteConfig = getSiteConfig();
-  const cvData = getCVData();
-  const [firstName = siteConfig.site.name, lastName = ''] = siteConfig.site.name.split(' ');
+  const { site } = getSiteConfig();
+  const { cv } = getCVData();
+
+  const socials = [
+    { label: 'GitHub', href: site.contact.github, icon: GitHubIcon },
+    { label: 'LinkedIn', href: site.contact.linkedin, icon: LinkedInIcon },
+    { label: 'Email', href: `mailto:${site.contact.email}`, icon: EmailIcon },
+  ];
 
   return (
-    <div className="site-shell">
+    <>
       <Navigation />
 
       <ContentErrorBoundary>
-        <main className="page-frame page-offset">
-          <section className="min-h-[calc(100vh-7rem)] border-b border-line pb-12 pt-6 md:pb-16 md:pt-8">
-            <div className="space-y-8 md:space-y-10">
-              <p className="eyebrow">Analytics lead · builder · writer</p>
-              <HeroName firstName={firstName} lastName={lastName} />
-            </div>
+        <main>
+          {/* Hero */}
+          <section id="top">
+            <Container className="flex flex-col items-center pt-16 text-center sm:pt-24">
+              <Monogram className="h-20 w-20 drop-shadow-[0_18px_30px_rgb(35_40_56/0.22)] sm:h-24 sm:w-24" />
 
-            <div className="mt-10 grid gap-8 border-t border-line pt-8 lg:grid-cols-[minmax(0,1.15fr)_18rem] lg:items-start">
-              <div className="space-y-6">
-                <p className="lede max-w-4xl">{siteConfig.site.hero.subtitle}</p>
+              <p className="label mt-10">Analytics lead · builder · writer</p>
+              <h1 className="display mt-4 text-[3.25rem] sm:text-[5rem] lg:text-[6rem]">{site.name}</h1>
+              {site.hero.subtitle ? <p className="lede mt-6 max-w-[36rem]">{site.hero.subtitle}</p> : null}
 
-                <div className="space-y-3 text-base leading-8 text-text-dim md:text-lg">
-                  <p>Senior Principal Product Analyst @ DB Digital</p>
-                  <p>Building iOS apps &amp; exploring AI/ML</p>
-                  <p>10+ years in product analytics</p>
-                </div>
+              <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
+                <Link href="/projects" className="button-primary">
+                  See my projects
+                </Link>
+                <Link href="/blog" className="button-quiet">
+                  Read the blog
+                </Link>
               </div>
 
-              <div className="space-y-4">
-                <p className="eyebrow">Connect</p>
-                <div className="flex flex-col items-start gap-3">
-                  <a
-                    href={siteConfig.site.contact.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="interactive-line"
-                  >
-                    <GitHubIcon className="h-4 w-4" />
-                    <span>GitHub</span>
-                  </a>
-                  <a
-                    href={siteConfig.site.contact.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="interactive-line"
-                  >
-                    <LinkedInIcon className="h-4 w-4" />
-                    <span>LinkedIn</span>
-                  </a>
-                  <a href={`mailto:${siteConfig.site.contact.email}`} className="interactive-line">
-                    <EmailIcon className="h-4 w-4" />
-                    <span>Email</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+              <ul className="mt-6 flex items-center gap-5 text-[0.875rem] text-ink/50">
+                {socials.map(({ label, href, icon: Icon }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      {...externalLinkProps(href)}
+                      className="flex items-center gap-1.5 rounded-sm transition-colors hover:text-ink"
+                    >
+                      <Icon className="h-4 w-4" />
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </Container>
+
+            <Container className="pb-20 pt-20 sm:pb-28 sm:pt-28">
+              <ul className="grid gap-10 sm:grid-cols-3">
+                {FACTS.map((fact) => (
+                  <li key={fact.label} className="rise border-t rule pt-5">
+                    <p className="label">{fact.label}</p>
+                    <p className="mt-3 text-[1.0625rem] font-semibold tracking-[-0.01em]">{fact.body}</p>
+                  </li>
+                ))}
+              </ul>
+            </Container>
           </section>
 
-          <SectionBand title="About" id="about">
-            <div className="stack-grid">
-              {siteConfig.site.about.paragraphs.map((paragraph, index) => (
-                <p key={index} className="max-w-4xl text-base leading-8 text-text-dim md:text-lg">
+          <Section id="about" label="About" title="A decade in product analytics.">
+            <div className="space-y-5">
+              {site.about.paragraphs.map((paragraph, index) => (
+                <p key={index} className="rise lede max-w-[42rem]">
                   {paragraph}
                 </p>
               ))}
             </div>
-          </SectionBand>
+          </Section>
 
-          <SectionBand title="Experience" id="experience">
-            <div>
-              {cvData.cv.experience.map((experience, index) => {
-                const isCurrent = index === 0;
-
-                return (
-                  <article
-                    key={`${experience.company}-${experience.period}`}
-                    className={`list-row ${isCurrent ? 'py-6 md:py-7' : 'py-4 md:py-5'}`}
-                  >
-                    <div
-                      className={`grid gap-4 ${
-                        isCurrent
-                          ? 'lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-8'
-                          : 'items-start md:grid-cols-[minmax(0,1fr)_14rem] md:gap-6'
-                      }`}
-                    >
-                      <div className={isCurrent ? 'space-y-2' : 'space-y-1.5'}>
-                        <h3
-                          className={`font-semibold tracking-[-0.04em] ${
-                            isCurrent
-                              ? 'text-2xl text-text md:text-3xl'
-                              : 'text-xl text-text-dim md:text-2xl'
-                          }`}
-                        >
-                          {experience.title}
-                        </h3>
-                        <p className={isCurrent ? 'text-base text-text-dim md:text-lg' : 'text-sm text-text-faint md:text-base'}>
-                          {experience.company}
-                        </p>
-                        {isCurrent ? (
-                          <p className="max-w-3xl text-base leading-8 text-text-dim">
-                            {experience.description}
-                          </p>
-                        ) : null}
-                      </div>
-
-                      {isCurrent ? (
-                        <MetaList
-                          items={[
-                            { label: 'Period', value: experience.period },
-                            { label: 'Location', value: experience.location },
-                          ]}
-                        />
-                      ) : (
-                        <div className="border-t border-line pt-3 md:border-t-0 md:pt-0">
-                          <div>
-                            <p className="meta-text">Period</p>
-                            <p className="mt-1 text-sm text-text-faint md:text-[0.95rem]">{experience.period}</p>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </SectionBand>
-
-          <SectionBand title="Education" id="education">
-            <div className="space-y-6">
-              {cvData.cv.education.map((education) => (
-                <article key={`${education.institution}-${education.year}`} className="list-row py-6 md:py-7">
-                  <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_10rem] md:gap-8">
-                    <div className="space-y-2">
-                      <h3 className="text-2xl font-semibold tracking-[-0.04em] text-text md:text-3xl">
-                        {education.degree}
-                      </h3>
-                      <p className="text-base text-text-dim md:text-lg">{education.institution}</p>
-                    </div>
-
-                    <div className="space-y-2 md:text-right">
-                      <p className="meta-text">Class of</p>
-                      <p className="text-base text-text-dim md:text-lg">{education.year}</p>
-                    </div>
+          <Section id="experience" label="Experience" title="Where I've worked.">
+            <ol className="border-t rule">
+              {cv.experience.map((experience, index) => (
+                <li
+                  key={`${experience.company}-${experience.period}`}
+                  className="rise grid gap-2 border-b rule py-6 sm:grid-cols-[minmax(0,1fr)_11rem] sm:gap-8"
+                >
+                  <div>
+                    <h3 className="text-[1.125rem] font-semibold tracking-[-0.01em]">{experience.title}</h3>
+                    <p className="mt-1 text-[0.9375rem] text-ink/60">{experience.company}</p>
+                    {index === 0 ? <p className="body-copy mt-3 max-w-[36rem]">{experience.description}</p> : null}
                   </div>
-                </article>
+                  <div className="text-[0.875rem] text-ink/45 sm:text-right">
+                    <p className="tabular-nums">{experience.period}</p>
+                    {index === 0 ? <p className="mt-1">{experience.location}</p> : null}
+                  </div>
+                </li>
               ))}
-            </div>
-          </SectionBand>
+            </ol>
+          </Section>
 
-          <SectionBand title="Skills" id="skills">
-            <div className="space-y-6">
-              {cvData.cv.technical_skills.map((skillGroup) => (
-                <div key={skillGroup.category} className="list-row py-6 md:grid md:grid-cols-[11rem_minmax(0,1fr)] md:gap-8">
-                  <p className="meta-text">{skillGroup.category}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {skillGroup.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="border border-line px-3 py-1.5 text-xs uppercase tracking-[0.14em] text-text-dim"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+          <Section id="education" label="Education" title="Where I studied.">
+            <ul className="border-t rule">
+              {cv.education.map((education) => (
+                <li
+                  key={`${education.institution}-${education.year}`}
+                  className="rise grid gap-2 border-b rule py-6 sm:grid-cols-[minmax(0,1fr)_11rem] sm:gap-8"
+                >
+                  <div>
+                    <h3 className="text-[1.125rem] font-semibold tracking-[-0.01em]">{education.degree}</h3>
+                    <p className="mt-1 text-[0.9375rem] text-ink/60">{education.institution}</p>
                   </div>
+                  <p className="text-[0.875rem] text-ink/45 sm:text-right">Class of {education.year}</p>
+                </li>
+              ))}
+            </ul>
+          </Section>
+
+          <Section id="skills" label="Skills" title="What I work with.">
+            <div className="border-t rule">
+              {cv.technical_skills.map((group) => (
+                <div
+                  key={group.category}
+                  className="rise grid gap-4 border-b rule py-6 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-8"
+                >
+                  <h3 className="text-[0.9375rem] font-semibold text-ink/60">{group.category}</h3>
+                  <ul className="flex flex-wrap gap-2">
+                    {group.skills.map((skill) => (
+                      <li key={skill} className="chip">
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
-          </SectionBand>
+          </Section>
 
-          <footer className="section-rule py-10 md:py-14">
-            <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
-              <div className="space-y-3">
-                <p className="eyebrow">Thanks for visiting</p>
-                <p className="max-w-2xl text-base leading-8 text-text-dim md:text-lg">
-                  Built with Next.js, TypeScript &amp; coffee.
-                </p>
+          {/* Closing */}
+          <section className="border-t rule">
+            <Container className="flex flex-col items-center py-24 text-center sm:py-32">
+              <Monogram className="rise h-20 w-20 drop-shadow-[0_18px_30px_rgb(35_40_56/0.22)] sm:h-24 sm:w-24" />
+              <h2 className="display rise mt-10 text-[2.5rem] sm:text-[3.5rem]">Say hello.</h2>
+              <p className="lede rise mt-5 max-w-[30rem]">
+                I&apos;m happy to talk about analytics, iOS development, or anything you found here.
+              </p>
+              <div className="rise mt-9 flex flex-col items-center gap-3 sm:flex-row">
+                <a href={`mailto:${site.contact.email}`} className="button-primary">
+                  Send an email
+                </a>
+                <Link href="/contact" className="button-quiet">
+                  Other ways to reach me
+                </Link>
               </div>
-
-              <div className="space-y-2 md:text-right">
-                <p className="meta-text">Copyright</p>
-                <p className="text-sm text-text-faint">
-                  © {new Date().getFullYear()} {siteConfig.site.name}
-                </p>
-              </div>
-            </div>
-          </footer>
+            </Container>
+          </section>
         </main>
       </ContentErrorBoundary>
-    </div>
+
+      <SiteFooter />
+    </>
   );
 }
