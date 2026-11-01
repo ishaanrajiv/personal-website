@@ -6,8 +6,8 @@ import ContentErrorBoundary from '@/components/ContentErrorBoundary';
 import SiteFooter from '@/components/SiteFooter';
 import { Monogram } from '@/components/Brand';
 import { Container, Section, externalLinkProps } from '@/components/SiteUI';
-import { ArrowOutIcon, EmailIcon, GitHubIcon, LinkedInIcon } from '@/components/icons';
-import { getCVData, getProjectsData, getSiteConfig } from '@/lib/content';
+import { EmailIcon, GitHubIcon, LinkedInIcon } from '@/components/icons';
+import { getCVData, getSiteConfig } from '@/lib/content';
 
 const FACTS = [
   { label: 'Now', body: 'Senior Principal Product Analyst at DB Digital' },
@@ -18,7 +18,6 @@ const FACTS = [
 export default function Home(): React.JSX.Element {
   const { site } = getSiteConfig();
   const { cv } = getCVData();
-  const { projects } = getProjectsData();
 
   const socials = [
     { label: 'GitHub', href: site.contact.github, icon: GitHubIcon },
@@ -77,57 +76,6 @@ export default function Home(): React.JSX.Element {
               </ul>
             </Container>
           </section>
-
-          {/* Featured work, on an ink panel like the privacy section on the Lyrate site */}
-          <section id="work" className="px-2 sm:px-4">
-            <div className="mx-auto max-w-[80rem] rounded-[2rem] bg-ink px-6 py-20 text-on-ink sm:rounded-[2.5rem] sm:px-12 sm:py-28">
-              <div className="mx-auto max-w-page">
-                <div className="rise max-w-2xl">
-                  <p className="text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-on-ink/55">Selected work</p>
-                  <h2 className="display mt-4 text-[2.5rem] sm:text-[3.75rem]">Things I&apos;ve built.</h2>
-                  <p className="mt-6 text-[1.0625rem] leading-relaxed text-on-ink/70 sm:text-lg">
-                    Two iOS apps in beta, plus web tools and small games I make in my spare time.
-                  </p>
-                </div>
-
-                <ul className="mt-16 grid gap-10 sm:grid-cols-2">
-                  {projects.featured.map((project) => {
-                    const href = project.links.website || project.links.app_store || project.links.testflight;
-
-                    return (
-                      <li key={project.name} className="rise border-t border-on-ink/15 pt-5">
-                        <p className="text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-on-ink/55">
-                          {project.type}
-                          {project.status ? ` · ${project.status}` : null}
-                        </p>
-                        <h3 className="mt-3 text-[1.375rem] font-bold tracking-[-0.02em]">{project.name}</h3>
-                        <p className="mt-3 text-[0.9375rem] leading-relaxed text-on-ink/65">{project.description}</p>
-                        {href ? (
-                          <a
-                            href={href}
-                            {...externalLinkProps(href)}
-                            className="mt-5 inline-flex items-center gap-1.5 rounded-sm text-[0.9375rem] font-semibold underline decoration-on-ink/40 underline-offset-4 transition-colors hover:decoration-on-ink focus-visible:outline-on-ink"
-                          >
-                            {project.links.website ? 'Visit the site' : 'Join the beta'}
-                            <ArrowOutIcon className="h-4 w-4" />
-                          </a>
-                        ) : null}
-                      </li>
-                    );
-                  })}
-                </ul>
-
-                <Link
-                  href="/projects"
-                  className="mt-14 inline-flex h-12 items-center justify-center rounded-full bg-on-ink px-6 text-[0.9375rem] font-semibold text-ink transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-on-ink"
-                >
-                  All projects
-                </Link>
-              </div>
-            </div>
-          </section>
-
-          <div className="h-20 sm:h-28" />
 
           <Section id="about" label="About" title="A decade in product analytics.">
             <div className="space-y-5">
