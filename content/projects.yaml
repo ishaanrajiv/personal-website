@@ -1,12 +1,11 @@
 projects:
   featured:
-    - name: "Lyrate - eBook Reader"
-      description: "An eBook reader for iOS that transforms your reading experience with AI-generated chapter summaries, reading analytics, and comprehensive library management. Built entirely using large language models as an experiment in AI-assisted development."
+    - name: "Lyrate - EPUB Reader"
+      description: "An EPUB reader for iPhone and iPad. You pick the typeface, size, spacing, margins and alignment, and it justifies and hyphenates properly. Books sit on shelves you arrange, and you can search the text of your whole library. Everything stays on your device. There is no account, and reading, search and the dictionary all work offline. Built entirely with large language models, as an experiment in AI-assisted development."
       status: "beta"
       type: "iOS App"
-      technologies: ["Swift", "SwiftUI", "SwiftData", "Google Gemini API", "EPUBKit"]
+      technologies: ["Swift", "SwiftUI", "SwiftData", "EPUBKit"]
       images:
-        # hero: 
         gallery:
           - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793559929/02-library_qck8cc.png"
           - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793559928/01-reader-highlight_irqyum.png"
@@ -15,17 +14,17 @@ projects:
           - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793559929/08-stats_df91tu.png"
       links:
         github: ""
-        app_store: "https://testflight.apple.com/join/VU4j4CwJ"
+        testflight: "https://testflight.apple.com/join/VU4j4CwJ"
         website: "https://lyrate.ishaanrajiv.com"
       features:
-        - "AI Summaries"
-        - "Reading Analytics"
-        - "Smart Highlights"
-        - "Custom Fonts"
-        - "Semantic Search"
+        - "Custom Typography"
+        - "Shelves"
+        - "Full-Text Search"
+        - "Offline Dictionary"
+        - "Read Aloud"
         - "Quote Sharing"
-        - "Calibre Sync"
-        - "Smart Caching"
+        - "Reading Stats"
+        - "ZIP Backups"
     - name: "Tern - Terminal for Coding Agents"
       description: "A macOS terminal built around coding agents. The sidebar groups tabs by folder and shows which agent is working, waiting for you, or done, and a background daemon keeps every session running after you quit the app. It runs on Ghostty's terminal engine and is in early alpha."
       status: "alpha"
