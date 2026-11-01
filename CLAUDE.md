@@ -22,7 +22,7 @@ This is a Next.js 15 personal website built with:
 - Tailwind CSS 4
 - App Router (Next.js 13+ app directory structure)
 
-The project uses Turbopack for development builds and includes font optimization with Poppins and JetBrains Mono fonts.
+The project uses Turbopack for development builds. Its design follows the Lyrate site (lyrate.ishaanrajiv.com): the same paper and ink colours, system UI type and Outfit Medium for the wordmark.
 
 ## Development Commands
 
@@ -38,8 +38,8 @@ The project follows Next.js App Router conventions:
 - `/app/layout.tsx` - Root layout with font loading and metadata
 - `/app/page.tsx` - Home page component
 - `/app/globals.css` - Global styles with Tailwind directives
-- `/app/icon.svg` - Site icon
-- `/components/` - Reusable React components (Navigation, ErrorBoundary, etc.)
+- `/app/icon.tsx`, `/app/apple-icon.tsx`, `/app/opengraph-image.tsx` - Generated favicon, touch icon and share image (IR monogram)
+- `/components/` - Reusable React components (Navigation, SiteUI, SiteFooter, Brand, ErrorBoundary, etc.)
 - `/public/` - Static assets (SVG icons)
 
 ### Content Management System
@@ -59,10 +59,10 @@ TypeScript configuration includes path mapping with `@/*` alias pointing to the 
 ## Styling
 
 Uses Tailwind CSS 4 with PostCSS configuration:
-- CSS custom properties for fonts (`--font-poppins`, `--font-jetbrains-mono`) 
-- `@theme inline` directive for defining custom CSS variables in `globals.css`
-- Automatic dark mode support using `prefers-color-scheme: dark`
-- Background/foreground color variables that adapt to system theme
+- Colour tokens `paper`, `paper-raised`, `ink` and `on-ink` are RGB triplets in `:root` and `.dark`, exposed to Tailwind through `@theme inline` in `globals.css` (use them as `bg-paper`, `text-ink/60`, etc.)
+- Light and dark themes via `next-themes`, which sets a `.dark` class on `<html>`; the default follows the system and `components/ThemeToggle.tsx` switches it
+- Shared component classes in `globals.css`: `label`, `display`, `lede`, `body-copy`, `button-primary`, `button-quiet`, `text-link`, `chip`, `rule`
+- `.rise` fades sections in on scroll where scroll-driven animations are supported
 - Responsive design patterns (sm:, md: breakpoints)
 
-The styling system integrates Poppins and JetBrains Mono fonts loaded via `next/font/google` with CSS variables for consistent typography across the site.
+Body text uses the system UI font stack. Outfit Medium (`app/fonts/Outfit-Medium.ttf`, SIL OFL) is loaded with `next/font/local` as `--font-outfit` for the wordmark, monogram and generated icons.
