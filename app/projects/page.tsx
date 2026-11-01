@@ -35,7 +35,7 @@ export default function ProjectsPage() {
             <PageHeader
               label="Selected work"
               title="Projects"
-              description="iOS apps, web tools and small experiments. Most of them have their source on GitHub."
+              description="Apps for iPhone and Mac, web tools and small experiments. Most of them have their source on GitHub."
             />
 
             <ProjectGroup title="Featured" projects={projects.featured} />

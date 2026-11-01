@@ -27,26 +27,24 @@ projects:
         - "Quote Sharing"
         - "Calibre Sync"
         - "Smart Caching"
-    - name: "Thought Stream - Productivity"
-      description: "A native iOS app that captures and organizes thoughts using AI-powered classification into Tasks, Reminders, Notes, Bookmarks, Knowledge. Features seamless voice & text input with Gemini API integration for enhanced productivity workflows."
-      status: "beta"
-      type: "iOS App"
-      technologies: ["Swift", "SwiftUI", "SwiftData", "Google Gemini API"]
+    - name: "Tern - Terminal for Coding Agents"
+      description: "A macOS terminal built around coding agents. The sidebar groups tabs by folder and shows which agent is working, waiting for you, or done, and a background daemon keeps every session running after you quit the app. It runs on Ghostty's terminal engine and is in early alpha."
+      status: "alpha"
+      type: "macOS App"
+      technologies: ["Swift", "AppKit", "Rust", "libghostty", "Metal"]
       images:
-        # hero: 
-        gallery:
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1756456862/ThoughtStream_Inbox.png"
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1756456861/ThoughtStream_Detail.png"
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1756456861/ThoughtStream_AddNew.png"
-          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1756456861/ThoughtStream_Focus.png"
+        gallery: []
       links:
-        github: ""
-        app_store: "https://testflight.apple.com/join/dkzhQTU8"
+        github: "https://github.com/ishaanrajiv/tern"
       features:
-        - "Text & Voice Support"
-        - "AI-powered Categorization"
-        - "Smart Productivity"
-        
+        - "Agent Status Sidebar"
+        - "Persistent Sessions"
+        - "Worktree Tabs"
+        - "Usage Limits"
+        - "Splits and Search"
+        - "SSH and tmux"
+        - "Launch Presets"
+
   # Other project categories
   web_projects:
     - name: "Personal Website"
