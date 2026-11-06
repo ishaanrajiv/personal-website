@@ -25,6 +25,30 @@ projects:
         - "Quote Sharing"
         - "Reading Stats"
         - "ZIP Backups"
+    - name: "Avia Browser"
+      description: "A web browser for iPhone, built on WebKit. One floating bar sits at the bottom of the page and shrinks out of the way as you scroll, and tabs are a stack of cards you swipe through. Ads, trackers and cookie banners are blocked by default, tracking tags come off links, and any page can be read in reader mode or darkened. Articles you read stay on the phone, so you can find a page later by something it said or ask about it with Apple's on-device model."
+      status: "beta"
+      type: "iOS App"
+      technologies: ["Swift", "SwiftUI", "WebKit", "SwiftData", "Foundation Models"]
+      images:
+        gallery:
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793976100/avia-01-browse.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793976103/avia-02-scroll.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793976106/avia-03-tabs.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793976110/avia-04-tools.png"
+          - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793976112/avia-05-reader.png"
+      links:
+        github: ""
+        testflight: "https://testflight.apple.com/join/N33Ybgu8"
+      features:
+        - "Floating Bar"
+        - "Card Tabs"
+        - "Ad and Tracker Blocking"
+        - "Link Cleaning"
+        - "Reader Mode"
+        - "Dark Pages"
+        - "Reading Memory"
+        - "Private Tab Lock"
     - name: "Tern - Terminal for Coding Agents"
       description: "A macOS terminal built around coding agents. The sidebar groups tabs by folder and shows which agent is working, waiting for you, or done, and a background daemon keeps every session running after you quit the app. It runs on Ghostty's terminal engine and is in early alpha."
       status: "alpha"
