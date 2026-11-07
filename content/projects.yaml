@@ -2,7 +2,7 @@ projects:
   featured:
     - name: "Lyrate - EPUB Reader"
       description: "An EPUB reader for iPhone and iPad. You pick the typeface, size, spacing, margins and alignment, and it justifies and hyphenates properly. Books sit on shelves you arrange, and you can search the text of your whole library. Everything stays on your device. There is no account, and reading, search and the dictionary all work offline. Built entirely with large language models, as an experiment in AI-assisted development."
-      status: "beta"
+      status: ""
       type: "iOS App"
       technologies: ["Swift", "SwiftUI", "SwiftData", "EPUBKit"]
       images:
@@ -14,7 +14,7 @@ projects:
           - "https://res.cloudinary.com/dqxww3j08/image/upload/v1793559929/08-stats_df91tu.png"
       links:
         github: ""
-        testflight: "https://testflight.apple.com/join/VU4j4CwJ"
+        app_store: "https://apps.apple.com/app/lyrate-epub-reader/id6752578241"
         website: "https://lyrate.ishaanrajiv.com"
       features:
         - "Custom Typography"
