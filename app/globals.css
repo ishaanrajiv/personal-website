@@ -5,7 +5,7 @@
 
 /*
   Colour tokens shared with lyrate.ishaanrajiv.com: brand ink #232838 and paper
-  #E9DFCB, on page backgrounds #F2EDED (light) and #0D0D0D (dark). Values are RGB
+  #E9DFCB, on page backgrounds #F2EDED (light) and #080808 (dark). Values are RGB
   triplets so the colours below can take Tailwind opacity modifiers.
 */
 :root {
@@ -18,7 +18,7 @@
 }
 
 .dark {
-  --paper: 13 13 13;
+  --paper: 8 8 8;
   --paper-raised: 22 22 22;
   --ink: 233 223 203;
   --on-ink: 12 14 21;
