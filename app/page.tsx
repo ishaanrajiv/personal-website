@@ -5,19 +5,14 @@ import Navigation from '@/components/Navigation';
 import ContentErrorBoundary from '@/components/ContentErrorBoundary';
 import SiteFooter from '@/components/SiteFooter';
 import { AppIcon } from '@/components/Brand';
-import { Container, Section, externalLinkProps } from '@/components/SiteUI';
+import { Container, ProjectCard, Section, externalLinkProps } from '@/components/SiteUI';
 import { EmailIcon, GitHubIcon, LinkedInIcon } from '@/components/icons';
-import { getCVData, getSiteConfig } from '@/lib/content';
-
-const FACTS = [
-  { label: 'Now', body: 'Senior Principal Product Analyst at DB Digital' },
-  { label: 'Building', body: 'iOS apps and AI/ML experiments' },
-  { label: 'Experience', body: '10+ years in product analytics' },
-];
+import { getCVData, getProjectsData, getSiteConfig } from '@/lib/content';
 
 export default function Home(): React.JSX.Element {
   const { site } = getSiteConfig();
   const { cv } = getCVData();
+  const { projects } = getProjectsData();
 
   const socials = [
     { label: 'GitHub', href: site.contact.github, icon: GitHubIcon },
@@ -33,10 +28,10 @@ export default function Home(): React.JSX.Element {
         <main>
           {/* Hero */}
           <section id="top">
-            <Container className="flex flex-col items-center pt-16 text-center sm:pt-24">
+            <Container className="flex flex-col items-center pb-16 pt-14 text-center sm:pb-20 sm:pt-20">
               <AppIcon className="h-20 w-20 sm:h-24 sm:w-24" />
 
-              <p className="label mt-10">Analytics lead · builder · writer</p>
+              <p className="label mt-10">Analytics lead · builder</p>
               {/* The name is the wordmark, so it is set in Geist Medium like the one in the nav. */}
               <h1 className="mt-4 font-wordmark text-[3.25rem] font-medium leading-[1.02] tracking-[-0.025em] sm:text-[5rem] lg:text-[6rem]">
                 {site.name}
@@ -47,8 +42,8 @@ export default function Home(): React.JSX.Element {
                 <Link href="/projects" className="button-primary">
                   See my projects
                 </Link>
-                <Link href="/blog" className="button-quiet">
-                  Read the blog
+                <Link href="/about" className="button-quiet">
+                  About me
                 </Link>
               </div>
 
@@ -68,93 +63,64 @@ export default function Home(): React.JSX.Element {
               </ul>
             </Container>
 
-            <Container className="pb-20 pt-20 sm:pb-28 sm:pt-28">
-              <ul className="grid gap-10 sm:grid-cols-3">
-                {FACTS.map((fact) => (
-                  <li key={fact.label} className="rise border-t rule pt-5">
-                    <p className="label">{fact.label}</p>
-                    <p className="mt-3 text-[1.0625rem] font-semibold tracking-[-0.01em]">{fact.body}</p>
-                  </li>
-                ))}
-              </ul>
-            </Container>
           </section>
 
-          <Section id="about" label="About" title="A decade in product analytics.">
-            <div className="space-y-5">
-              {site.about.paragraphs.map((paragraph, index) => (
+          <Section id="about" title="About" compact>
+            <div className="space-y-4">
+              {site.about.short.map((paragraph, index) => (
                 <p key={index} className="rise lede max-w-[42rem]">
                   {paragraph}
                 </p>
               ))}
             </div>
-          </Section>
 
-          <Section id="experience" label="Experience" title="Where I've worked.">
-            <ol className="border-t rule">
-              {cv.experience.map((experience, index) => (
+            <ol className="mt-8 border-t rule">
+              {cv.experience.map((experience) => (
                 <li
                   key={`${experience.company}-${experience.period}`}
-                  className="rise grid gap-2 border-b rule py-6 sm:grid-cols-[minmax(0,1fr)_11rem] sm:gap-8"
+                  className="rise grid gap-x-8 gap-y-0.5 border-b rule py-3 text-[0.9375rem] sm:grid-cols-[9rem_minmax(0,1fr)_10rem]"
                 >
-                  <div>
-                    <h3 className="text-[1.125rem] font-semibold tracking-[-0.01em]">{experience.title}</h3>
-                    <p className="mt-1 text-[0.9375rem] text-ink/60">{experience.company}</p>
-                    {index === 0 ? <p className="body-copy mt-3 max-w-[36rem]">{experience.description}</p> : null}
-                  </div>
-                  <div className="text-[0.875rem] text-ink/45 sm:text-right">
-                    <p className="tabular-nums">{experience.period}</p>
-                    {index === 0 ? <p className="mt-1">{experience.location}</p> : null}
-                  </div>
+                  <span className="font-semibold">{experience.company.replace(/ \(.*\)$/, '')}</span>
+                  <span className="text-ink/60">{experience.title}</span>
+                  <span className="tabular-nums text-ink/45 sm:text-right">{experience.period}</span>
                 </li>
               ))}
             </ol>
+
+            <Link href="/about" className="text-link mt-6 text-[0.9375rem]">
+              More about me
+            </Link>
           </Section>
 
-          <Section id="education" label="Education" title="Where I studied.">
-            <ul className="border-t rule">
-              {cv.education.map((education) => (
-                <li
-                  key={`${education.institution}-${education.year}`}
-                  className="rise grid gap-2 border-b rule py-6 sm:grid-cols-[minmax(0,1fr)_11rem] sm:gap-8"
-                >
-                  <div>
-                    <h3 className="text-[1.125rem] font-semibold tracking-[-0.01em]">{education.degree}</h3>
-                    <p className="mt-1 text-[0.9375rem] text-ink/60">{education.institution}</p>
-                  </div>
-                  <p className="text-[0.875rem] text-ink/45 sm:text-right">Class of {education.year}</p>
-                </li>
+          <Section id="projects" title="Projects" compact>
+            <ul className="grid gap-4 sm:grid-cols-2">
+              {[...projects.featured, ...projects.open_source.filter((project) => project.home), ...projects.wip].map((project) => (
+                <ProjectCard key={project.name} project={project} />
               ))}
+              <li className="rise flex">
+                <Link
+                  href="/projects"
+                  className="flex grow flex-col justify-between rounded-2xl border rule p-5 transition-colors hover:bg-ink/[0.04]"
+                >
+                  <span className="label">And more</span>
+                  <span>
+                    <span className="mt-3 block text-[1.125rem] font-bold leading-tight tracking-[-0.02em]">All projects</span>
+                    <span className="body-copy mt-2 block">
+                      Screenshots and details for these, plus more libraries, tools and small web things.
+                    </span>
+                  </span>
+                </Link>
+              </li>
             </ul>
-          </Section>
-
-          <Section id="skills" label="Skills" title="What I work with.">
-            <div className="border-t rule">
-              {cv.technical_skills.map((group) => (
-                <div
-                  key={group.category}
-                  className="rise grid gap-4 border-b rule py-6 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-8"
-                >
-                  <h3 className="text-[0.9375rem] font-semibold text-ink/60">{group.category}</h3>
-                  <ul className="flex flex-wrap gap-2">
-                    {group.skills.map((skill) => (
-                      <li key={skill} className="chip">
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
           </Section>
 
           {/* Closing */}
           <section className="border-t rule">
-            <Container className="flex flex-col items-center py-24 text-center sm:py-32">
+            <Container className="flex flex-col items-center py-16 text-center sm:py-24">
               <AppIcon className="rise h-20 w-20 sm:h-24 sm:w-24" />
               <h2 className="display rise mt-10 text-[2.5rem] sm:text-[3.5rem]">Say hello.</h2>
               <p className="lede rise mt-5 max-w-[30rem]">
-                I&apos;m happy to talk about analytics, iOS development, or anything you found here.
+                I&apos;m happy to talk about analytics, the apps, or anything you found here.
               </p>
               <div className="rise mt-9 flex flex-col items-center gap-3 sm:flex-row">
                 <a href={`mailto:${site.contact.email}`} className="button-primary">

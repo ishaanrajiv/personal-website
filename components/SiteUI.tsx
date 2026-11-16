@@ -1,34 +1,25 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 
 import { ArrowOutIcon } from '@/components/icons';
+import { RELEASE_LABELS } from '@/lib/content';
 import type { Project } from '@/lib/content';
 
 interface PageHeaderProps {
   title: string;
-  label?: string;
   description?: string;
 }
 
 interface SectionProps {
-  label: string;
   title: string;
   children: React.ReactNode;
   id?: string;
+  // Less space above and below, for the homepage.
+  compact?: boolean;
 }
 
 interface ProjectRowProps {
   project: Project;
-}
-
-interface PostRowProps {
-  title: string;
-  slug: string;
-  description: string;
-  status: string;
-  date?: string;
-  tags?: string[];
 }
 
 interface ContactRowProps {
@@ -36,18 +27,6 @@ interface ContactRowProps {
   value: string;
   href: string;
   icon?: React.ReactNode;
-}
-
-export function formatDate(date?: string): string | null {
-  if (!date) {
-    return null;
-  }
-
-  return new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
 }
 
 export function externalLinkProps(href: string) {
@@ -71,35 +50,74 @@ export function Container({ className = '', children }: { className?: string; ch
   return <div className={`mx-auto max-w-page px-4 sm:px-6 ${className}`}>{children}</div>;
 }
 
-/** Label, display title and lede at the top of an inner page. */
-export function PageHeader({ title, label, description }: PageHeaderProps): React.JSX.Element {
+/** Display title and lede at the top of an inner page. */
+export function PageHeader({ title, description }: PageHeaderProps): React.JSX.Element {
   return (
     <header className="border-b rule pb-10 sm:pb-12">
-      {label ? <p className="label">{label}</p> : null}
-      <h1 className="display mt-4 text-[2.75rem] sm:text-[4rem]">{title}</h1>
+      <h1 className="display text-[2.75rem] sm:text-[4rem]">{title}</h1>
       {description ? <p className="lede mt-6 max-w-2xl">{description}</p> : null}
     </header>
   );
 }
 
-/** A section with its label and title in a left column and content on the right. */
-export function Section({ label, title, children, id }: SectionProps): React.JSX.Element {
+/** A section with its title in a left column and content on the right. */
+export function Section({ title, children, id, compact = false }: SectionProps): React.JSX.Element {
   return (
     <section id={id} className="border-t rule">
-      <Container className="grid grid-cols-[minmax(0,1fr)] gap-10 py-20 sm:py-28 lg:grid-cols-[18rem_minmax(0,1fr)] lg:gap-20">
-        <div className="rise">
-          <p className="label">{label}</p>
-          <h2 className="display mt-4 text-[2.25rem] sm:text-[2.75rem]">{title}</h2>
-        </div>
+      <Container
+        className={`grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[18rem_minmax(0,1fr)] ${
+          compact ? 'py-14 sm:py-20 lg:gap-16' : 'py-20 sm:py-28 lg:gap-20'
+        }`}
+      >
+        <h2 className="display rise text-[2.25rem] sm:text-[2.75rem]">{title}</h2>
         <div>{children}</div>
       </Container>
     </section>
   );
 }
 
+/** A project's type and stage, with its release badge beside them. */
+function ProjectMeta({ project }: ProjectRowProps): React.JSX.Element {
+  const status = project.status ? project.status.replaceAll('_', ' ') : null;
+
+  return (
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+      <p className="label">
+        {project.type}
+        {status ? ` · ${status}` : null}
+      </p>
+      {project.release ? <span className="badge">{RELEASE_LABELS[project.release]}</span> : null}
+    </div>
+  );
+}
+
+/** A project as a card, for the homepage: badge, name, one line and its links. */
+export function ProjectCard({ project }: ProjectRowProps): React.JSX.Element {
+  const links = getProjectLinks(project);
+
+  return (
+    <li className="rise flex flex-col rounded-2xl bg-paper-raised p-5">
+      <ProjectMeta project={project} />
+      <h3 className="mt-3 text-[1.125rem] font-bold leading-tight tracking-[-0.02em]">{project.name}</h3>
+      <p className="body-copy mt-2 grow">{project.summary}</p>
+      <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[0.875rem]">
+        {links.length > 0 ? (
+          links.map((link) => (
+            <a key={link.label} href={link.href} {...externalLinkProps(link.href)} className="text-link">
+              {link.label}
+              <ArrowOutIcon className="h-3.5 w-3.5" />
+            </a>
+          ))
+        ) : (
+          <span className="text-ink/45">Not released</span>
+        )}
+      </div>
+    </li>
+  );
+}
+
 export function ProjectRow({ project }: ProjectRowProps): React.JSX.Element {
   const links = getProjectLinks(project);
-  const status = project.status ? project.status.replaceAll('_', ' ') : null;
   const images = project.images?.hero
     ? [project.images.hero, ...(project.images.gallery || [])]
     : project.images?.gallery || [];
@@ -107,10 +125,7 @@ export function ProjectRow({ project }: ProjectRowProps): React.JSX.Element {
 
   return (
     <article className="rise border-b rule py-10 first:pt-0 sm:py-12 sm:first:pt-0">
-      <p className="label">
-        {project.type}
-        {status ? ` · ${status}` : null}
-      </p>
+      <ProjectMeta project={project} />
       <h3 className="mt-3 text-[1.625rem] font-bold leading-tight tracking-[-0.025em] sm:text-[1.875rem]">
         {project.name}
       </h3>
@@ -125,6 +140,8 @@ export function ProjectRow({ project }: ProjectRowProps): React.JSX.Element {
           ))}
         </ul>
       ) : null}
+
+      {project.note ? <p className="body-copy mt-6 max-w-[44rem]">{project.note}</p> : null}
 
       <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
         {links.map((link) => (
@@ -153,39 +170,6 @@ export function ProjectRow({ project }: ProjectRowProps): React.JSX.Element {
             </div>
           ))}
         </div>
-      ) : null}
-    </article>
-  );
-}
-
-export function PostRow({ title, slug, description, status, date, tags = [] }: PostRowProps): React.JSX.Element {
-  const formattedDate = formatDate(date);
-  const isPublished = status === 'published';
-  const meta = [formattedDate, tags.join(' · ')].filter(Boolean).join('  ·  ');
-
-  return (
-    <article className="rise border-b rule py-8 sm:py-10">
-      <div className="flex flex-wrap items-center gap-3">
-        {meta ? <p className="text-[0.8125rem] text-ink/45">{meta}</p> : null}
-        {!isPublished ? <span className="chip">Coming soon</span> : null}
-      </div>
-
-      <h2 className="mt-3 text-[1.5rem] font-bold leading-snug tracking-[-0.025em] sm:text-[1.75rem]">
-        {isPublished ? (
-          <Link href={`/blog/${slug}`} className="rounded-sm transition-colors hover:text-ink/70">
-            {title}
-          </Link>
-        ) : (
-          <span className="text-ink/70">{title}</span>
-        )}
-      </h2>
-
-      <p className="body-copy mt-3 max-w-[40rem] text-[1rem]">{description}</p>
-
-      {isPublished ? (
-        <Link href={`/blog/${slug}`} className="text-link mt-5 text-[0.9375rem]">
-          Read the post
-        </Link>
       ) : null}
     </article>
   );

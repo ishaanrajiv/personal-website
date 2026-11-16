@@ -10,17 +10,14 @@ A modern personal website built with Next.js 15, styled in the same design langu
 - **Package Manager**: Bun
 - **Fonts**: System UI for text, Geist Medium for the wordmark
 - **Build Tool**: Turbopack (development)
-- **Content**: YAML + Markdown hybrid content management
-- **Blog**: Markdown with syntax highlighting and GitHub Flavored Markdown
+- **Content**: YAML content management
 
 ## Features
 
 - **Design**: A shared design language (label-colour text, a Sky accent, the "ir" mark), with a theme toggle that follows the system by default
-- **Blog System**: Full markdown support with clickable posts and dynamic routing
+- **Projects**: Every project carries a release badge: open source, App Store, TestFlight beta or WIP
 - **Content Management**: YAML-based system for easy updates
-- **Syntax Highlighting**: Code blocks with rehype-highlight
 - **Responsive**: Mobile-first design with Tailwind breakpoints
-- **SEO Optimized**: Dynamic metadata generation for blog posts
 
 ## Development
 
@@ -52,9 +49,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ```
 ├── app/                 # Next.js App Router pages and layouts
-│   ├── blog/           # Blog pages and dynamic [slug] routing
-│   │   ├── [slug]/     # Dynamic blog post pages
-│   │   └── page.tsx    # Blog listing page
+│   ├── about/          # About page: background, experience, education, skills
 │   ├── contact/        # Contact page
 │   ├── projects/       # Projects showcase
 │   ├── globals.css     # Global styles and Tailwind directives
@@ -66,11 +61,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 │   ├── ErrorBoundary.tsx
 │   └── Navigation.tsx
 ├── content/            # Content management files
-│   ├── posts/          # Markdown blog posts
-│   │   └── *.md       # Individual blog post files
 │   ├── site.yaml      # Site configuration and content
 │   ├── cv.yaml        # CV/resume data
-│   ├── blog.yaml      # Blog metadata and configuration
 │   └── projects.yaml  # Projects data
 ├── lib/               # Utilities and content loading
 ├── public/            # Static assets (SVG icons)
@@ -79,46 +71,33 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Content Management
 
-The site uses a hybrid YAML + Markdown content management system:
+The site's content is YAML in `/content/`:
 
-### YAML Configuration Files
-- `site.yaml` - Main site content (hero, about, skills, contact)
+- `site.yaml` - Main site content (hero, about, contact)
 - `cv.yaml` - Professional experience and resume data
-- `blog.yaml` - Blog post metadata, categories, and featured posts
 - `projects.yaml` - Project portfolio data
 
-### Blog System
-The blog uses a markdown-based system located in `/content/posts/`:
+### Projects
 
-#### Adding New Blog Posts
-1. Create a new `.md` file in `/content/posts/`
-2. Add frontmatter with required fields:
-   ```yaml
-   ---
-   title: "Your Post Title"
-   date: "YYYY-MM-DD"
-   description: "Brief description of the post"
-   tags: ["tag1", "tag2", "tag3"]
-   status: "published" # or "draft"
-   ---
-   ```
-3. Write your content in GitHub Flavored Markdown
-4. Update `/content/blog.yaml` to include the post in `featured_posts` with matching slug
+`projects.yaml` has four groups: `featured` (the apps), `wip` (not released yet), `open_source` (libraries and tools) and `web` (small things in a browser). A project's `release` is shown as a badge; leave it out for no badge:
 
-#### Blog Features
-- **Markdown Support**: Full GitHub Flavored Markdown with syntax highlighting
-- **Dynamic Routing**: Automatic slug-based URLs (`/blog/post-slug`)
-- **Syntax Highlighting**: Code blocks with rehype-highlight
-- **SEO**: Automatic meta tag generation
-- **Status Control**: Draft vs. published post states
-- **Responsive Design**: Mobile-optimized reading experience
+| `release` | Badge | Means |
+| --- | --- | --- |
+| `open_source` | Open source | Source is public on GitHub |
+| `app_store` | App Store | Released on the App Store |
+| `testflight` | TestFlight beta | Public beta on TestFlight |
+| `wip` | WIP | Still being built, not released |
+
+`summary` is the one line the homepage shows; the homepage has a card for every `featured` and `wip` project, and for an `open_source` one that sets `home: true`. `note` is the line a project with no links shows instead. `status` is the stage (`alpha`, `beta`) where it's worth saying.
+
+The blog is off the site for now; `/blog` addresses redirect home (`next.config.ts`).
 
 ## License
 
 This project uses dual licensing:
 
 - **Code** (application structure, components, configuration): [MIT License](LICENSE)
-- **Content** (personal information, blog posts, portfolio): [Creative Commons Attribution 4.0](LICENSE)
+- **Content** (personal information, portfolio): [Creative Commons Attribution 4.0](LICENSE)
 
 See the [LICENSE](LICENSE) file for full details.
 

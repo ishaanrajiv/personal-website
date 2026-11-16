@@ -36,7 +36,8 @@ The project uses Turbopack for development builds. Its design follows the shared
 The project follows Next.js App Router conventions:
 - `/app/` - Contains all routes, layouts, and page components
 - `/app/layout.tsx` - Root layout with font loading and metadata
-- `/app/page.tsx` - Home page component
+- `/app/page.tsx` - Home page: hero, a short about with the experience list, and the projects as cards
+- `/app/about/page.tsx` - Background, experience, education and skills
 - `/app/globals.css` - Global styles with Tailwind directives
 - `/app/icon.svg`, `/app/apple-icon.tsx`, `/app/opengraph-image.tsx` - Favicon (switches with the system appearance), generated touch icon and share image, all showing the "ir" mark
 - `/lib/mark.ts` - The mark's geometry, shared by `components/Brand.tsx` (`Mark`, `AppIcon`, `Wordmark`) and the generated images (`lib/brand-image.tsx`)
@@ -47,11 +48,10 @@ The project follows Next.js App Router conventions:
 
 The site uses a YAML-based content management system:
 - `/content/` - Contains YAML files for all site content
-- `/content/site.yaml` - Site configuration, hero, about, skills, and contact info
+- `/content/site.yaml` - Site configuration, hero, about and contact info
 - `/content/cv.yaml` - CV/resume data
-- `/content/blog.yaml` - Blog posts and articles
-- `/content/projects.yaml` - Projects and applications data (screenshots go in `images.gallery`; set `images.aspect: "landscape"` for desktop window captures, which then show unframed at a fixed width instead of as phone-height tiles)
-- `/lib/content.ts` - Content loading utilities with functions like `getSiteConfig()`, `getCVData()`, `getBlogData()`, `getProjectsData()`
+- `/content/projects.yaml` - Projects in four groups (`featured`, `wip`, `open_source`, `web`). `release` (`open_source`, `app_store`, `testflight`, `wip`) is shown as a badge, `home: true` puts an `open_source` project on the homepage, a one-line `summary` for the homepage, and a `note` when it has no links (screenshots go in `images.gallery`; set `images.aspect: "landscape"` for desktop window captures, which then show unframed at a fixed width instead of as phone-height tiles)
+- `/lib/content.ts` - Content loading utilities with functions like `getSiteConfig()`, `getCVData()`, `getProjectsData()`
 
 The content system uses js-yaml for parsing and provides typed access to structured content data.
 

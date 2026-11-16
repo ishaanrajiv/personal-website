@@ -16,7 +16,6 @@ export default function ContactPage() {
         <main className="px-4 pb-24 pt-14 sm:px-6 sm:pb-32 sm:pt-24">
           <div className="mx-auto max-w-[48rem]">
             <PageHeader
-              label="Reach out"
               title="Contact"
               description="Feel free to reach out if you'd like to connect, collaborate, or just have a conversation about analytics, development, or emerging technologies."
             />
