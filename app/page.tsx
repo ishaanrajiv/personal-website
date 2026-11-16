@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import ContentErrorBoundary from '@/components/ContentErrorBoundary';
 import SiteFooter from '@/components/SiteFooter';
-import { Monogram } from '@/components/Brand';
+import { AppIcon } from '@/components/Brand';
 import { Container, Section, externalLinkProps } from '@/components/SiteUI';
 import { EmailIcon, GitHubIcon, LinkedInIcon } from '@/components/icons';
 import { getCVData, getSiteConfig } from '@/lib/content';
@@ -34,10 +34,13 @@ export default function Home(): React.JSX.Element {
           {/* Hero */}
           <section id="top">
             <Container className="flex flex-col items-center pt-16 text-center sm:pt-24">
-              <Monogram className="h-20 w-20 drop-shadow-[0_18px_30px_rgb(35_40_56/0.22)] sm:h-24 sm:w-24" />
+              <AppIcon className="h-20 w-20 sm:h-24 sm:w-24" />
 
               <p className="label mt-10">Analytics lead · builder · writer</p>
-              <h1 className="display mt-4 text-[3.25rem] sm:text-[5rem] lg:text-[6rem]">{site.name}</h1>
+              {/* The name is the wordmark, so it is set in Geist Medium like the one in the nav. */}
+              <h1 className="mt-4 font-wordmark text-[3.25rem] font-medium leading-[1.02] tracking-[-0.025em] sm:text-[5rem] lg:text-[6rem]">
+                {site.name}
+              </h1>
               {site.hero.subtitle ? <p className="lede mt-6 max-w-[36rem]">{site.hero.subtitle}</p> : null}
 
               <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
@@ -148,7 +151,7 @@ export default function Home(): React.JSX.Element {
           {/* Closing */}
           <section className="border-t rule">
             <Container className="flex flex-col items-center py-24 text-center sm:py-32">
-              <Monogram className="rise h-20 w-20 drop-shadow-[0_18px_30px_rgb(35_40_56/0.22)] sm:h-24 sm:w-24" />
+              <AppIcon className="rise h-20 w-20 sm:h-24 sm:w-24" />
               <h2 className="display rise mt-10 text-[2.5rem] sm:text-[3.5rem]">Say hello.</h2>
               <p className="lede rise mt-5 max-w-[30rem]">
                 I&apos;m happy to talk about analytics, iOS development, or anything you found here.

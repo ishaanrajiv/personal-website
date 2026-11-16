@@ -4,15 +4,26 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
-  Colour tokens shared with lyrate.ishaanrajiv.com: brand ink #232838 and paper
-  #E9DFCB, on page backgrounds #F2EDED (light) and #080808 (dark). Values are RGB
-  triplets so the colours below can take Tailwind opacity modifiers.
+  Design tokens from the shared design language, as on lyrate.ishaanrajiv.com. Text is the
+  platform label colour (black / white). Grounds are Light paper #F2EDED and Night #080808.
+  "Lit" (navy / cream) fills only the primary button, the selected nav item and the mark's
+  pieces. The accent is Sky: #1E71A7 on light, #7DBEE8 on dark, for links, focus rings and
+  selection. Values are RGB triplets so the colours below can take Tailwind opacity modifiers.
 */
 :root {
   --paper: 242 237 237;
   --paper-raised: 234 228 227;
-  --ink: 35 40 56;
-  --on-ink: 243 235 221;
+  --ink: 0 0 0;
+  --lit: 35 40 56;
+  --on-lit: 243 235 221;
+  --accent: 30 113 167;
+
+  /* The "ir" mark: its dot on a page, then on the icon tile (3:1 on each ground). */
+  --mark-dot: #2690d4;
+  --icon-dot: #258dd0;
+  --icon-tile-top: #e6ecee;
+  --icon-tile-bottom: #e6ecee;
+  --icon-hairline: 0 0 0;
 
   color-scheme: light;
 }
@@ -20,8 +31,16 @@
 .dark {
   --paper: 8 8 8;
   --paper-raised: 22 22 22;
-  --ink: 233 223 203;
-  --on-ink: 12 14 21;
+  --ink: 255 255 255;
+  --lit: 243 235 221;
+  --on-lit: 12 14 21;
+  --accent: 125 190 232;
+
+  --mark-dot: #7dbee8;
+  --icon-dot: #7dbee8;
+  --icon-tile-top: #1c1a17;
+  --icon-tile-bottom: #0b0a09;
+  --icon-hairline: 255 255 255;
 
   color-scheme: dark;
 }
@@ -30,10 +49,12 @@
   --color-paper: rgb(var(--paper));
   --color-paper-raised: rgb(var(--paper-raised));
   --color-ink: rgb(var(--ink));
-  --color-on-ink: rgb(var(--on-ink));
+  --color-lit: rgb(var(--lit));
+  --color-on-lit: rgb(var(--on-lit));
+  --color-accent: rgb(var(--accent));
 
   --font-sans: -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --font-wordmark: var(--font-outfit), sans-serif;
+  --font-wordmark: var(--font-geist), sans-serif;
 
   --container-page: 72rem;
 }
@@ -51,7 +72,7 @@
   }
 
   ::selection {
-    background: rgb(var(--ink) / 0.14);
+    background: rgb(var(--accent) / 0.25);
   }
 
   a,
@@ -60,7 +81,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid rgb(var(--ink));
+    outline: 2px solid rgb(var(--accent));
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -87,7 +108,7 @@
   }
 
   .button-primary {
-    @apply inline-flex h-12 items-center justify-center gap-2 rounded-full bg-ink px-6 text-[0.9375rem] font-semibold text-on-ink transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98];
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-full bg-lit px-6 text-[0.9375rem] font-semibold text-on-lit transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98];
   }
 
   .button-quiet {
@@ -95,7 +116,7 @@
   }
 
   .text-link {
-    @apply inline-flex items-center gap-1.5 rounded-sm font-semibold underline decoration-ink/40 underline-offset-4 transition-colors hover:decoration-ink;
+    @apply inline-flex items-center gap-1.5 rounded-sm font-semibold text-accent underline decoration-accent/45 underline-offset-4 transition-colors hover:decoration-accent;
   }
 
   .chip {
@@ -169,15 +190,15 @@
 }
 
 .article-content a {
-  color: rgb(var(--ink));
+  color: rgb(var(--accent));
   text-decoration: underline;
-  text-decoration-color: rgb(var(--ink) / 0.4);
+  text-decoration-color: rgb(var(--accent) / 0.45);
   text-underline-offset: 4px;
   transition: text-decoration-color 200ms ease;
 }
 
 .article-content a:hover {
-  text-decoration-color: rgb(var(--ink));
+  text-decoration-color: rgb(var(--accent));
 }
 
 .article-content strong {

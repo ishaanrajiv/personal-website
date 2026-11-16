@@ -1,21 +1,21 @@
 # Ishaan Rajiv - Personal Website
 
-A modern personal website built with Next.js 15, styled to match the [Lyrate](https://lyrate.ishaanrajiv.com) site, and showcasing professional experience in product analytics and data science.
+A modern personal website built with Next.js 15, styled in the same design language as the [Lyrate](https://lyrate.ishaanrajiv.com) site, and showcasing professional experience in product analytics and data science.
 
 ## Tech Stack
 
 - **Framework**: Next.js 15 with App Router
 - **Frontend**: React 19 with TypeScript 5
-- **Styling**: Tailwind CSS 4 with paper and ink colour tokens, light and dark themes via next-themes
+- **Styling**: Tailwind CSS 4 with paper, ink, lit and accent colour tokens, light and dark themes via next-themes
 - **Package Manager**: Bun
-- **Fonts**: System UI for text, Outfit Medium for the wordmark
+- **Fonts**: System UI for text, Geist Medium for the wordmark
 - **Build Tool**: Turbopack (development)
 - **Content**: YAML + Markdown hybrid content management
 - **Blog**: Markdown with syntax highlighting and GitHub Flavored Markdown
 
 ## Features
 
-- **Design**: Lyrate's design language, with a theme toggle that follows the system by default
+- **Design**: A shared design language (label-colour text, a Sky accent, the "ir" mark), with a theme toggle that follows the system by default
 - **Blog System**: Full markdown support with clickable posts and dynamic routing
 - **Content Management**: YAML-based system for easy updates
 - **Syntax Highlighting**: Code blocks with rehype-highlight

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { Monogram, Wordmark } from '@/components/Brand';
+import { Mark, Wordmark } from '@/components/Brand';
 import ThemeToggle from '@/components/ThemeToggle';
 import { CloseIcon, MenuIcon } from '@/components/icons';
 import { NAV_ITEMS } from '@/components/site';
@@ -41,8 +41,8 @@ export default function Navigation(): React.JSX.Element {
   return (
     <header className="sticky top-0 z-40 bg-paper/80 backdrop-blur-xl supports-[backdrop-filter]:bg-paper/70">
       <nav className="mx-auto flex h-16 max-w-page items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" onClick={close} className="flex items-center gap-2.5 rounded-md" aria-label="Ishaan Rajiv, home">
-          <Monogram className="h-7 w-7" />
+        <Link href="/" onClick={close} className="flex items-center gap-1.5 rounded-md" aria-label="Ishaan Rajiv, home">
+          <Mark className="h-[1.125rem] w-[1.125rem]" />
           <Wordmark className="text-[1.25rem] leading-none" />
         </Link>
 
@@ -57,7 +57,7 @@ export default function Navigation(): React.JSX.Element {
                     href={item.path}
                     aria-current={active ? 'page' : undefined}
                     className={`rounded-full px-3 py-2 text-[0.9375rem] transition-colors ${
-                      active ? 'bg-ink/[0.07] text-ink' : 'text-ink/65 hover:text-ink'
+                      active ? 'bg-lit text-on-lit' : 'text-ink/65 hover:text-ink'
                     }`}
                   >
                     {item.label}
