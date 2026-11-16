@@ -1,32 +1,26 @@
 site:
   name: "Ishaan Rajiv"
-  title: "Ishaan Rajiv - Analytics Lead & Developer" 
+  title: "Ishaan Rajiv"
   description: "Analytics Lead at DB Digital with 10+ years of experience in product analytics, data science, and emerging technologies"
   author: "Ishaan Rajiv"
   copyright: "© 2025 Ishaan Rajiv. All rights reserved."
   
   # Hero section
   hero:
-    # title: "Analytics Lead building data-driven products and exploring emerging technologies"
     title: "Ishaan Rajiv"
-    # subtitle: "10+ years in product analytics across top companies like DB Digital, Hike, and Flipkart. Currently exploring iOS development and AI/ML applications."
-    subtitle: "I lead product analytics at DB Digital and have worked with data for over ten years, at Hike, Roposo and Flipkart before that. On the side I build iOS apps and small web tools."
-    
-  # About section
+    subtitle: "I lead product analytics at DB Digital, and have worked with data for over ten years. Outside work I build software: apps for iPhone and Mac, and small servers for the things I run myself."
+
+  # About: `short` is the homepage's version, `paragraphs` the About page's.
   about:
     title: "About Me"
+    short:
+      - "I'm a Senior Principal Product Analyst at DB Digital, where I lead analytics for one of India's largest digital news platforms. Before this I worked with data at Hike, Roposo and Flipkart."
+      - "Outside work I build software: an EPUB reader on the App Store, a web browser in beta, an open source terminal for coding agents, and small servers for the things I run myself."
     paragraphs:
-      - "Analytics Lead at DB Digital with over 10+ years of experience in product analytics, data science, and business intelligence. I've worked across diverse domains from social media to e-commerce to news platforms, helping build data-driven products at companies like Hike, Flipkart, and Roposo in the past."
-      - "My expertise spans product analytics, fraud detection systems, recommendation engines, and democratizing data access across organizations. I'm passionate about making complex data insights accessible and actionable for product teams."
-      - "Currently exploring iOS app development and AI/ML applications, on a personal level."
-    
-  # Skills section  
-  skills:
-    focus_areas: "Product Analytics, Data Science, Business Intelligence, AI/ML, ETL"
-    analytics: "Python, SQL"
-    development: "Learning Phase: Swift (iOS), React, Next.js, TypeScript" 
-    
-    
+      - "I'm a Senior Principal Product Analyst at DB Digital, where I lead analytics for one of India's largest digital news platforms. I've worked with data for over ten years, at Hike, Roposo and Flipkart before this, across social, e-commerce and news."
+      - "That work has covered product analytics, fraud detection, recommendation systems, and getting data into the hands of the teams who need it."
+      - "Outside work I build software. Lyrate, an EPUB reader, is on the App Store. Avia, a web browser for iPhone, is in public beta. Tern, a macOS terminal for coding agents, is open source, and so are Trail and Beacon, two small servers for observability and notifications. A couple more apps are in progress."
+
   # Contact links
   contact:
     email: "hi@ishaanrajiv.com"

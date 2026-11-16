@@ -15,8 +15,8 @@ const geist = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ishaanrajiv.com"),
-  title: "Ishaan Rajiv - Website and Blog",
-  description: "Personal website of Ishaan - analytics professional exploring iOS and web development, writing about data, tech, and AI",
+  title: "Ishaan Rajiv",
+  description: "Ishaan Rajiv leads product analytics at DB Digital and builds apps for iPhone and Mac: Lyrate, Avia, Tern and the tools behind them.",
 };
 
 export const viewport: Viewport = {

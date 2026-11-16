@@ -16,12 +16,8 @@ export interface SiteConfig {
     };
     about: {
       title: string;
+      short: string[];
       paragraphs: string[];
-    };
-    skills: {
-      focus_areas: string;
-      analytics: string;
-      development: string;
     };
     contact: {
       email: string;
@@ -56,23 +52,29 @@ export interface CVData {
   };
 }
 
-export interface BlogData {
-  blog: {
-    featured_posts: {
-      title: string;
-      slug: string;
-      date: string;
-      description: string;
-      tags: string[];
-      status: string;
-    }[];
-  };
-}
+/** How far a project has got out into the world. Shown as a badge on every project. */
+export type Release = 'open_source' | 'app_store' | 'testflight' | 'wip';
+
+export const RELEASE_LABELS: Record<Release, string> = {
+  open_source: 'Open source',
+  app_store: 'App Store',
+  testflight: 'TestFlight beta',
+  wip: 'WIP',
+};
 
 export interface Project {
   name: string;
+  // One line for the homepage.
+  summary: string;
   description: string;
+  // The stage, where it's worth saying: "alpha", "beta".
   status: string;
+  // Left out, the project shows no badge.
+  release?: Release;
+  // An open source project that also gets a card on the homepage.
+  home?: boolean;
+  // The line a project with no links shows instead.
+  note?: string;
   type: string;
   technologies: string[];
   images?: {
@@ -94,9 +96,9 @@ export interface Project {
 export interface ProjectsData {
   projects: {
     featured: Project[];
-    web_projects: Project[];
-    tools: Project[];
-    experiments: Project[];
+    wip: Project[];
+    open_source: Project[];
+    web: Project[];
   };
 }
 
@@ -115,10 +117,6 @@ export function getSiteConfig(): SiteConfig {
 
 export function getCVData(): CVData {
   return getContentData('cv.yaml') as CVData;
-}
-
-export function getBlogData(): BlogData {
-  return getContentData('blog.yaml') as BlogData;
 }
 
 export function getProjectsData(): ProjectsData {

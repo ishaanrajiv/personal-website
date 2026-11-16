@@ -33,14 +33,14 @@ export default function ProjectsPage() {
         <main>
           <Container className="pb-24 pt-14 sm:pb-32 sm:pt-24">
             <PageHeader
-              label="Selected work"
               title="Projects"
-              description="Apps for iPhone and Mac, web tools and small experiments. Most of them have their source on GitHub."
+              description="Apps for iPhone and Mac, and the servers, libraries and tools around them. Each one says how far it has got: open source, on the App Store, in beta, or still in progress."
             />
 
-            <ProjectGroup title="Featured" projects={projects.featured} />
-            <ProjectGroup title="Web projects" projects={projects.web_projects} />
-            <ProjectGroup title="Tools and utilities" projects={projects.tools} />
+            <ProjectGroup title="Apps" projects={projects.featured} />
+            <ProjectGroup title="WIP" projects={projects.wip} />
+            <ProjectGroup title="Libraries and tools" projects={projects.open_source} />
+            <ProjectGroup title="On the web" projects={projects.web} />
           </Container>
         </main>
       </ContentErrorBoundary>

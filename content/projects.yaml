@@ -1,6 +1,15 @@
+# Every project carries a `release`, shown as a badge:
+#   open_source  source is public on GitHub
+#   app_store    released on the App Store
+#   testflight   public beta on TestFlight
+#   wip          still being built, not released
+# `status` is the stage (alpha, beta) where it's worth saying. `summary` is the one line the
+# homepage shows; an open source project sets `home: true` to get a card there too. `note` is the line a project with no links shows instead. A project with no `release` shows no badge.
 projects:
   featured:
     - name: "Lyrate - EPUB Reader"
+      summary: "An EPUB reader for iPhone and iPad with real typographic control. Everything stays on the device."
+      release: "app_store"
       description: "An EPUB reader for iPhone and iPad. You pick the typeface, size, spacing, margins and alignment, and it justifies and hyphenates properly. Books sit on shelves you arrange, and you can search the text of your whole library. Everything stays on your device. There is no account, and reading, search and the dictionary all work offline. Built entirely with large language models, as an experiment in AI-assisted development."
       status: ""
       type: "iOS App"
@@ -26,8 +35,10 @@ projects:
         - "Reading Stats"
         - "ZIP Backups"
     - name: "Avia Browser"
+      summary: "A web browser for iPhone with one floating bar, card tabs and ad blocking on by default."
+      release: "testflight"
       description: "A web browser for iPhone, built on WebKit. One floating bar sits at the bottom of the page and shrinks out of the way as you scroll, and tabs are a stack of cards you swipe through. Ads, trackers and cookie banners are blocked by default, tracking tags come off links, and any page can be read in reader mode or darkened. Articles you read stay on the phone, so you can find a page later by something it said or ask about it with Apple's on-device model."
-      status: "beta"
+      status: ""
       type: "iOS App"
       technologies: ["Swift", "SwiftUI", "WebKit", "SwiftData", "Foundation Models"]
       images:
@@ -50,6 +61,8 @@ projects:
         - "Reading Memory"
         - "Private Tab Lock"
     - name: "Tern - Terminal for Coding Agents"
+      summary: "A macOS terminal built around coding agents, with sessions that survive quitting the app."
+      release: "open_source"
       description: "A macOS terminal built around coding agents. The sidebar groups tabs by folder and shows which agent is working, waiting for you, or done, and a background daemon keeps every session running after you quit the app. It runs on Ghostty's terminal engine and is in early alpha."
       status: "alpha"
       type: "macOS App"
@@ -72,26 +85,196 @@ projects:
         - "SSH and tmux"
         - "Launch Presets"
 
-  # Other project categories
-  web_projects:
-    - name: "Personal Website"
-      description: "A modern personal portfolio website built with Next.js 15, featuring a YAML-based content management system, responsive design, and optimized performance."
+  # Still being built, and not out.
+  wip:
+    - name: "Hocin"
+      summary: "A media client for Emby and Jellyfin that plays the original file on the device."
+      description: "A media client for Emby and Jellyfin on Apple platforms: the Mac first, then Apple TV and iPhone. It plays the original file on the device instead of asking the server to transcode it, so HEVC, AV1, HDR10 and Dolby Vision video, Atmos and lossless audio, and image subtitles all arrive untouched. One app speaks to both servers through a single protocol, with the differences between them kept in one adapter."
       status: ""
-      type: "Website"
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"]
+      release: "wip"
+      note: "Not released."
+      type: "macOS and Apple TV App"
+      technologies: ["Swift", "SwiftUI", "FFmpeg"]
+      images:
+        gallery: []
+      links: {}
+      features:
+        - "Direct Play"
+        - "HDR and Dolby Vision"
+        - "Atmos and Lossless Audio"
+        - "Emby and Jellyfin"
+        - "Resume and Progress Sync"
+    - name: "Paperside"
+      summary: "An iPad comics reader that runs Paperback source extensions in its own JavaScript host."
+      description: "An iPad reader for manga and comics that runs Paperback source extensions in its own JavaScriptCore host, with one context and one thread per extension. The engine is a Swift package with no UIKit in it, so it's tested on the Mac and driven from a command-line tool as well as from the app. On top of it sit a library, updates, history, and moving a title from one source to another."
+      status: ""
+      release: "wip"
+      note: "Not released."
+      type: "iPadOS App"
+      technologies: ["Swift", "SwiftUI", "JavaScriptCore", "WebKit"]
+      images:
+        gallery: []
+      links: {}
+      features:
+        - "Extension Host"
+        - "Library and Updates"
+        - "Reading History"
+        - "Source Migration"
+        - "Command-Line Runner"
+  # Public repos worth reading.
+  open_source:
+    - name: "Trail"
+      summary: "One small server that keeps a system's events, metrics, errors and logs."
+      description: "One small server that keeps what a system does: its events, metrics, errors and logs. It's for a single machine or a small fleet, where a full observability stack is more to run than the thing being observed. It's one binary of about 8 MB. Recent data sits in SQLite and every finished day becomes one Parquet file, so anything that reads those can query it. A service declares what it sends in TOML, and Trail generates typed emitters from that for Python, TypeScript, JavaScript and Swift, so a misspelt event is a type error."
+      status: ""
+      release: "open_source"
+      home: true
+      type: "Observability Server"
+      technologies: ["Rust", "SQLite", "Parquet"]
       images:
         gallery: []
       links:
-        github: "https://github.com/ishaanrajiv/personal-website"
-        demo: "https://ishaanrajiv.com/"
+        github: "https://github.com/ishaanrajiv/trail"
       features:
-        - "Next.js App Router"
-        - "YAML Content System"
-        - "Responsive Design"
-        - "Dark Mode Support"
-    - name: "Snake"
-      description: "Snake game built in Rust, with smooth movement, adaptive board resizing, and multiple play modes (Classic, Wrap, Zen)."
+        - "Events, Metrics, Errors, Logs"
+        - "SQLite and Parquet"
+        - "Typed Emitters"
+        - "Live Aggregations"
+        - "Alert Rules"
+    - name: "Beacon"
+      summary: "A self-hosted notification server that decides which events deserve a push, and sends them to your own iPhone app."
+      description: "A self-hosted notification server that decides which events deserve a push, and sends them to your own iPhone app through Apple's push service. It's for one person running their own services, where most events are worth recording and few are worth a sound. Every notification belongs to a declared kind whose class fixes where it shows and how it may push. A push is held while you're active and dropped if you saw it, and alerts have a lifecycle: pending, firing, resolved, with flap detection and silences."
       status: ""
+      release: "open_source"
+      home: true
+      type: "Notification Server"
+      technologies: ["Rust", "APNs"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/beacon"
+      features:
+        - "Declared Kinds"
+        - "Presence-Aware Push"
+        - "Alert Lifecycle"
+        - "Silences"
+        - "Typed Emitters"
+    - name: "Muxi Agent"
+      summary: "Claude and Codex coding agents behind one TypeScript interface."
+      description: "Claude and Codex coding agents behind one TypeScript interface. Both backends come out as the same provider: threads, turns that stream one event vocabulary, approvals the host answers, usage windows and model catalogs. Each thread sees only the MCP servers you hand it."
+      status: ""
+      release: "open_source"
+      type: "TypeScript Library"
+      technologies: ["TypeScript", "Node.js", "Zod"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/muxi-agent"
+      features:
+        - "One Provider Interface"
+        - "Streamed Turns"
+        - "Approvals"
+        - "Usage Windows"
+    - name: "Design"
+      summary: "The design language behind my apps: marks, colour and type."
+      description: "The design language behind my apps: how their marks are built, which colour does which job, and the type. Every app, and this site, copies its tokens and icons from here."
+      status: ""
+      release: "open_source"
+      type: "Design System"
+      technologies: ["SVG", "JavaScript"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/design"
+      features:
+        - "Marks"
+        - "Colour Roles"
+        - "Type"
+        - "Light and Dark"
+    - name: "SQLite Offline Dictionary"
+      summary: "An English dictionary as one SQLite file, for apps that look words up offline."
+      description: "An English dictionary as one SQLite file, built from WordNet and CMUdict, for apps that need to look words up with no network. Lyrate's dictionary is built from the same two sources."
+      status: ""
+      release: "open_source"
+      type: "Dataset and Scripts"
+      technologies: ["SQLite", "Python"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/sqlite-offline-dictionary"
+      features:
+        - "Offline Word Lookup"
+        - "WordNet and CMUdict"
+        - "Single File"
+    - name: "EPUB to Markdown"
+      summary: "A Rust command-line tool that converts EPUB files to Markdown."
+      description: "A Rust command-line tool that converts EPUB files to Markdown, for getting the text of a book out in a form other tools can read."
+      status: ""
+      release: "open_source"
+      type: "CLI Tool"
+      technologies: ["Rust"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/epub-to-md"
+      features:
+        - "EPUB Parsing"
+        - "Markdown Conversion"
+
+  # Small things that run in a browser.
+  web:
+    - name: "Analytics Canvas"
+      summary: "A browser-only analytics workspace: SQL, charts and canvas flows over local files."
+      description: "A browser-only analytics workspace for local files, with SQL, charts, canvas flows and light in-browser modelling. It runs on DuckDB in the page, so nothing is uploaded."
+      status: ""
+      type: "Web Tool"
+      technologies: ["TypeScript", "React", "DuckDB"]
+      images:
+        gallery: []
+      links:
+        demo: "https://analytics-canvas.ishaanrajiv.com"
+      features:
+        - "Local Imports"
+        - "SQL Blocks"
+        - "Canvas Flows"
+        - "Browser Modelling"
+    - name: "JSON Workbench"
+      summary: "Validate, format, explore and diff JSON in the browser."
+      description: "A static, browser-based workspace for validating, formatting, exploring and diffing JSON. It's a single page with no backend."
+      status: ""
+      release: "open_source"
+      type: "Web Tool"
+      technologies: ["TypeScript"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/json-workbench"
+        demo: "https://json-workbench.ishaanrajiv.com/"
+      features:
+        - "Live Validation"
+        - "Inspector"
+        - "JSON Diffing"
+    - name: "Font Fetcher"
+      summary: "Find, preview and download the fonts a website uses."
+      description: "Extract, preview and download the fonts any website uses."
+      status: ""
+      release: "open_source"
+      type: "Web Tool"
+      technologies: ["TypeScript"]
+      images:
+        gallery: []
+      links:
+        github: "https://github.com/ishaanrajiv/font-fetcher"
+        demo: "https://font-fetcher.ishaanrajiv.com"
+      features:
+        - "Font Extraction"
+        - "Live Preview"
+        - "Download"
+    - name: "Snake"
+      summary: "Snake in Rust, with smooth movement and three play modes."
+      description: "Snake, written in Rust, with smooth movement, a board that resizes with the window, and three play modes: Classic, Wrap and Zen."
+      status: ""
+      release: "open_source"
       type: "Browser Game"
       technologies: ["Rust"]
       images:
@@ -101,137 +284,19 @@ projects:
         demo: "https://snake-rs.ishaanrajiv.com/"
       features:
         - "Smooth Movement"
-        - "Adaptive Board Resizing"
-        - "Classic Mode"
-        - "Wrap Mode"
-        - "Zen Mode"
+        - "Classic, Wrap and Zen"
     - name: "Battle of the Breaths"
-      description: "A game where you guess which city has cleaner air. Compare air quality between cities around the world in an engaging, educational format."
+      summary: "A game where you guess which of two cities has cleaner air."
+      description: "A game where you guess which of two cities has the cleaner air, from air quality readings around the world."
       status: ""
-      type: "Website"
-      technologies: ["Typescript"]
+      release: "open_source"
+      type: "Browser Game"
+      technologies: ["TypeScript"]
       images:
         gallery: []
       links:
         github: "https://github.com/ishaanrajiv/battle-of-the-breaths"
         demo: "https://clean-air.ishaanrajiv.com"
       features:
-        - "Air Quality Comparison"
-        - "City Guessing Game"
-        - "Educational Content"
-    - name: "Font Fetcher"
-      description: "Extract, preview, and download fonts from any website. A handy tool for designers and developers to discover and grab fonts used on the web."
-      status: ""
-      type: "Website"
-      technologies: ["Typescript"]
-      images:
-        gallery: []
-      links:
-        github: "https://github.com/ishaanrajiv/font-fetcher"
-        demo: "https://font-fetcher.ishaanrajiv.com"
-      features:
-        - "Font Extraction"
-        - "Live Preview"
-        - "Font Download"
-    - name: "Event Taxonomy Tracker"
-      description: "A simple POC for managing analytics event taxonomies with property registry, conflict detection, and automatic changelog generation."
-      status: ""
-      type: "Website"
-      technologies: ["TypeScript", "Python"]
-      images:
-        gallery: []
-      links:
-        github: "https://github.com/ishaanrajiv/event-taxonomy-tracker"
-        demo: ""
-      features:
-        - "Property Registry"
-        - "Conflict Detection"
-        - "Automatic Changelog"
-  tools:
-    - name: "Analytics Canvas"
-      description: "Browser-only analytics workspace for local files with SQL, charting, canvas workflows, and lightweight in-browser modeling. Runs entirely client-side with no backend required for core functionality."
-      status: ""
-      type: "Web Tool"
-      technologies: ["TypeScript", "React", "DuckDB"]
-      images:
-        gallery: []
-      links:
-        github: "https://github.com/ishaanrajiv/analytics-canvas"
-        demo: "https://analytics-canvas.ishaanrajiv.com"
-      features:
-        - "Local Imports"
-        - "SQL Blocks"
-        - "Canvas Flows"
-        - "Browser Modeling"
-    - name: "JSON Workbench"
-      description: "A fast, static, browser-based JSON workspace for validating, formatting, exploring, and diffing JSON. Runs fully client-side as a single-page app with no backend."
-      status: ""
-      type: "Web Tool"
-      technologies: ["TypeScript", "CSS", "HTML"]
-      images:
-        gallery: []
-      links:
-        github: "https://github.com/ishaanrajiv/json-workbench"
-        demo: "https://json-workbench.ishaanrajiv.com/"
-      features:
-        - "Realtime Validation"
-        - "Multi-View Output"
-        - "Inspector Navigation"
-        - "JSON Diffing"
-    - name: "SQLite Offline Dictionary"
-      description: "A lightweight offline dictionary application built with SQLite for fast, local word lookups without internet connectivity."
-      status: ""
-      type: "Desktop Tool"
-      technologies: ["SQLite", "Python"]
-      images:
-        gallery: []
-      links:
-        github: "https://github.com/ishaanrajiv/sqlite-offline-dictionary"
-        demo: ""
-      features:
-        - "Offline Word Lookup"
-        - "Fast SQLite Queries"
-        - "Lightweight Design"
-    - name: "iOS Swift Color Visualizer"
-      description: "A simple web application for visualizing and working with iOS color schemes, helping developers preview and manage color palettes in their iOS applications."
-      status: ""
-      type: "Website"
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"]
-      images:
-        gallery: []
-      links:
-        github: "https://github.com/ishaanrajiv/ios-swift-color-visualizer"
-        demo: "https://ios-color-visualizer.ishaanrajiv.com/"
-      features:
-        - "Color Palette Visualization"
-        - "Swift Color Support"
-        - "Interactive Website"
-    - name: "Simple iOS Icon Background Generator"
-      description: "A simple Python script for generating custom background images for iOS app icons, streamlining the icon design process for iOS developers."
-      status: ""
-      type: "Desktop Tool"
-      technologies: ["Python"]
-      images:
-        gallery: []
-      links:
-        github: "https://github.com/ishaanrajiv/simple-ios-icon-bg-generator"
-        demo: ""
-      features:
-        - "Icon Background Generation"
-        - "Custom Color Support"
-        - "iOS App Integration"
-    - name: "EPUB to Markdown"
-      description: "Rust CLI tool to convert EPUB files to Markdown format. Fast, lightweight conversion for ebook content extraction."
-      status: ""
-      type: "CLI Tool"
-      technologies: ["Rust"]
-      images:
-        gallery: []
-      links:
-        github: "https://github.com/ishaanrajiv/epub-to-md"
-        demo: ""
-      features:
-        - "EPUB Parsing"
-        - "Markdown Conversion"
-        - "CLI Interface"
-  experiments: []
+        - "City Comparison"
+        - "Air Quality Data"

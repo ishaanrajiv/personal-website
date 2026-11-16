@@ -29,7 +29,7 @@ export default async function OpenGraphImage() {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ fontSize: 104, letterSpacing: -2.6, lineHeight: 1 }}>Ishaan Rajiv</div>
           <div style={{ fontSize: 42, marginTop: 24, color: 'rgba(60, 60, 67, 0.6)', letterSpacing: -0.5 }}>
-            Analytics lead · builder · writer
+            Analytics lead · builder
           </div>
         </div>
       </div>
