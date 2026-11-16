@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Monogram, Wordmark } from '@/components/Brand';
+import { Mark, Wordmark } from '@/components/Brand';
 import { NAV_ITEMS } from '@/components/site';
 import { getSiteConfig } from '@/lib/content';
 
@@ -10,8 +10,8 @@ export default function SiteFooter() {
   return (
     <footer className="border-t rule">
       <div className="mx-auto flex max-w-page flex-col gap-6 px-4 py-8 text-sm text-ink/60 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
-        <Link href="/" className="flex items-center gap-2.5 text-ink" aria-label="Ishaan Rajiv, home">
-          <Monogram className="h-6 w-6" />
+        <Link href="/" className="flex items-center gap-1.5 text-ink" aria-label="Ishaan Rajiv, home">
+          <Mark className="h-4 w-4" />
           <Wordmark className="text-lg leading-none" />
         </Link>
 

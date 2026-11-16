@@ -22,7 +22,7 @@ This is a Next.js 15 personal website built with:
 - Tailwind CSS 4
 - App Router (Next.js 13+ app directory structure)
 
-The project uses Turbopack for development builds. Its design follows the Lyrate site (lyrate.ishaanrajiv.com): the same paper and ink colours, system UI type and Outfit Medium for the wordmark.
+The project uses Turbopack for development builds. Its design follows the shared design language also used by the Lyrate site (lyrate.ishaanrajiv.com): label-colour text on paper grounds, navy or cream "lit" fills, a Sky accent, the "ir" mark and Geist Medium for the wordmark.
 
 ## Development Commands
 
@@ -38,7 +38,8 @@ The project follows Next.js App Router conventions:
 - `/app/layout.tsx` - Root layout with font loading and metadata
 - `/app/page.tsx` - Home page component
 - `/app/globals.css` - Global styles with Tailwind directives
-- `/app/icon.tsx`, `/app/apple-icon.tsx`, `/app/opengraph-image.tsx` - Generated favicon, touch icon and share image (IR monogram)
+- `/app/icon.svg`, `/app/apple-icon.tsx`, `/app/opengraph-image.tsx` - Favicon (switches with the system appearance), generated touch icon and share image, all showing the "ir" mark
+- `/lib/mark.ts` - The mark's geometry, shared by `components/Brand.tsx` (`Mark`, `AppIcon`, `Wordmark`) and the generated images (`lib/brand-image.tsx`)
 - `/components/` - Reusable React components (Navigation, SiteUI, SiteFooter, Brand, ErrorBoundary, etc.)
 - `/public/` - Static assets (SVG icons)
 
@@ -59,10 +60,12 @@ TypeScript configuration includes path mapping with `@/*` alias pointing to the 
 ## Styling
 
 Uses Tailwind CSS 4 with PostCSS configuration:
-- Colour tokens `paper`, `paper-raised`, `ink` and `on-ink` are RGB triplets in `:root` and `.dark`, exposed to Tailwind through `@theme inline` in `globals.css` (use them as `bg-paper`, `text-ink/60`, etc.)
+- Colour tokens `paper`, `paper-raised`, `ink`, `lit`, `on-lit` and `accent` are RGB triplets in `:root` and `.dark`, exposed to Tailwind through `@theme inline` in `globals.css` (use them as `bg-paper`, `text-ink/60`, etc.)
+- Each colour has one job: `ink` (black / white) is text and its washes; `lit` with `on-lit` (navy / cream) fills only the primary button, the selected nav item and the mark; `accent` (Sky) is for links, focus rings and selection. Cream and navy are never text colours
+- If the mark or accent changes, update `app/icon.svg`, `lib/mark.ts`, `lib/brand-image.tsx` and the mark variables in `globals.css` together
 - Light and dark themes via `next-themes`, which sets a `.dark` class on `<html>`; the default follows the system and `components/ThemeToggle.tsx` switches it
 - Shared component classes in `globals.css`: `label`, `display`, `lede`, `body-copy`, `button-primary`, `button-quiet`, `text-link`, `chip`, `rule`
 - `.rise` fades sections in on scroll where scroll-driven animations are supported
 - Responsive design patterns (sm:, md: breakpoints)
 
-Body text uses the system UI font stack. Outfit Medium (`app/fonts/Outfit-Medium.ttf`, SIL OFL) is loaded with `next/font/local` as `--font-outfit` for the wordmark, monogram and generated icons.
+Body text uses the system UI font stack. Geist Medium (`app/fonts/Geist-Medium.ttf`, SIL OFL) is loaded with `next/font/local` as `--font-geist` for the wordmark, the name on the home page and the share image.
